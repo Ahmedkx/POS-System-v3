@@ -1,36 +1,51 @@
-import { Table } from "@mantine/core";
+import {
+    Center,
+    Text,
+    TextInput,
+    PasswordInput,
+    Stack,
+    Button,
+} from "@mantine/core";
+
+import { useForm, isNotEmpty } from "@mantine/form";
 
 export default function Login() {
-    const elements = [
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-    ];
+    const form = useForm({
+        initialValues: {
+            username: "",
+            password: "",
+        },
 
-    const rows = elements.map((element) => (
-        <Table.Tr key={element.name}>
-            <Table.Td>{element.position}</Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.symbol}</Table.Td>
-            <Table.Td>{element.mass}</Table.Td>
-        </Table.Tr>
-    ));
+        validate: {
+            username: isNotEmpty("يجب ادخال اسم المستخدم"),
+            password: isNotEmpty("يجب ادخال كلمة السر"),
+        },
+    });
 
     return (
-        <div>
-            <Table striped highlightOnHover withTableBorder withColumnBorders>
-                <Table.Thead>
-                    <Table.Tr>
-                        <Table.Th>الاسم</Table.Th>
-                        <Table.Th>السعر</Table.Th>
-                        <Table.Th>الشركة</Table.Th>
-                        <Table.Th>Atomic mass</Table.Th>
-                    </Table.Tr>
-                </Table.Thead>
-                <Table.Tbody>{rows}</Table.Tbody>
-            </Table>
-        </div>
+        <Center>
+            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                <Stack justify="center" h="100vh" style={{ maxWidth: "400px" }}>
+                    <Text size="40px" fw="bold" ta="center" mb={20}>
+                        تسجيل الدخول
+                    </Text>
+                    <TextInput
+                        label="اسم المستخدم"
+                        // placeholder="اسم المستخدم"
+                        withAsterisk
+                        {...form.getInputProps("username")}
+                    />
+                    <PasswordInput
+                        label="كلمة المرور"
+                        // placeholder="كلمة المرور"
+                        withAsterisk
+                        {...form.getInputProps("password")}
+                    />
+                    <Button type="submit" variant="filled">
+                        تسجيل الدخول
+                    </Button>
+                </Stack>
+            </form>
+        </Center>
     );
 }

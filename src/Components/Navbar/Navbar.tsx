@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Group, Burger, Box } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import classes from "./NavbarStyle.module.css";
+import classes from "./Navbar.module.css";
+// import ThemeButton from "../ThemeButton/ThemeButton";
+import logo from "/logo.svg";
 
 const links = [
     { link: "/", label: "الرئيسية" },
-    { link: "/login", label: "الاحصائيات" },
+    { link: "/products", label: "الأدوية" },
     { link: "/learn", label: "تاريخ الصلاحية" },
-    { link: "/community", label: "Community" },
 ];
 
 export default function Navbar() {
@@ -30,20 +31,25 @@ export default function Navbar() {
     ));
 
     return (
-        <header className={classes.header}>
+        <Box component="header" className={classes.header}>
             <Container size="xl" className={classes.inner}>
-                <Box>Logo</Box>
+                <Box>
+                    <img src={logo} width={35} height="320px" alt="logo" />
+                </Box>
                 <Group gap={5} visibleFrom="xs">
                     {items}
                 </Group>
+
+                {/* <ThemeButton /> */}
 
                 <Burger
                     opened={opened}
                     onClick={toggle}
                     hiddenFrom="xs"
                     size="sm"
+                    color="white"
                 />
             </Container>
-        </header>
+        </Box>
     );
 }
