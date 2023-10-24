@@ -8,7 +8,7 @@ export default function Layout() {
             <Navbar />
 
             <Box bg="#f3f4f6">
-                <Container size="xl" pt={30} h="calc(100vh - 57px)">
+                <Container size="xl" pt={30} mih="calc(100vh - 65px)">
                     <Outlet />
                 </Container>
             </Box>

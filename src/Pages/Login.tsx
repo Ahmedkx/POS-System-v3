@@ -5,9 +5,12 @@ import {
     PasswordInput,
     Stack,
     Button,
+    Paper,
 } from "@mantine/core";
 
 import { useForm, isNotEmpty } from "@mantine/form";
+import Logo from "../Images/Logo.tsx";
+import { IconUser, IconLock } from "@tabler/icons-react";
 
 export default function Login() {
     const form = useForm({
@@ -23,29 +26,35 @@ export default function Login() {
     });
 
     return (
-        <Center>
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
-                <Stack justify="center" h="100vh" style={{ maxWidth: "400px" }}>
-                    <Text size="40px" fw="bold" ta="center" mb={20}>
-                        تسجيل الدخول
-                    </Text>
+        <Stack align="center" justify="center" bg="#f9fafb" h="100vh">
+            <Logo width="40px" />
+            <Text size="24px" fw="bold" ta="center" mb={20}>
+                تسجيل الدخول
+            </Text>
+            <Paper
+                shadow="lg"
+                p={48}
+                style={{ maxWidth: "480px", width: "100%" }}
+            >
+                <form onSubmit={form.onSubmit((values) => console.log(values))}>
                     <TextInput
+                        leftSection={<IconUser />}
                         label="اسم المستخدم"
-                        // placeholder="اسم المستخدم"
                         withAsterisk
                         {...form.getInputProps("username")}
                     />
                     <PasswordInput
+                        leftSection={<IconLock />}
                         label="كلمة المرور"
-                        // placeholder="كلمة المرور"
                         withAsterisk
                         {...form.getInputProps("password")}
+                        mt={30}
                     />
-                    <Button type="submit" variant="filled">
+                    <Button type="submit" variant="filled" mt={30} w="100%">
                         تسجيل الدخول
                     </Button>
-                </Stack>
-            </form>
-        </Center>
+                </form>
+            </Paper>
+        </Stack>
     );
 }

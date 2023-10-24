@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, Group, Burger, Box } from "@mantine/core";
+import {
+    Container,
+    Group,
+    Burger,
+    Box,
+    Stack,
+    Avatar,
+    Flex,
+    Button,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
-import logo from "/logo.svg";
+import Logo from "../../Images/Logo";
+import ThemeButton from "../ThemeButton/ThemeButton";
 
 const links = [
     { link: "/", label: "الرئيسية" },
     { link: "/products", label: "الأدوية" },
-    { link: "/learn", label: "تاريخ الصلاحية" },
+    { link: "/ش", label: "تاريخ الصلاحية" },
 ];
 
 export default function Navbar() {
@@ -32,23 +42,29 @@ export default function Navbar() {
 
     return (
         <Box component="header" className={classes.header}>
-            <Container size="xl" className={classes.inner}>
-                <Box>
-                    <img src={logo} width={35} height="320px" alt="logo" />
-                </Box>
-                <Group gap={5} visibleFrom="xs">
-                    {items}
-                </Group>
+            <Container size="xl">
+                <Flex justify="space-between" align="center" h="64px">
+                    <Flex gap="15px">
+                        <Logo width="40px" fill="white" />
+                        <Group gap={5} visibleFrom="xs">
+                            {items}
+                        </Group>
+                    </Flex>
 
-                {/* <ThemeButton /> */}
-
-                <Burger
-                    opened={opened}
-                    onClick={toggle}
-                    hiddenFrom="xs"
-                    size="sm"
-                    color="white"
-                />
+                    {/* <ThemeButton /> */}
+                    <Box>
+                        <Burger
+                            opened={opened}
+                            onClick={toggle}
+                            hiddenFrom="xs"
+                            size="sm"
+                            color="white"
+                        />
+                        <>
+                            <Avatar radius="xl" color="white" />
+                        </>
+                    </Box>
+                </Flex>
             </Container>
         </Box>
     );
