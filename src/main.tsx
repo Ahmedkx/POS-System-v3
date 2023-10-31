@@ -10,9 +10,9 @@ const theme = {
         xs: rem(10),
         // sm: rem(11),
         sm: rem(18),
-        md: rem(14),
-        lg: rem(16),
-        xl: rem(20),
+        md: rem(20),
+        lg: rem(22),
+        xl: rem(24),
     },
 };
 

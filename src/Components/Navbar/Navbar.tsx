@@ -1,30 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-    Container,
-    Group,
-    Burger,
-    Box,
-    Stack,
-    Avatar,
-    Flex,
-    Button,
-} from "@mantine/core";
+import { Link, useLocation } from "react-router-dom";
+import { Container, Group, Burger, Box, Avatar, Flex } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
 import Logo from "../../Images/Logo";
-import ThemeButton from "../ThemeButton/ThemeButton";
 
 const links = [
     { link: "/", label: "الرئيسية" },
+    { link: "/statistics", label: "الاحصائيات" },
     { link: "/products", label: "الأدوية" },
-    { link: "/ش", label: "تاريخ الصلاحية" },
+    { link: "/expirydates", label: "تاريخ الصلاحية" },
 ];
 
 export default function Navbar() {
+    const location = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
-    const [active, setActive] = useState(links[0].link);
+    const [active, setActive] = useState(location.pathname);
 
     const items = links.map((link) => (
         <Link
@@ -60,9 +52,7 @@ export default function Navbar() {
                             size="sm"
                             color="white"
                         />
-                        <>
-                            <Avatar radius="xl" color="white" />
-                        </>
+                        <Avatar radius="xl" color="white" />
                     </Box>
                 </Flex>
             </Container>

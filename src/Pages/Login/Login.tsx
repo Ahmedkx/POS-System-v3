@@ -9,7 +9,7 @@ import {
 } from "@mantine/core";
 
 import { useForm, isNotEmpty } from "@mantine/form";
-import Logo from "../Images/Logo.tsx";
+import Logo from "../../Images/Logo.tsx";
 import { IconUser, IconLock } from "@tabler/icons-react";
 
 export default function Login() {

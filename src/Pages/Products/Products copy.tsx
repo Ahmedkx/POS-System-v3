@@ -9,6 +9,7 @@ import {
     TextInput,
     rem,
     keys,
+    Box,
 } from "@mantine/core";
 import {
     IconSelector,
@@ -16,7 +17,7 @@ import {
     IconChevronUp,
     IconSearch,
 } from "@tabler/icons-react";
-import classes from "./TableSort.module.css";
+// import classes from "./TableSort.module.css";
 
 interface RowData {
     name: string;
@@ -31,6 +32,19 @@ interface ThProps {
     onSort(): void;
 }
 
+const classes = {
+    th: { padding: 0 },
+    control: {
+        width: "100%",
+        padding: "var(--mantine-spacing-xs) var(--mantine-spacing-md)",
+    },
+    icon: {
+        width: "rem(21px)",
+        height: "rem(21px)",
+        borderRadius: "rem(21px)",
+    },
+};
+
 function Th({ children, reversed, sorted, onSort }: ThProps) {
     const Icon = sorted
         ? reversed
@@ -38,13 +52,13 @@ function Th({ children, reversed, sorted, onSort }: ThProps) {
             : IconChevronDown
         : IconSelector;
     return (
-        <Table.Th className={classes.th}>
-            <UnstyledButton onClick={onSort} className={classes.control}>
+        <Table.Th style={classes.th}>
+            <UnstyledButton onClick={onSort} style={classes.control}>
                 <Group justify="space-between">
                     <Text fw={500} fz="sm">
                         {children}
                     </Text>
-                    <Center className={classes.icon}>
+                    <Center style={classes.icon}>
                         <Icon
                             style={{ width: rem(16), height: rem(16) }}
                             stroke={1.5}
@@ -443,18 +457,20 @@ export default function Products() {
 
     return (
         <ScrollArea>
-            <TextInput
-                placeholder="البحث"
-                mb="md"
-                leftSection={
-                    <IconSearch
-                        style={{ width: rem(16), height: rem(16) }}
-                        stroke={1.5}
-                    />
-                }
-                value={search}
-                onChange={handleSearchChange}
-            />
+            <Box>
+                <TextInput
+                    placeholder="البحث"
+                    mb="md"
+                    leftSection={
+                        <IconSearch
+                            style={{ width: rem(16), height: rem(16) }}
+                            stroke={1.5}
+                        />
+                    }
+                    value={search}
+                    onChange={handleSearchChange}
+                />
+            </Box>
             <Table
                 horizontalSpacing="md"
                 verticalSpacing="xs"
