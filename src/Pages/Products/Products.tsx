@@ -1,87 +1,77 @@
-import { Table, Text } from "@mantine/core";
+import { useState } from "react";
+import { Box, Button, Flex, TextInput, rem } from "@mantine/core";
+import { IconPlus, IconSearch } from "@tabler/icons-react";
+import Head from "./Components/Head";
+import Row from "./Components/Row";
 
 export default function Products() {
-    const elements = [
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-        { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-        { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-        { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-        { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
+    const [search, setSearch] = useState("");
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.currentTarget;
+        setSearch(value);
+    };
+
+    const products = [
+        {
+            name: "منتج",
+            company: 12.011,
+            size: "50 سم",
+            price: "1233",
+            quantity: 123,
+            barcode: 123,
+        },
+        {
+            name: "2منتج",
+            company: 12.011,
+            size: "50 سم",
+            price: "1233",
+            quantity: 123,
+            barcode: 123,
+        },
+        {
+            name: "3منتج",
+            company: 12.011,
+            size: "50 سم",
+            price: "1233",
+            quantity: 123,
+            barcode: 123,
+        },
     ];
-
-    const rows = elements.map((element) => (
-        <Table.Tr key={element.name} style={{ cursor: "pointer" }}>
-            <Table.Td>{element.position}</Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.symbol}</Table.Td>
-            <Table.Td>{element.mass}</Table.Td>
-            <Table.Td>{element.name}</Table.Td>
-            <Table.Td>{element.symbol}</Table.Td>
-            <Table.Td>{element.mass}</Table.Td>
-            <Table.Td>{element.mass}</Table.Td>
-        </Table.Tr>
-    ));
-
-    const ths = (
-        <Table.Tr>
-            <Table.Th>الاسم</Table.Th>
-            <Table.Th>الشركة</Table.Th>
-            <Table.Th>السعر</Table.Th>
-            <Table.Th>سعر الجمهور</Table.Th>
-            <Table.Th>سعر الطبيب</Table.Th>
-            <Table.Th>سعر المزرعة</Table.Th>
-            <Table.Th>الكمية</Table.Th>
-            <Table.Th>الكمية</Table.Th>
-        </Table.Tr>
-    );
 
     return (
         <>
-            <Text size="xl" mb="xl">
-                الأدوية
-            </Text>
+            <Box
+                style={{
+                    position: "sticky",
+                    top: "65px",
+                    background: "#f3f4f6",
+                    paddingTop: rem(25),
+                    zIndex: "1",
+                }}
+            >
+                <Flex justify="space-between" gap={25}>
+                    <Button leftSection={<IconPlus />}>اضافة منتج</Button>
+                    <TextInput
+                        placeholder="البحث"
+                        mb="md"
+                        leftSection={
+                            <IconSearch
+                                style={{ width: rem(16), height: rem(16) }}
+                                stroke={1.5}
+                            />
+                        }
+                        value={search}
+                        onChange={handleSearchChange}
+                        style={{ flex: 1 }}
+                    />
+                </Flex>
+                <Head />
+            </Box>
 
-            <Table striped highlightOnHover withTableBorder withColumnBorders>
-                <Table.Thead style={{ position: "sticky", top: "0" }}>
-                    {ths}
-                </Table.Thead>
-                <Table.Tbody>{rows}</Table.Tbody>
-            </Table>
+            {products.map((product) => (
+                <Row product={product} />
+            ))}
         </>
     );
 }

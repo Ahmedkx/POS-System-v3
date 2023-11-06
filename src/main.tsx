@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, rem } from "@mantine/core";
+import { DirectionProvider, MantineProvider, rem } from "@mantine/core";
 
 const theme = {
     fontFamily: "Cairo, sans-serif",
@@ -17,7 +17,9 @@ const theme = {
 };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <MantineProvider theme={theme}>
-        <App />
-    </MantineProvider>
+    <DirectionProvider>
+        <MantineProvider theme={theme}>
+            <App />
+        </MantineProvider>
+    </DirectionProvider>
 );

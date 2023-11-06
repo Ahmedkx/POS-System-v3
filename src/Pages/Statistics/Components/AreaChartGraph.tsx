@@ -43,7 +43,7 @@ const data = [
     { name: "30", value: 3000 },
 ];
 
-const CustomTooltip = ({ payload }) => {
+const CustomTooltip = ({ payload }: any) => {
     return (
         <div
             style={{
