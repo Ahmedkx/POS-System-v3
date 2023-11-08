@@ -1,12 +1,16 @@
 import { useRef } from "react";
 import { Box, Button, Center, Modal, NumberInput } from "@mantine/core";
-import { isInRange, useForm } from "@mantine/form";
+import { useForm } from "@mantine/form";
 import { useReactToPrint } from "react-to-print";
 import Barcode from "react-jsbarcode";
 
-interface Props {}
+interface Props {
+    opened: boolean;
+    setOpened: any;
+    barcode: number;
+}
 
-export default function PrintModal({ opened, setOpened }) {
+export default function PrintModal({ opened, setOpened, barcode }: Props) {
     const barcodeRef = useRef<HTMLInputElement>(null);
     const handlePrint = useReactToPrint({
         content: () => barcodeRef.current,
@@ -14,14 +18,12 @@ export default function PrintModal({ opened, setOpened }) {
 
     const form = useForm({
         initialValues: {
-            distributorName: "",
-            quantity: 0,
-            newPrice: 0,
-            sellPrice: 0,
+            numberToPrint: 0,
         },
 
         validate: {
-            numberToPrint: isInRange({ min: 0 }, "يجب ادخال رقم اكبر من 0"),
+            numberToPrint: (value) =>
+                value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
         },
     });
 
@@ -34,7 +36,7 @@ export default function PrintModal({ opened, setOpened }) {
                 {opened &&
                     Array.from(
                         { length: form.getInputProps("numberToPrint").value },
-                        (_, i) => <Barcode key={i} value="ABC123" />
+                        (_, i) => <Barcode key={i} value={barcode.toString()} />
                     )}
             </Box>
 
@@ -42,22 +44,24 @@ export default function PrintModal({ opened, setOpened }) {
                 opened={opened}
                 onClose={() => {
                     setOpened(false);
+                    form.reset();
                 }}
                 title="طباعة الباركود"
                 centered
             >
                 <Center>
-                    <Barcode value="ABC123" />
+                    <Barcode value={barcode.toString()} />
                 </Center>
                 <form
                     onSubmit={form.onSubmit(() => {
                         setOpened(false);
                         handlePrint();
+                        form.reset();
                     })}
                 >
                     <NumberInput
                         label="العدد"
-                        // placeholder="العدد"
+                        placeholder="ادخل العدد"
                         allowDecimal={false}
                         allowNegative={false}
                         clampBehavior={"strict"}

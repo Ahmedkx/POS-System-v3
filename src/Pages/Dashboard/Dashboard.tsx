@@ -1,3 +1,5 @@
+import barcodeScan from "../../Images/reader.gif";
+
 export default function Dashboard() {
-    return <div>Dashboard</div>;
+    return <>{/* <img src={barcodeScan} /> */}</>;
 }

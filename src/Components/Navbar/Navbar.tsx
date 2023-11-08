@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Container, Group, Burger, Box, Avatar, Flex } from "@mantine/core";
+import {
+    Container,
+    Group,
+    Burger,
+    Box,
+    Avatar,
+    Flex,
+    Menu,
+    Button,
+    rem,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
 import Logo from "../../Images/Logo";
+import { IconLogout, IconSettings } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
 
 const links = [
     { link: "/", label: "الرئيسية" },
@@ -14,6 +26,7 @@ const links = [
 ];
 
 export default function Navbar() {
+    const navigate = useNavigate();
     const location = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(location.pathname);
@@ -52,7 +65,44 @@ export default function Navbar() {
                             size="sm"
                             color="white"
                         />
-                        <Avatar radius="xl" color="white" />
+                        <Menu>
+                            <Menu.Target>
+                                <Avatar
+                                    style={{ cursor: "pointer" }}
+                                    radius="xl"
+                                    color="white"
+                                />
+                            </Menu.Target>
+                            <Menu.Dropdown>
+                                <Menu.Item
+                                    leftSection={
+                                        <IconSettings
+                                            style={{
+                                                width: rem(14),
+                                                height: rem(14),
+                                            }}
+                                        />
+                                    }
+                                    onClick={() => navigate("/settings")}
+                                >
+                                    الاعدادات
+                                </Menu.Item>
+                                <Menu.Item
+                                    color="red"
+                                    leftSection={
+                                        <IconLogout
+                                            style={{
+                                                width: rem(14),
+                                                height: rem(14),
+                                            }}
+                                        />
+                                    }
+                                    onClick={() => navigate("/login")}
+                                >
+                                    تسجيل خروج
+                                </Menu.Item>
+                            </Menu.Dropdown>
+                        </Menu>
                     </Box>
                 </Flex>
             </Container>

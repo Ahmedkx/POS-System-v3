@@ -1,9 +1,11 @@
-import { Text } from "@mantine/core";
+import { Center, Text } from "@mantine/core";
 
 export default function Cell({ children }: any) {
     return (
-        <Text ta="center" fw="bold" size="xl">
-            {children}
-        </Text>
+        <Center>
+            <Text ta="center" fw="bold" size="xl">
+                {children}
+            </Text>
+        </Center>
     );
 }
