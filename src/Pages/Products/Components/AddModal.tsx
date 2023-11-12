@@ -1,22 +1,29 @@
+import { useEffect, useState } from "react";
 import { Button, Flex, Modal, NumberInput, Select } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { useEffect, useState } from "react";
+import {
+    Icon123,
+    IconCurrencyDollar,
+    IconDeviceFloppy,
+    IconPrinter,
+    IconUser,
+} from "@tabler/icons-react";
 
 interface Props {
     opened: boolean;
     setOpened: any;
-    oldPrice: number;
+    product: object;
 }
 
-export default function AddModal({ opened, setOpened, oldPrice }: Props) {
+export default function AddModal({ opened, setOpened, product }: Props) {
     const [loading, setLoading] = useState(false);
 
     const form = useForm({
         initialValues: {
             distributorName: "",
-            quantity: 0,
-            newPrice: 0,
-            sellPrice: 0,
+            quantity: "",
+            newPrice: "",
+            sellPrice: "",
         },
 
         validate: {
@@ -30,7 +37,7 @@ export default function AddModal({ opened, setOpened, oldPrice }: Props) {
 
     useEffect(() => {
         form.setValues({
-            sellPrice: +form.getInputProps("newPrice").value + 20,
+            sellPrice: +form.getInputProps("newPrice").value * 2,
         });
     }, [form.getInputProps("newPrice").value]);
 
@@ -54,10 +61,12 @@ export default function AddModal({ opened, setOpened, oldPrice }: Props) {
                     placeholder="اختر الموزع"
                     data={["موزع", "موزع 2", "موزعع"]}
                     withAsterisk
+                    leftSection={<IconUser />}
                     {...form.getInputProps("distributorName")}
                 />
                 <NumberInput
                     label="العدد"
+                    placeholder="ادخل العدد"
                     allowDecimal={false}
                     allowNegative={false}
                     clampBehavior={"strict"}
@@ -65,6 +74,7 @@ export default function AddModal({ opened, setOpened, oldPrice }: Props) {
                     min={1}
                     my={10}
                     withAsterisk
+                    leftSection={<Icon123 />}
                     {...form.getInputProps("quantity")}
                 />
                 <NumberInput
@@ -74,41 +84,50 @@ export default function AddModal({ opened, setOpened, oldPrice }: Props) {
                     hideControls
                     my={10}
                     disabled
-                    value={oldPrice}
+                    value={product.price}
+                    leftSection={<IconCurrencyDollar />}
                 />
                 <NumberInput
                     label="السعر الجديد"
+                    placeholder="ادخل السعر الجديد"
                     allowNegative={false}
                     clampBehavior={"strict"}
                     allowLeadingZeros={true}
                     hideControls
                     my={10}
                     withAsterisk
+                    leftSection={<IconCurrencyDollar />}
                     {...form.getInputProps("newPrice")}
                 />
                 <NumberInput
                     label="سعر البيع"
+                    placeholder="ادخل سعر البيع"
                     allowNegative={false}
                     clampBehavior={"strict"}
                     hideControls
                     my={10}
                     withAsterisk
+                    leftSection={<IconCurrencyDollar />}
                     {...form.getInputProps("sellPrice")}
                 />
                 <Flex justify="center" gap={10}>
+                    {product.autoBarcode && (
+                        <Button
+                            variant="filled"
+                            radius="xl"
+                            type="submit"
+                            loading={loading}
+                            leftSection={<IconPrinter />}
+                        >
+                            حفظ و طباعة
+                        </Button>
+                    )}
                     <Button
                         variant="filled"
                         radius="xl"
                         type="submit"
                         loading={loading}
-                    >
-                        حفظ و طباعة
-                    </Button>
-                    <Button
-                        variant="filled"
-                        radius="xl"
-                        type="submit"
-                        loading={loading}
+                        leftSection={<IconDeviceFloppy />}
                     >
                         حفظ
                     </Button>

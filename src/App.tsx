@@ -32,3 +32,21 @@ function App() {
 }
 
 export default App;
+
+{
+    /* <BrowserRouter>
+<Routes>
+    <Route path="/login" element={<Login />} />
+    <Route element={<Layout />}>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/products">
+            <Route index element={<Products />} />
+            <Route path="add" element={<AddProduct />} />
+            <Route path="edit/:id" element={<EditProduct />} />
+        </Route>
+        <Route path="/settings" element={<Settings />} />
+    </Route>
+</Routes>
+</BrowserRouter> */
+}

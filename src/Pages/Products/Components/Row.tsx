@@ -16,7 +16,7 @@ export default function Rows({ product }: any) {
             <AddModal
                 opened={addModal}
                 setOpened={setAddModal}
-                oldPrice={product.price}
+                product={product}
             />
             <PrintModal
                 opened={printModal}
@@ -58,6 +58,7 @@ export default function Rows({ product }: any) {
                         radius="xl"
                         aria-label="Settings"
                         onClick={() => setPrintModal(true)}
+                        disabled={!product.autoBarcode}
                     >
                         <Tooltip label="طباعة الباركود" offset={10} withArrow>
                             <IconPrinter

@@ -2,7 +2,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import "@mantine/core/styles.css";
-import { DirectionProvider, MantineProvider, rem } from "@mantine/core";
+import { DirectionProvider, MantineProvider, rem, Loader } from "@mantine/core";
+import { CustomLoader } from "./Components/CustomLoader/CustomLoader.tsx";
 
 const theme = {
     fontFamily: "Cairo, sans-serif",
@@ -13,6 +14,14 @@ const theme = {
         md: rem(20),
         lg: rem(22),
         xl: rem(24),
+    },
+    components: {
+        Loader: Loader.extend({
+            defaultProps: {
+                loaders: { ...Loader.defaultLoaders, custom: CustomLoader },
+                type: "custom",
+            },
+        }),
     },
 };
 

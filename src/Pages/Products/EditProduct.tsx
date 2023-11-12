@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import {
     Select,
     Button,
@@ -9,17 +12,28 @@ import {
     NumberInput,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { useEffect, useState } from "react";
+import {
+    Icon123,
+    IconAbc,
+    IconBarcode,
+    IconBottle,
+    IconBuildingFactory2,
+    IconDeviceFloppy,
+    IconTrash,
+} from "@tabler/icons-react";
+import { db } from "../../Firebase-config";
 
 const data = ["ارابكو", "فارما", "فايزر"];
 
 export default function EditProduct() {
-    const [loading, setLoading] = useState(false);
+    const params = useParams();
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     const form = useForm({
         initialValues: {
             name: "",
-            companyName: "",
+            company: "",
             size: "",
             lowStock: "",
             autoBarcode: false,
@@ -28,7 +42,7 @@ export default function EditProduct() {
 
         validate: {
             name: isNotEmpty("يجب ادخال اسم المنتج"),
-            companyName: isNotEmpty("يجب اخيار اسم الشركة"),
+            company: isNotEmpty("يجب اخيار اسم الشركة"),
             size: isNotEmpty("يجب اخيار حجم العبوة"),
             lowStock: isNotEmpty("يجب ادخال كمية النواقص"),
             barcode: isNotEmpty("يجب ادخال الباركود"),
@@ -52,7 +66,7 @@ export default function EditProduct() {
 
     const handleSubmit = (values: {
         name: string;
-        companyName: string;
+        company: string;
         size: string;
         lowStock: string;
         autoBarcode: boolean;
@@ -61,6 +75,23 @@ export default function EditProduct() {
         console.log(values);
         setLoading(true);
     };
+
+    useEffect(() => {
+        const getData = onSnapshot(doc(db, "Products", params.id), (doc) => {
+            if (doc.data()) {
+                form.setValues(doc.data());
+                setLoading(false);
+            } else {
+                navigate("/products");
+            }
+        });
+    }, []);
+
+    async function handleDelete() {
+        setLoading(true);
+        await deleteDoc(doc(db, "Products", params.id));
+        navigate("/products");
+    }
 
     return (
         <Center>
@@ -72,26 +103,34 @@ export default function EditProduct() {
                     <TextInput
                         label="الاسم"
                         placeholder="ادخل اسم المنتج"
+                        withAsterisk
+                        leftSection={<IconAbc />}
                         {...form.getInputProps("name")}
                     />
                     <Select
                         label="اسم الشركة"
                         placeholder="اختر اسم الشركة"
+                        withAsterisk
                         data={data}
-                        {...form.getInputProps("companyName")}
+                        leftSection={<IconBuildingFactory2 />}
+                        {...form.getInputProps("company")}
                     />
                     <Select
                         label="العبوة"
                         placeholder="اختيار حجم العبوة"
+                        withAsterisk
                         data={data}
+                        leftSection={<IconBottle />}
                         {...form.getInputProps("size")}
                     />
                     <NumberInput
+                        label="النواقص"
+                        placeholder="ادخل كمية النواقص"
+                        withAsterisk
                         hideControls
                         allowNegative={false}
                         allowDecimal={false}
-                        label="النواقص"
-                        placeholder="ادخل كمية النواقص"
+                        leftSection={<Icon123 />}
                         {...form.getInputProps("lowStock")}
                     />
                     <Checkbox
@@ -100,16 +139,34 @@ export default function EditProduct() {
                             type: "checkbox",
                         })}
                     />
-                    <TextInput
+                    <NumberInput
                         label="الباركود"
                         placeholder="ادخل الباركود"
-                        disabled={...form.getInputProps("autoBarcode").value}
+                        withAsterisk
+                        allowDecimal={false}
+                        allowNegative={false}
+                        clampBehavior={"strict"}
+                        hideControls
+                        data-autofocus
+                        disabled={form.getInputProps("autoBarcode").value}
+                        leftSection={<IconBarcode />}
                         {...form.getInputProps("barcode")}
                     />
-                    <Button variant="filled" type="submit" loading={loading}>
-                        تعديل
+                    <Button
+                        variant="filled"
+                        type="submit"
+                        loading={loading}
+                        leftSection={<IconDeviceFloppy />}
+                    >
+                        حفظ
                     </Button>
-                    <Button variant="filled" color="red" loading={loading}>
+                    <Button
+                        variant="filled"
+                        color="red"
+                        loading={loading}
+                        leftSection={<IconTrash />}
+                        onClick={handleDelete}
+                    >
                         حذف المنتج
                     </Button>
                 </Flex>

@@ -1,0 +1,16 @@
+.loader {
+    display: inline-block;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border-radius: var(--loader-size);
+    border: 5px solid;
+    border-color: #dbdcef;
+    border-right-color: var(--loader-color);
+    animation: loader-animation 1s infinite linear;
+}
+
+@keyframes loader-animation {
+    to {
+        transform: rotate(1turn);
+    }
+}

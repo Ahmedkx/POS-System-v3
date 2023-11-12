@@ -35,35 +35,71 @@ export default function Products() {
         setSearch(value);
     };
 
-    function getMoreProducts() {
+    async function getMoreProducts() {
         const q = query(
             collection(db, "Products"),
-            limit(5),
-            orderBy("name"),
-            startAfter(products[products.length - 1])
+            orderBy("name", "asc"),
+            startAfter(products[products.length - 1].name),
+            limit(5)
         );
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const docs = [];
-            querySnapshot.forEach((doc) => {
-                docs.push({ id: doc.id, ...doc.data() });
-            });
-            setProducts(docs);
-            setLoading(false);
-            console.log(products[products.length - 1]);
+
+        const docs = [];
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            const docData = doc.data();
+            docData.id = doc.id;
+            docs.push(docData);
         });
+        setProducts((prev) => prev.concat(docs));
+        setLoading(false);
+        setFetching(false);
+        console.log("docs => ", docs);
     }
 
+    console.log(products.length);
+
+    // useEffect(() => {
+    //     const q = query(collection(db, "Products"), orderBy("name"), limit(15));
+    //     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    //         const cities = [];
+    //         querySnapshot.forEach((doc) => {
+    //             const cityData = doc.data();
+    //             cityData.id = doc.id;
+    //             cities.push(cityData);
+    //         });
+    //         setProducts((prev) => prev.concat(cities));
+    //         setLoading(false);
+    //         console.log("useEffect");
+    //     });
+    // }, []);
+
     useEffect(() => {
-        const q = query(collection(db, "Products"), limit(5), orderBy("name"), startAfter(null));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        async function getData() {
+            const q = query(
+                collection(db, "Products"),
+                // startAfter(products[products.length - 1] || null),
+                orderBy("name", "asc"),
+                limit(10)
+            );
+
             const docs = [];
+            const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                docs.push({ id: doc.id, ...doc.data() });
+                const docData = doc.data();
+                docData.id = doc.id;
+                docs.push(docData);
             });
-            setProducts(docs);
+            setProducts((prev) => prev.concat(docs));
             setLoading(false);
-        });
+            console.log("Sending");
+        }
+        getData();
     }, []);
+
+    // useEffect(() => {
+    //     setFetching(true);
+    //     getMoreProducts();
+    // }, [entry?.isIntersecting]);
 
     if (loading) {
         return (
@@ -120,14 +156,13 @@ export default function Products() {
             ))}
 
             <Center mt="lg">
-                <Button
+                <Loader
+                    m="auto"
                     onClick={() => {
                         getMoreProducts();
                     }}
-                >
-                    Load More
-                </Button>
-                {/* <Loader m="auto" /> */}
+                    ref={ref}
+                />
             </Center>
         </>
     );

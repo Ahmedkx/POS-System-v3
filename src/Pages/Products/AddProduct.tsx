@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
     Select,
     Button,
@@ -9,11 +11,20 @@ import {
     NumberInput,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { useEffect, useState } from "react";
+import {
+    Icon123,
+    IconAbc,
+    IconBarcode,
+    IconBottle,
+    IconBuildingFactory2,
+} from "@tabler/icons-react";
+import { db } from "../../Firebase-config";
+import { addDoc, collection } from "firebase/firestore";
 
 const data = ["ارابكو", "فارما", "فايزر"];
 
 export default function AddProduct() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const form = useForm({
@@ -38,9 +49,7 @@ export default function AddProduct() {
     useEffect(() => {
         if (form.getInputProps("autoBarcode").value) {
             form.setValues({
-                barcode: Math.floor(
-                    10000000 + Math.random() * 90000000
-                ).toString(),
+                barcode: Math.floor(10000000 + Math.random() * 90000000).toString(),
             });
         } else {
             form.setValues({
@@ -50,7 +59,7 @@ export default function AddProduct() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.getInputProps("autoBarcode").value]);
 
-    const handleSubmit = (values: {
+    const handleSubmit = async (values: {
         name: string;
         companyName: string;
         size: string;
@@ -58,8 +67,24 @@ export default function AddProduct() {
         autoBarcode: boolean;
         barcode: string;
     }) => {
-        console.log(values);
         setLoading(true);
+        try {
+            const docRef = await addDoc(collection(db, "Products"), {
+                name: values.name,
+                company: values.companyName,
+                price: 0,
+                quantity: 0,
+                size: values.size,
+                autoBarcode: values.autoBarcode,
+                barcode: +values.barcode,
+                lowStock: +values.lowStock,
+            });
+            console.log("Document written with ID: ", docRef.id);
+            setLoading(false);
+            // navigate("/products");
+        } catch (error) {
+            console.error("Error adding document:", error);
+        }
     };
 
     return (
@@ -72,26 +97,34 @@ export default function AddProduct() {
                     <TextInput
                         label="الاسم"
                         placeholder="ادخل اسم المنتج"
+                        withAsterisk
+                        leftSection={<IconAbc />}
                         {...form.getInputProps("name")}
                     />
                     <Select
                         label="اسم الشركة"
                         placeholder="اختر اسم الشركة"
+                        withAsterisk
                         data={data}
+                        leftSection={<IconBuildingFactory2 />}
                         {...form.getInputProps("companyName")}
                     />
                     <Select
                         label="العبوة"
                         placeholder="اختيار حجم العبوة"
+                        withAsterisk
                         data={data}
+                        leftSection={<IconBottle />}
                         {...form.getInputProps("size")}
                     />
                     <NumberInput
+                        label="النواقص"
+                        placeholder="ادخل كمية النواقص"
+                        withAsterisk
                         hideControls
                         allowNegative={false}
                         allowDecimal={false}
-                        label="النواقص"
-                        placeholder="ادخل كمية النواقص"
+                        leftSection={<Icon123 />}
                         {...form.getInputProps("lowStock")}
                     />
                     <Checkbox
@@ -100,10 +133,17 @@ export default function AddProduct() {
                             type: "checkbox",
                         })}
                     />
-                    <TextInput
+                    <NumberInput
                         label="الباركود"
                         placeholder="ادخل الباركود"
-                        disabled={...form.getInputProps("autoBarcode").value}
+                        withAsterisk
+                        allowDecimal={false}
+                        allowNegative={false}
+                        clampBehavior={"strict"}
+                        hideControls
+                        data-autofocus
+                        disabled={form.getInputProps("autoBarcode").value}
+                        leftSection={<IconBarcode />}
                         {...form.getInputProps("barcode")}
                     />
                     <Button variant="filled" type="submit" loading={loading}>

@@ -1,5 +1,4 @@
 import {
-    Center,
     Text,
     TextInput,
     PasswordInput,
@@ -11,8 +10,11 @@ import {
 import { useForm, isNotEmpty } from "@mantine/form";
 import Logo from "../../Images/Logo.tsx";
 import { IconUser, IconLock } from "@tabler/icons-react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const form = useForm({
         initialValues: {
             username: "",
@@ -36,17 +38,17 @@ export default function Login() {
                 p={48}
                 style={{ maxWidth: "480px", width: "100%" }}
             >
-                <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                <form onSubmit={form.onSubmit((values) => navigate("/"))}>
                     <TextInput
-                        leftSection={<IconUser />}
                         label="اسم المستخدم"
                         withAsterisk
+                        leftSection={<IconUser />}
                         {...form.getInputProps("username")}
                     />
                     <PasswordInput
-                        leftSection={<IconLock />}
                         label="كلمة المرور"
                         withAsterisk
+                        leftSection={<IconLock />}
                         {...form.getInputProps("password")}
                         mt={30}
                     />

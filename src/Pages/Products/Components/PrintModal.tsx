@@ -3,6 +3,7 @@ import { Box, Button, Center, Modal, NumberInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useReactToPrint } from "react-to-print";
 import Barcode from "react-jsbarcode";
+import { Icon123, IconPrinter } from "@tabler/icons-react";
 
 interface Props {
     opened: boolean;
@@ -18,7 +19,7 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
 
     const form = useForm({
         initialValues: {
-            numberToPrint: 0,
+            numberToPrint: "",
         },
 
         validate: {
@@ -62,6 +63,7 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
                     <NumberInput
                         label="العدد"
                         placeholder="ادخل العدد"
+                        withAsterisk
                         allowDecimal={false}
                         allowNegative={false}
                         clampBehavior={"strict"}
@@ -70,9 +72,16 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
                         min={1}
                         max={300}
                         my={10}
+                        leftSection={<Icon123 />}
                         {...form.getInputProps("numberToPrint")}
                     />
-                    <Button variant="filled" radius="xl" w="100%" type="submit">
+                    <Button
+                        variant="filled"
+                        radius="xl"
+                        w="100%"
+                        type="submit"
+                        leftSection={<IconPrinter />}
+                    >
                         طباعة
                     </Button>
                 </form>
