@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../Firebase-config";
 import {
     collection,
     doc,
-    endAt,
     getDoc,
     getDocs,
     limit,
@@ -13,50 +12,70 @@ import {
     query,
     startAfter,
     startAt,
-    where,
 } from "firebase/firestore";
 import { Box, Button, Flex, TextInput, rem, Loader, Center, SimpleGrid } from "@mantine/core";
+import { useIntersection } from "@mantine/hooks";
 import { IconPlus, IconSearch } from "@tabler/icons-react";
 import Row from "./Components/Row";
 import Cell from "./Components/Cell";
 
 export default function Products() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { ref, entry } = useIntersection({
+        root: containerRef.current,
+        threshold: 1,
+    });
+
     const [loading, setLoading] = useState(true);
-    const [docs, setDocs] = useState([]);
+    const [fetching, setFetching] = useState(true);
+    // const [fetching, setFetching] = useState(true);
     const [products, setProducts] = useState([]);
-    const [searchText, setSearchText] = useState("");
+    const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        if (searchText.length == 0) {
-            setProducts(docs);
-            return;
-        }
-        function handleSearch(searchText) {
-            let filteredProducts = docs.filter(
-                (item) =>
-                    item.name.includes(searchText) ||
-                    item.company.includes(searchText) ||
-                    item.size.includes(searchText) ||
-                    item.barcode.toString().includes(searchText)
-            );
-            setProducts([...filteredProducts]);
-        }
-        handleSearch(searchText);
-    }, [searchText]);
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.currentTarget;
+        setSearch(value);
+    };
 
-    useEffect(() => {
-        const q = query(collection(db, "Products"), orderBy("name"));
+    async function getMoreProducts() {
+        const docSnap = await getDoc(
+            doc(collection(db, "Products"), products[products.length - 1].id)
+        );
+
+        console.log(docSnap);
+
+        const q = query(collection(db, "Products"), limit(5), orderBy("name"), startAfter(docSnap));
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const docs: { id: string }[] = [];
+            const docs = [];
             querySnapshot.forEach((doc) => {
                 docs.push({ id: doc.id, ...doc.data() });
             });
-            setDocs(docs);
+            setProducts((prev) => [...prev, ...docs]);
+            setLoading(false);
+            console.log(docs);
+        });
+    }
+
+    useEffect(() => {
+        const q = query(collection(db, "Products"), limit(5), orderBy("name"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ id: doc.id, ...doc.data() });
+            });
             setProducts(docs);
             setLoading(false);
-            console.log("Fetch Data");
         });
     }, []);
+
+    if (loading) {
+        return (
+            <Center pt={100}>
+                <Loader size={50} />
+            </Center>
+        );
+    }
 
     return (
         <>
@@ -79,7 +98,8 @@ export default function Products() {
                         leftSection={
                             <IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
                         }
-                        onChange={(e) => setSearchText(e.target.value)}
+                        value={search}
+                        onChange={handleSearchChange}
                         style={{ flex: 1 }}
                     />
                 </Flex>
@@ -99,15 +119,20 @@ export default function Products() {
                 </SimpleGrid>
             </Box>
 
-            {products.map((product) => (
+            {products.map((product, i) => (
                 <Row key={product.id} product={product} />
             ))}
 
-            {loading && (
-                <Center mt="lg">
-                    <Loader m="auto" />
-                </Center>
-            )}
+            <Center mt="lg">
+                <Button
+                    onClick={() => {
+                        getMoreProducts();
+                    }}
+                >
+                    Load More
+                </Button>
+                {/* <Loader m="auto" /> */}
+            </Center>
         </>
     );
 }

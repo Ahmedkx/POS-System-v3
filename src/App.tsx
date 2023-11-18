@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Store/Store.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./Layouts/Layout.tsx";
@@ -20,10 +21,7 @@ function App() {
                     <Route path="/statistics" element={<Statistics />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/add" element={<AddProduct />} />
-                    <Route
-                        path="/products/edit/:id"
-                        element={<EditProduct />}
-                    />
+                    <Route path="/products/edit/:id" element={<EditProduct />} />
                     <Route path="/settings" element={<Settings />} />
                 </Route>
             </Routes>

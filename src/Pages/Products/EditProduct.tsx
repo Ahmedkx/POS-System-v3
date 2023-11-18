@@ -50,15 +50,9 @@ export default function EditProduct() {
     });
 
     useEffect(() => {
-        if (form.getInputProps("autoBarcode").value) {
+        if (form.getInputProps("autoBarcode").value && !form.getInputProps("barcode").value) {
             form.setValues({
-                barcode: Math.floor(
-                    10000000 + Math.random() * 90000000
-                ).toString(),
-            });
-        } else {
-            form.setValues({
-                barcode: "",
+                barcode: Math.floor(10000000 + Math.random() * 90000000).toString(),
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

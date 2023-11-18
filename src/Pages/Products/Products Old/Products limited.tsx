@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../Firebase-config";
 import {
@@ -16,47 +16,81 @@ import {
     where,
 } from "firebase/firestore";
 import { Box, Button, Flex, TextInput, rem, Loader, Center, SimpleGrid } from "@mantine/core";
+import { useIntersection } from "@mantine/hooks";
 import { IconPlus, IconSearch } from "@tabler/icons-react";
 import Row from "./Components/Row";
 import Cell from "./Components/Cell";
 
 export default function Products() {
-    const [loading, setLoading] = useState(true);
-    const [docs, setDocs] = useState([]);
-    const [products, setProducts] = useState([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { ref, entry } = useIntersection({
+        root: containerRef.current,
+        threshold: 1,
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [lastDoc, setLastDoc] = useState(null);
+    const [isDone, setIsDone] = useState(false);
     const [searchText, setSearchText] = useState("");
+    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        if (searchText.length == 0) {
-            setProducts(docs);
-            return;
-        }
-        function handleSearch(searchText) {
-            let filteredProducts = docs.filter(
-                (item) =>
-                    item.name.includes(searchText) ||
-                    item.company.includes(searchText) ||
-                    item.size.includes(searchText) ||
-                    item.barcode.toString().includes(searchText)
+    async function getSearchResults() {
+        // if (searchText < 1) {
+        const first = query(
+            collection(db, "Products"),
+            orderBy("name"),
+            limit(5),
+            startAt(searchText),
+            endAt(searchText + "\uf8ff")
+        );
+        const documentSnapshots = await getDocs(first);
+        const docs: { id: string }[] = [];
+        documentSnapshots.forEach((doc) => {
+            docs.push({ id: doc.id, ...doc.data() });
+        });
+        setProducts(docs);
+        setLoading(false);
+        console.log("Text");
+        // }
+    }
+
+    async function getData() {
+        if (!isDone) {
+            const first = query(
+                collection(db, "Products"),
+                limit(15),
+                orderBy("name"),
+                startAfter(lastDoc)
             );
-            setProducts([...filteredProducts]);
-        }
-        handleSearch(searchText);
-    }, [searchText]);
-
-    useEffect(() => {
-        const q = query(collection(db, "Products"), orderBy("name"));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const documentSnapshots = await getDocs(first);
             const docs: { id: string }[] = [];
-            querySnapshot.forEach((doc) => {
+            documentSnapshots.forEach((doc) => {
                 docs.push({ id: doc.id, ...doc.data() });
             });
-            setDocs(docs);
-            setProducts(docs);
+            setProducts((prev) => [...prev, ...docs]);
+            setLastDoc(documentSnapshots.docs[documentSnapshots.docs.length - 1]);
             setLoading(false);
-            console.log("Fetch Data");
-        });
-    }, []);
+            if (docs.length == 0) {
+                setIsDone(true);
+            }
+        }
+    }
+
+    useEffect(() => {
+        getSearchResults();
+        if (searchText.length < 1) {
+            getSearchResults();
+        } else {
+            setIsDone(false);
+            // getData();
+        }
+        if (entry?.isIntersecting) {
+            if (loading === false) {
+                setLoading(true);
+                // getData();
+            }
+        }
+    }, [entry?.isIntersecting, searchText]);
 
     return (
         <>
@@ -103,9 +137,9 @@ export default function Products() {
                 <Row key={product.id} product={product} />
             ))}
 
-            {loading && (
+            {!isDone && (
                 <Center mt="lg">
-                    <Loader m="auto" />
+                    <Loader m="auto" ref={ref} />
                 </Center>
             )}
         </>

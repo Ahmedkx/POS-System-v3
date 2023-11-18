@@ -1,16 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-    Container,
-    Group,
-    Burger,
-    Box,
-    Avatar,
-    Flex,
-    Menu,
-    Button,
-    rem,
-} from "@mantine/core";
+import { Container, Group, Burger, Box, Avatar, Flex, Menu, Button, rem } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
@@ -22,7 +12,6 @@ const links = [
     { link: "/", label: "الرئيسية" },
     { link: "/statistics", label: "الاحصائيات" },
     { link: "/products", label: "الأدوية" },
-    { link: "/expirydates", label: "تاريخ الصلاحية" },
 ];
 
 export default function Navbar() {
@@ -67,11 +56,7 @@ export default function Navbar() {
                         />
                         <Menu>
                             <Menu.Target>
-                                <Avatar
-                                    style={{ cursor: "pointer" }}
-                                    radius="xl"
-                                    color="white"
-                                />
+                                <Avatar style={{ cursor: "pointer" }} radius="xl" color="white" />
                             </Menu.Target>
                             <Menu.Dropdown>
                                 <Menu.Item

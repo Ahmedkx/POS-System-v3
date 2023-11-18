@@ -94,6 +94,13 @@ export default function AddProduct() {
                     <Text size="32px" fw="bold" ta="center">
                         اضافة منتج
                     </Text>
+                    {/* <NumberInput
+                        label="الاسم"
+                        placeholder="ادخل اسم المنتج"
+                        withAsterisk
+                        leftSection={<IconAbc />}
+                        {...form.getInputProps("name")}
+                    /> */}
                     <TextInput
                         label="الاسم"
                         placeholder="ادخل اسم المنتج"
