@@ -1,9 +1,8 @@
-import { useRef } from "react";
-import { Box, Button, Center, Modal, NumberInput } from "@mantine/core";
+import { Center, Modal, NumberInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useReactToPrint } from "react-to-print";
 import Barcode from "react-jsbarcode";
-import { Icon123, IconPrinter } from "@tabler/icons-react";
+import { Icon123 } from "@tabler/icons-react";
+import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
 
 interface Props {
     opened: boolean;
@@ -12,35 +11,18 @@ interface Props {
 }
 
 export default function PrintModal({ opened, setOpened, barcode }: Props) {
-    const barcodeRef = useRef<HTMLInputElement>(null);
-    const handlePrint = useReactToPrint({
-        content: () => barcodeRef.current,
-    });
-
     const form = useForm({
         initialValues: {
             numberToPrint: "",
         },
 
         validate: {
-            numberToPrint: (value) =>
-                value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
+            numberToPrint: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
         },
     });
 
     return (
         <>
-            <Box
-                ref={barcodeRef}
-                style={{ position: "fixed", zIndex: "-9999" }}
-            >
-                {opened &&
-                    Array.from(
-                        { length: form.getInputProps("numberToPrint").value },
-                        (_, i) => <Barcode key={i} value={barcode.toString()} />
-                    )}
-            </Box>
-
             <Modal
                 opened={opened}
                 onClose={() => {
@@ -56,7 +38,6 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
                 <form
                     onSubmit={form.onSubmit(() => {
                         setOpened(false);
-                        handlePrint();
                         form.reset();
                     })}
                 >
@@ -75,15 +56,13 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
                         leftSection={<Icon123 />}
                         {...form.getInputProps("numberToPrint")}
                     />
-                    <Button
-                        variant="filled"
-                        radius="xl"
-                        w="100%"
-                        type="submit"
-                        leftSection={<IconPrinter />}
+                    <PrintBarcodeButton
+                        barcode={barcode}
+                        numberOfCopies={...form.getInputProps("numberToPrint").value}
+                        isValid={form.isValid()}
                     >
                         طباعة
-                    </Button>
+                    </PrintBarcodeButton>
                 </form>
             </Modal>
         </>

@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Button, Flex, Modal, NumberInput, Select } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import {
-    Icon123,
-    IconCurrencyDollar,
-    IconDeviceFloppy,
-    IconPrinter,
-    IconUser,
-} from "@tabler/icons-react";
+import { Icon123, IconCurrencyDollar, IconDeviceFloppy, IconUser } from "@tabler/icons-react";
+import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
 
 interface Props {
     opened: boolean;
@@ -16,8 +11,6 @@ interface Props {
 }
 
 export default function AddModal({ opened, setOpened, product }: Props) {
-    const [loading, setLoading] = useState(false);
-
     const form = useForm({
         initialValues: {
             distributorName: "",
@@ -28,10 +21,9 @@ export default function AddModal({ opened, setOpened, product }: Props) {
 
         validate: {
             distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
-            quantity: (value) => (value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
-            newPrice: (value) => (value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
-            sellPrice: (value) =>
-                value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
+            quantity: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
+            newPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
+            sellPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
         },
     });
 
@@ -53,6 +45,8 @@ export default function AddModal({ opened, setOpened, product }: Props) {
         >
             <form
                 onSubmit={form.onSubmit(() => {
+                    console.log("submit");
+                    setOpened(false);
                     form.reset();
                 })}
             >
@@ -112,21 +106,18 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                 />
                 <Flex justify="center" gap={10}>
                     {product.autoBarcode && (
-                        <Button
-                            variant="filled"
-                            radius="xl"
-                            type="submit"
-                            loading={loading}
-                            leftSection={<IconPrinter />}
+                        <PrintBarcodeButton
+                            barcode={product.barcode}
+                            numberOfCopies={...form.getInputProps("quantity").value}
+                            isValid={form.isValid()}
                         >
                             حفظ و طباعة
-                        </Button>
+                        </PrintBarcodeButton>
                     )}
                     <Button
                         variant="filled"
                         radius="xl"
                         type="submit"
-                        loading={loading}
                         leftSection={<IconDeviceFloppy />}
                     >
                         حفظ
