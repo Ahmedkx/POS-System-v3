@@ -8,30 +8,77 @@ import {
     Center,
     Box,
     ScrollArea,
+    Modal,
+    TextInput,
 } from "@mantine/core";
-import { IconTrash, IconUser } from "@tabler/icons-react";
+import { isNotEmpty, useForm } from "@mantine/form";
+
+import { useDisclosure } from "@mantine/hooks";
+import { IconPlus, IconTrash, IconUser } from "@tabler/icons-react";
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
+import { db } from "../../../Firebase-config";
+import { useSettingsStore } from "../../../Store";
 
 export default function Distributors() {
-    const [loading, setLoading] = useState(false);
+    const distributorsNames = useSettingsStore((state) => state.distributorsNames);
 
-    const distributors = [
-        { id: 123, name: "موزع" },
-        { id: 1233, name: "موزع" },
-        { id: 14283, name: "موزع" },
-        { id: 1523, name: "موزع" },
-        { id: 1263, name: "موزع" },
-        { id: 1723, name: "موزع" },
-        { id: 0, name: "موزع" },
-        { id: 13233, name: "موزع" },
-        { id: 1213, name: "موزع" },
-        { id: 1323, name: "موزع" },
-        { id: 5, name: "موزع" },
-        { id: 1253, name: "موزع" },
-    ];
+    const [opened, { open, close }] = useDisclosure(false);
+    const [loading, setLoading] = useState(false);
+    const [modalLoading, setmodalLoading] = useState(false);
+
+    const form = useForm({
+        initialValues: {
+            name: "",
+        },
+
+        validate: {
+            name: isNotEmpty("يجب ادخال اسم الموزع"),
+        },
+    });
+
+    async function handleModalSubmit(values) {
+        setmodalLoading(true);
+        await updateDoc(doc(db, "Settings", "distributorsNames"), {
+            data: arrayUnion({
+                id: Math.floor(Math.random() * 999999 * 999999),
+                name: values.name,
+            }),
+        });
+        setmodalLoading(false);
+        close();
+        form.reset();
+    }
+
+    async function handleDelete(distributor) {
+        await updateDoc(doc(db, "Settings", "distributorsNames"), {
+            data: arrayRemove(distributor),
+        });
+    }
 
     return (
         <>
+            <Modal opened={opened} onClose={close} title="اضافة موزع" centered>
+                <form onSubmit={form.onSubmit((values) => handleModalSubmit(values))}>
+                    <TextInput
+                        label="اسم الموزع"
+                        placeholder="ادخل اسم الموزع"
+                        withAsterisk
+                        leftSection={<IconUser />}
+                        {...form.getInputProps("name")}
+                    />
+                    <Button
+                        variant="filled"
+                        fullWidth
+                        mt="md"
+                        leftSection={<IconPlus />}
+                        type="submit"
+                        loading={modalLoading}
+                    >
+                        اضافة
+                    </Button>
+                </form>
+            </Modal>
             <Box>
                 <Text size="32px" fw="bold" ta="center">
                     أسماء الموزعين
@@ -52,22 +99,17 @@ export default function Distributors() {
                         </Center>
                     ) : (
                         <>
-                            {distributors.map((distributor) => (
-                                <Flex
-                                    key={distributor.id}
-                                    align="center"
-                                    mb={10}
-                                >
+                            {distributorsNames.map((distributor) => (
+                                <Flex key={distributor.id} align="center" mb={10}>
                                     <IconUser />
-                                    <Flex
-                                        justify="space-between"
-                                        align="center"
-                                        w="100%"
-                                    >
+                                    <Flex justify="space-between" align="center" w="100%">
                                         <Text size="md" fw="bold" ta="center">
                                             {distributor.name}
                                         </Text>
-                                        <Tooltip label="حذف الموزع">
+                                        <Tooltip
+                                            label="حذف الموزع"
+                                            onClick={() => handleDelete(distributor)}
+                                        >
                                             <ActionIcon
                                                 variant="filled"
                                                 color="red"
@@ -89,7 +131,9 @@ export default function Distributors() {
                     )}
                 </ScrollArea>
             </Box>
-            <Button w="100%">اضافة موزع</Button>
+            <Button fullWidth onClick={open}>
+                اضافة موزع
+            </Button>
         </>
     );
 }

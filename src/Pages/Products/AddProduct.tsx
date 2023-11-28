@@ -20,21 +20,31 @@ import {
 } from "@tabler/icons-react";
 import { db } from "../../Firebase-config";
 import { addDoc, collection } from "firebase/firestore";
+import { useSettingsStore } from "../../Store";
 
-const data = ["ارابكو", "فارما", "فايزر"];
+interface FormValues {
+    name: string;
+    companyName: string;
+    size: string;
+    lowStock: number;
+    autoBarcode: boolean;
+    barcode: number | null;
+}
 
 export default function AddProduct() {
+    const companyNames = useSettingsStore((state: any) => state.companyNames);
+    const productSizes = useSettingsStore((state: any) => state.productSizes);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
-    const form = useForm({
+    const form = useForm<FormValues>({
         initialValues: {
             name: "",
             companyName: "",
             size: "",
-            lowStock: "",
+            lowStock: 0,
             autoBarcode: false,
-            barcode: "",
+            barcode: null,
         },
 
         validate: {
@@ -49,42 +59,31 @@ export default function AddProduct() {
     useEffect(() => {
         if (form.getInputProps("autoBarcode").value) {
             form.setValues({
-                barcode: Math.floor(10000000 + Math.random() * 90000000).toString(),
+                barcode: Math.floor(10000000 + Math.random() * 90000000),
             });
         } else {
             form.setValues({
-                barcode: "",
+                barcode: null,
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.getInputProps("autoBarcode").value]);
 
-    const handleSubmit = async (values: {
-        name: string;
-        companyName: string;
-        size: string;
-        lowStock: string;
-        autoBarcode: boolean;
-        barcode: string;
-    }) => {
+    const handleSubmit = async (values: any) => {
         setLoading(true);
-        try {
-            const docRef = await addDoc(collection(db, "Products"), {
-                name: values.name,
-                company: values.companyName,
-                price: 0,
-                quantity: 0,
-                size: values.size,
-                autoBarcode: values.autoBarcode,
-                barcode: +values.barcode,
-                lowStock: +values.lowStock,
-            });
-            console.log("Document written with ID: ", docRef.id);
-            setLoading(false);
-            // navigate("/products");
-        } catch (error) {
-            console.error("Error adding document:", error);
-        }
+        await addDoc(collection(db, "Products"), {
+            name: values.name,
+            company: values.companyName,
+            price: 0,
+            sellPrice1: 0,
+            quantity: 0,
+            size: values.size,
+            autoBarcode: values.autoBarcode,
+            barcode: +values.barcode,
+            lowStock: +values.lowStock,
+        });
+        setLoading(false);
+        navigate("/products");
     };
 
     return (
@@ -112,16 +111,18 @@ export default function AddProduct() {
                         label="اسم الشركة"
                         placeholder="اختر اسم الشركة"
                         withAsterisk
-                        data={data}
+                        data={companyNames.map((obj: any) => obj.name)}
                         leftSection={<IconBuildingFactory2 />}
+                        searchable
                         {...form.getInputProps("companyName")}
                     />
                     <Select
                         label="العبوة"
                         placeholder="اختيار حجم العبوة"
                         withAsterisk
-                        data={data}
+                        data={productSizes.map((obj: any) => obj.name)}
                         leftSection={<IconBottle />}
+                        searchable
                         {...form.getInputProps("size")}
                     />
                     <NumberInput

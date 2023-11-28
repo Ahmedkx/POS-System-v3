@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import {
     Select,
     Button,
@@ -22,10 +22,12 @@ import {
     IconTrash,
 } from "@tabler/icons-react";
 import { db } from "../../Firebase-config";
-
-const data = ["ارابكو", "فارما", "فايزر"];
+import { useSettingsStore } from "../../Store";
 
 export default function EditProduct() {
+    const profit1 = useSettingsStore((state: any) => state.profit1);
+    const companyNames = useSettingsStore((state: any) => state.companyNames);
+    const productSizes = useSettingsStore((state: any) => state.productSizes);
     const params = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -37,7 +39,10 @@ export default function EditProduct() {
             size: "",
             lowStock: "",
             autoBarcode: false,
-            barcode: "",
+            barcode: 0,
+            price: 0,
+            sellPrice1: 0,
+            quantity: 0,
         },
 
         validate: {
@@ -46,32 +51,23 @@ export default function EditProduct() {
             size: isNotEmpty("يجب اخيار حجم العبوة"),
             lowStock: isNotEmpty("يجب ادخال كمية النواقص"),
             barcode: isNotEmpty("يجب ادخال الباركود"),
+            price: isNotEmpty("يجب ادخال السعر"),
+            sellPrice1: isNotEmpty("يجب ادخال سعر البيع"),
+            quantity: isNotEmpty("يجب ادخال الكمية"),
         },
     });
 
     useEffect(() => {
         if (form.getInputProps("autoBarcode").value && !form.getInputProps("barcode").value) {
             form.setValues({
-                barcode: Math.floor(10000000 + Math.random() * 90000000).toString(),
+                barcode: Math.floor(10000000 + Math.random() * 90000000),
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [form.getInputProps("autoBarcode").value]);
 
-    const handleSubmit = (values: {
-        name: string;
-        company: string;
-        size: string;
-        lowStock: string;
-        autoBarcode: boolean;
-        barcode: string;
-    }) => {
-        console.log(values);
-        setLoading(true);
-    };
-
     useEffect(() => {
-        const getData = onSnapshot(doc(db, "Products", params.id), (doc) => {
+        onSnapshot(doc(db, "Products", params.id), (doc) => {
             if (doc.data()) {
                 form.setValues(doc.data());
                 setLoading(false);
@@ -80,6 +76,33 @@ export default function EditProduct() {
             }
         });
     }, []);
+
+    // useEffect(() => {
+    //     form.setValues({
+    //         sellPrice1:
+    //             Math.ceil(
+    //                 (+form.getInputProps("price").value +
+    //                     +form.getInputProps("price").value * (profit1 / 100)) /
+    //                     5
+    //             ) * 5,
+    //     });
+    // }, [form.getInputProps("price").value]);
+
+    const handleSubmit = (values: any) => {
+        updateDoc(doc(db, "Products", params.id), {
+            name: values.name,
+            company: values.company,
+            size: values.size,
+            lowStock: +values.lowStock,
+            autoBarcode: values.autoBarcode,
+            barcode: +values.barcode,
+            price: +values.price,
+            sellPrice1: +values.sellPrice1,
+            quantity: +values.quantity,
+        });
+        setLoading(true);
+        navigate("/products");
+    };
 
     async function handleDelete() {
         setLoading(true);
@@ -105,17 +128,46 @@ export default function EditProduct() {
                         label="اسم الشركة"
                         placeholder="اختر اسم الشركة"
                         withAsterisk
-                        data={data}
+                        data={companyNames.map((obj: { name: any }) => obj.name)}
                         leftSection={<IconBuildingFactory2 />}
+                        searchable
                         {...form.getInputProps("company")}
                     />
                     <Select
                         label="العبوة"
                         placeholder="اختيار حجم العبوة"
                         withAsterisk
-                        data={data}
+                        data={productSizes.map((obj: { name: any }) => obj.name)}
                         leftSection={<IconBottle />}
+                        searchable
                         {...form.getInputProps("size")}
+                    />
+                    <NumberInput
+                        label="السعر"
+                        placeholder="ادخل السعر"
+                        withAsterisk
+                        hideControls
+                        allowNegative={false}
+                        leftSection={<Icon123 />}
+                        {...form.getInputProps("price")}
+                    />
+                    <NumberInput
+                        label="سعر البيع"
+                        placeholder="ادخل سعر البيع"
+                        withAsterisk
+                        hideControls
+                        allowNegative={false}
+                        leftSection={<Icon123 />}
+                        {...form.getInputProps("sellPrice1")}
+                    />
+                    <NumberInput
+                        label="الكمية"
+                        placeholder="ادخل الكمية"
+                        withAsterisk
+                        hideControls
+                        allowNegative={false}
+                        leftSection={<Icon123 />}
+                        {...form.getInputProps("quantity")}
                     />
                     <NumberInput
                         label="النواقص"

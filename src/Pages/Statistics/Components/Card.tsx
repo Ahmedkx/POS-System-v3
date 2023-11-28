@@ -13,11 +13,7 @@ export default function Card({ logo, title, number, badge }: CardProps) {
     return (
         <Paper radius="lg" p="34px 17px 34px 17px">
             <Flex justify="center">
-                <Lottie
-                    animationData={logo}
-                    loop={false}
-                    style={{ width: "70px" }}
-                />
+                <Lottie animationData={logo} loop={false} style={{ width: "70px" }} />
 
                 <Flex direction="column" justify="center">
                     <Text c="#93A3AB">{title}</Text>

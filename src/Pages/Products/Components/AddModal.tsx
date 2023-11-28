@@ -3,6 +3,9 @@ import { Button, Flex, Modal, NumberInput, Select } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { Icon123, IconCurrencyDollar, IconDeviceFloppy, IconUser } from "@tabler/icons-react";
 import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
+import { useSettingsStore } from "../../../Store";
+import { doc, increment, updateDoc } from "firebase/firestore";
+import { db } from "../../../Firebase-config";
 
 interface Props {
     opened: boolean;
@@ -11,17 +14,19 @@ interface Props {
 }
 
 export default function AddModal({ opened, setOpened, product }: Props) {
+    const profit1 = useSettingsStore((state) => state.profit1);
+    const distributorsNames = useSettingsStore((state) => state.distributorsNames);
     const form = useForm({
         initialValues: {
             distributorName: "",
-            quantity: "",
-            newPrice: "",
-            sellPrice: "",
+            quantity: 0,
+            newPrice: 0,
+            sellPrice: 0,
         },
 
         validate: {
             distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
-            quantity: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
+            quantity: (value) => (+value < 0 ? "يجب ادخال رقم اكبر من 0" : null),
             newPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
             sellPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
         },
@@ -29,9 +34,22 @@ export default function AddModal({ opened, setOpened, product }: Props) {
 
     useEffect(() => {
         form.setValues({
-            sellPrice: +form.getInputProps("newPrice").value * 2,
+            sellPrice:
+                Math.ceil(
+                    (+form.getInputProps("newPrice").value +
+                        +form.getInputProps("newPrice").value * (profit1 / 100)) /
+                        5
+                ) * 5,
         });
     }, [form.getInputProps("newPrice").value]);
+
+    async function handleSubmit(values: any) {
+        await updateDoc(doc(db, "Products", product.id), {
+            quantity: increment(values.quantity),
+            price: +values.newPrice,
+            sellPrice1: +values.sellPrice,
+        });
+    }
 
     return (
         <Modal
@@ -44,8 +62,8 @@ export default function AddModal({ opened, setOpened, product }: Props) {
             centered
         >
             <form
-                onSubmit={form.onSubmit(() => {
-                    console.log("submit");
+                onSubmit={form.onSubmit((values) => {
+                    handleSubmit(values);
                     setOpened(false);
                     form.reset();
                 })}
@@ -53,9 +71,10 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                 <Select
                     label="الموزع"
                     placeholder="اختر الموزع"
-                    data={["موزع", "موزع 2", "موزعع"]}
+                    data={distributorsNames.map((obj) => obj.name)}
                     withAsterisk
                     leftSection={<IconUser />}
+                    searchable
                     {...form.getInputProps("distributorName")}
                 />
                 <NumberInput
@@ -65,7 +84,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     allowNegative={false}
                     clampBehavior={"strict"}
                     hideControls
-                    min={1}
+                    min={0}
                     my={10}
                     withAsterisk
                     leftSection={<Icon123 />}

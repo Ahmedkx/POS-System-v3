@@ -12,15 +12,15 @@ import {
     Modal,
     TextInput,
 } from "@mantine/core";
-import { IconBuildingFactory2, IconPlus, IconTrash, IconUser } from "@tabler/icons-react";
-import { useSettingsStore } from "../../../Store";
-import { useDisclosure } from "@mantine/hooks";
-import { isNotEmpty, useForm } from "@mantine/form";
+import { IconBottle, IconPlus, IconTrash, IconUser } from "@tabler/icons-react";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../Firebase-config";
+import { useDisclosure } from "@mantine/hooks";
+import { useSettingsStore } from "../../../Store";
+import { isNotEmpty, useForm } from "@mantine/form";
 
-export default function CompanyNames() {
-    const companyNames = useSettingsStore((state) => state.companyNames);
+export default function productSizes() {
+    const productSizes = useSettingsStore((state) => state.productSizes);
 
     const [opened, { open, close }] = useDisclosure(false);
     const [loading, setLoading] = useState(false);
@@ -32,13 +32,13 @@ export default function CompanyNames() {
         },
 
         validate: {
-            name: isNotEmpty("يجب ادخال اسم الشركة"),
+            name: isNotEmpty("يجب ادخال حجم العبوة"),
         },
     });
 
     async function handleModalSubmit(values) {
         setmodalLoading(true);
-        await updateDoc(doc(db, "Settings", "companyNames"), {
+        await updateDoc(doc(db, "Settings", "productSizes"), {
             data: arrayUnion({
                 id: Math.floor(Math.random() * 999999 * 999999),
                 name: values.name,
@@ -49,20 +49,19 @@ export default function CompanyNames() {
         form.reset();
     }
 
-    async function handleDelete(company) {
-        console.log(company);
-        await updateDoc(doc(db, "Settings", "companyNames"), {
-            data: arrayRemove(company),
+    async function handleDelete(productSize) {
+        await updateDoc(doc(db, "Settings", "productSizes"), {
+            data: arrayRemove(productSize),
         });
     }
 
     return (
         <>
-            <Modal opened={opened} onClose={close} title="اضافة شركة" centered>
+            <Modal opened={opened} onClose={close} title="اضافة حجم عبوة" centered>
                 <form onSubmit={form.onSubmit((values) => handleModalSubmit(values))}>
                     <TextInput
-                        label="اسم شركة"
-                        placeholder="ادخل اسم الشركة"
+                        label="حجم العبوة"
+                        placeholder="ادخل حجم العبوة"
                         withAsterisk
                         leftSection={<IconUser />}
                         {...form.getInputProps("name")}
@@ -81,7 +80,7 @@ export default function CompanyNames() {
             </Modal>
             <Box>
                 <Text size="32px" fw="bold" ta="center">
-                    أسماء الشركات
+                    أحجام العبوات
                 </Text>
                 <ScrollArea
                     type="always"
@@ -89,8 +88,8 @@ export default function CompanyNames() {
                     my="xl"
                     py="xs"
                     px="sm"
-                    bg="white"
                     w="100%"
+                    bg="white"
                     style={{ borderRadius: "10px" }}
                 >
                     {loading ? (
@@ -99,16 +98,16 @@ export default function CompanyNames() {
                         </Center>
                     ) : (
                         <>
-                            {companyNames.map((company) => (
-                                <Flex key={company.id} align="center" mb={10}>
-                                    <IconBuildingFactory2 />
+                            {productSizes.map((productSize) => (
+                                <Flex key={productSize.id} align="center" mb={10}>
+                                    <IconBottle />
                                     <Flex justify="space-between" align="center" w="100%">
                                         <Text size="md" fw="bold" ta="center">
-                                            {company.name}
+                                            {productSize.name}
                                         </Text>
                                         <Tooltip
                                             label="حذف الموزع"
-                                            onClick={() => handleDelete(company)}
+                                            onClick={() => handleDelete(productSize)}
                                         >
                                             <ActionIcon
                                                 variant="filled"
@@ -132,7 +131,7 @@ export default function CompanyNames() {
                 </ScrollArea>
             </Box>
             <Button fullWidth onClick={open}>
-                اضافة شركة
+                اضافة حجم
             </Button>
         </>
     );
