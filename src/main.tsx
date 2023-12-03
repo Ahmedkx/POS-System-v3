@@ -1,9 +1,11 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
 import { DirectionProvider, MantineProvider, rem, Loader } from "@mantine/core";
 import { CustomLoader } from "./Components/CustomLoader/CustomLoader.tsx";
+import { Notifications } from "@mantine/notifications";
 
 const theme = {
     fontFamily: "Cairo, sans-serif",
@@ -28,6 +30,7 @@ const theme = {
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <DirectionProvider>
         <MantineProvider theme={theme}>
+            <Notifications />
             <App />
         </MantineProvider>
     </DirectionProvider>

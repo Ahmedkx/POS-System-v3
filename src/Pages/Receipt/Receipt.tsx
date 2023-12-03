@@ -6,7 +6,7 @@ import Cell from "../Products/Components/Cell";
 import { useProductsStore } from "../../Store";
 import { useDisclosure } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase-config";
 
 export default function Receipt() {
@@ -86,6 +86,15 @@ export default function Receipt() {
             totalProfit,
             totalQuantity,
             products: receipt,
+        });
+        receipt.map(async (product) => {
+            const productRef = doc(db, "Products", product.id);
+            const productDoc = await getDoc(productRef);
+            const currentQuantity = productDoc.data().quantity;
+            const updatedQuantity = Math.max(0, currentQuantity - product.quantity);
+            updateDoc(productRef, {
+                quantity: updatedQuantity,
+            });
         });
         setLoading(false);
         navigate("/");

@@ -85,6 +85,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     clampBehavior={"strict"}
                     hideControls
                     min={0}
+                    max={500}
                     my={10}
                     withAsterisk
                     leftSection={<Icon123 />}

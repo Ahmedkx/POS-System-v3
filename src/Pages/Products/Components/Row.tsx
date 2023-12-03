@@ -6,10 +6,8 @@ import Cell from "./Cell";
 import PrintModal from "./PrintModal";
 import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
-import { useSettingsStore } from "../../../Store";
 
 export default function Rows({ product }: any) {
-    const profit1 = useSettingsStore((state) => state.profit1);
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
 
