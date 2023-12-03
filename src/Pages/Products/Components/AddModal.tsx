@@ -128,7 +128,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     {product.autoBarcode && (
                         <PrintBarcodeButton
                             barcode={product.barcode}
-                            numberOfCopies={...form.getInputProps("quantity").value}
+                            numberOfCopies={form.getInputProps("quantity").value}
                             isValid={form.isValid()}
                         >
                             حفظ و طباعة

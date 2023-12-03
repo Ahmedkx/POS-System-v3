@@ -58,7 +58,7 @@ export default function PrintModal({ opened, setOpened, barcode }: Props) {
                     />
                     <PrintBarcodeButton
                         barcode={barcode}
-                        numberOfCopies={...form.getInputProps("numberToPrint").value}
+                        numberOfCopies={form.getInputProps("numberToPrint").value}
                         isValid={form.isValid()}
                     >
                         طباعة
