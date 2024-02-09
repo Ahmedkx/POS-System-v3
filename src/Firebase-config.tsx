@@ -36,8 +36,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Enable offline persistence
-enableIndexedDbPersistence(getFirestore(app)).catch((error) => {
-    console.error("Failed to enable offline persistence:", error);
-});
+// enableIndexedDbPersistence(getFirestore(app)).catch((error) => {
+//     console.error("Failed to enable offline persistence:", error);
+// });
 
 export const db = getFirestore(app);
