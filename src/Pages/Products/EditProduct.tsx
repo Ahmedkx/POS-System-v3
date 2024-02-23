@@ -23,6 +23,7 @@ import {
 } from "@tabler/icons-react";
 import { db } from "../../Firebase-config";
 import { useSettingsStore } from "../../Store";
+import useCalculateSellPrice from "../../Hooks/useCalculateSellPrice";
 
 export default function EditProduct() {
     const profit1 = useSettingsStore((state: any) => state.profit1);
@@ -77,16 +78,11 @@ export default function EditProduct() {
         });
     }, []);
 
-    // useEffect(() => {
-    //     form.setValues({
-    //         sellPrice1:
-    //             Math.ceil(
-    //                 (+form.getInputProps("price").value +
-    //                     +form.getInputProps("price").value * (profit1 / 100)) /
-    //                     5
-    //             ) * 5,
-    //     });
-    // }, [form.getInputProps("price").value]);
+    useEffect(() => {
+        form.setValues({
+            sellPrice1: useCalculateSellPrice(form.getInputProps("price").value),
+        });
+    }, [form.getInputProps("price").value]);
 
     const handleSubmit = (values: any) => {
         updateDoc(doc(db, "Products", params.id), {
@@ -149,6 +145,7 @@ export default function EditProduct() {
                         hideControls
                         allowNegative={false}
                         leftSection={<Icon123 />}
+                        max={1}
                         {...form.getInputProps("price")}
                     />
                     <NumberInput

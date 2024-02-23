@@ -1,0 +1,5504 @@
+[
+    {
+        "quantity": 0,
+        "name": "دياكيور",
+        "barcode": "11084554",
+        "company": "فارما سويد",
+        "lowstock": "5",
+        "price": 12,
+        "autobarcode": true,
+        "size": "15 جم"
+    },
+    {
+        "buyHistory": [],
+        "size": "99 جم",
+        "name": "لاكسافيت",
+        "price": 21,
+        "barcode": "85974718",
+        "company": "فارما سويد",
+        "quantity": 6,
+        "autobarcode": true,
+        "lowstock": "10"
+    },
+    {
+        "price": 21,
+        "name": "بيور يست بي",
+        "company": "فيت واي",
+        "barcode": "01659664",
+        "quantity": 0,
+        "autobarcode": true,
+        "size": "1000 سم",
+        "lowstock": "1"
+    },
+    {
+        "size": "100 سم",
+        "company": "OPAL vet",
+        "quantity": 0,
+        "name": "كيورا فلوكس",
+        "autobarcode": false,
+        "price": 100,
+        "lowstock": "5",
+        "barcode": "8935074619488"
+    },
+    {
+        "company": "نمكو",
+        "lowstock": "3",
+        "buyHistory": [],
+        "size": "100 سم",
+        "price": 200,
+        "quantity": 7,
+        "name": "اميسين",
+        "autobarcode": true,
+        "barcode": "88289844"
+    },
+    {
+        "price": 65,
+        "name": "بوفى كير",
+        "size": "250 سم",
+        "quantity": 2,
+        "autobarcode": true,
+        "company": "فيت كير",
+        "barcode": "93040185",
+        "buyHistory": [],
+        "lowstock": "5"
+    },
+    {
+        "lowstock": "5",
+        "price": 50,
+        "size": "250 سم",
+        "name": "بيوتوكس",
+        "company": "يونيون جروب",
+        "barcode": "88115059",
+        "quantity": 13,
+        "buyHistory": [],
+        "autobarcode": true
+    },
+    {
+        "size": "10 سم",
+        "quantity": 0,
+        "barcode": "92332949",
+        "autobarcode": true,
+        "company": "كروز",
+        "name": "تحصين قلاعيه روسي",
+        "lowstock": "2",
+        "price": 660
+    },
+    {
+        "quantity": 3,
+        "price": 50,
+        "buyHistory": [],
+        "name": "ديكلوبين",
+        "company": "ايفا فارما",
+        "lowstock": "2",
+        "barcode": "6224010273016",
+        "size": "100 سم",
+        "autobarcode": false
+    },
+    {
+        "price": 1800,
+        "quantity": 4,
+        "buyHistory": [
+            {
+                "date": "2022-09-30",
+                "total": 890,
+                "distributorName": "فارما بيور",
+                "name": "بيكاهيبار",
+                "buyPrice": 890,
+                "quantity": 1
+            }
+        ],
+        "size": "100 سم",
+        "company": "MSD",
+        "lowstock": "2",
+        "name": "بيكاهيبار",
+        "autobarcode": true,
+        "barcode": "03394349"
+    },
+    {
+        "price": 19,
+        "quantity": 3,
+        "name": "تنك اسيد",
+        "lowstock": "5",
+        "autobarcode": true,
+        "company": "نيو ماجك كيمكال",
+        "buyHistory": [],
+        "barcode": "02794743",
+        "size": "500 جم"
+    },
+    {
+        "company": "ايفا فارما",
+        "buyHistory": [],
+        "quantity": 0,
+        "size": "50 سم",
+        "barcode": "6223004514531",
+        "price": 80,
+        "autobarcode": false,
+        "lowstock": "1",
+        "name": "افكتين"
+    },
+    {
+        "autobarcode": false,
+        "barcode": "6224000318284",
+        "name": "اكما فوس",
+        "company": "أكما",
+        "quantity": 1,
+        "price": 65,
+        "lowstock": "2",
+        "size": "لتر",
+        "buyHistory": []
+    },
+    {
+        "lowstock": "2",
+        "barcode": "1458744685",
+        "price": 65,
+        "buyHistory": [],
+        "quantity": 1,
+        "autobarcode": true,
+        "size": "500 جم",
+        "name": "نيوبيوتك",
+        "company": "النيل"
+    },
+    {
+        "buyHistory": [],
+        "lowstock": "5",
+        "name": "اوكسى فيت فارما 20%",
+        "size": "100 سم",
+        "price": 96,
+        "barcode": "93036784",
+        "autobarcode": true,
+        "quantity": 2,
+        "company": "فارما سويد"
+    },
+    {
+        "quantity": 1,
+        "company": "بان فيت",
+        "name": "بان ا د 3 هـ",
+        "price": 100,
+        "buyHistory": [],
+        "size": "لتر",
+        "autobarcode": true,
+        "lowstock": "1",
+        "barcode": "14341498"
+    },
+    {
+        "buyHistory": [
+            {
+                "total": 550,
+                "quantity": 10,
+                "date": "2022-11-11",
+                "name": "سيفتي فور 2جم امريكي",
+                "distributorName": "محمد عطية",
+                "buyPrice": 55
+            }
+        ],
+        "company": "بانتكس هولاند",
+        "price": 66,
+        "size": "100 جم",
+        "lowstock": "2",
+        "quantity": 9,
+        "autobarcode": true,
+        "barcode": "80460444",
+        "name": "سيفتي فور 2جم امريكي"
+    },
+    {
+        "lowstock": "1",
+        "size": "10 سم",
+        "quantity": 1,
+        "autobarcode": true,
+        "price": 55,
+        "name": "ترمومتر ديجتال",
+        "barcode": "12951272",
+        "company": "اومنى ماكس"
+    },
+    {
+        "size": "100 سم",
+        "barcode": "6223002970872",
+        "price": 100,
+        "autobarcode": false,
+        "lowstock": "3",
+        "quantity": 5,
+        "name": "فينيلو جيكت",
+        "company": "ادويا",
+        "buyHistory": []
+    },
+    {
+        "barcode": "99012552",
+        "name": "اميدودل",
+        "size": "50 سم",
+        "quantity": 1,
+        "company": "دلتا فارما",
+        "autobarcode": true,
+        "lowstock": "1",
+        "price": 140
+    },
+    {
+        "size": "20 جم",
+        "barcode": "17206544",
+        "quantity": 20,
+        "lowstock": "24",
+        "autobarcode": true,
+        "buyHistory": [],
+        "price": 38,
+        "company": "سيفا",
+        "name": "مامي ف ورت"
+    },
+    {
+        "quantity": 0,
+        "autobarcode": true,
+        "lowstock": "3",
+        "barcode": "34296442",
+        "size": "100 سم",
+        "name": "اف تى كالسيوم",
+        "buyHistory": [
+            {
+                "total": 10,
+                "distributorName": "فوزى كان فيت",
+                "date": "2022-11-11",
+                "buyPrice": 10,
+                "quantity": 1,
+                "name": "اف تى كالسيوم"
+            }
+        ],
+        "price": 80,
+        "company": "فيوتشار تايم"
+    },
+    {
+        "barcode": "33656104",
+        "buyHistory": [],
+        "lowstock": "2",
+        "name": "مرهم يود 10%",
+        "price": 6,
+        "size": "50 جم",
+        "company": "فرست فارما",
+        "quantity": 2,
+        "autobarcode": true
+    },
+    {
+        "autobarcode": true,
+        "barcode": "93035984",
+        "quantity": 0,
+        "price": 50,
+        "size": "100 سم",
+        "company": "نافا فيت",
+        "name": "انوركس",
+        "buyHistory": [],
+        "lowstock": "5"
+    },
+    {
+        "barcode": "45456636",
+        "buyHistory": [
+            {
+                "buyPrice": 305,
+                "quantity": 1,
+                "distributorName": "دواء",
+                "total": 305,
+                "name": "سوبر اميون",
+                "date": "2022-09-15"
+            }
+        ],
+        "size": "لتر",
+        "quantity": 1,
+        "autobarcode": true,
+        "lowstock": "500",
+        "company": "مابكو",
+        "price": 330,
+        "name": "سوبر اميون"
+    },
+    {
+        "barcode": "93402187",
+        "quantity": 0,
+        "size": "20 سم",
+        "autobarcode": true,
+        "name": "كولي ستوب",
+        "company": "الفنار",
+        "price": 0,
+        "lowstock": "5"
+    },
+    {
+        "size": "10 سم",
+        "company": "ساينس ميد",
+        "lowstock": "5",
+        "quantity": 80,
+        "autobarcode": true,
+        "buyHistory": [],
+        "name": "تورنادو",
+        "barcode": "38069797",
+        "price": 7.45
+    },
+    {
+        "quantity": 48,
+        "lowstock": "5",
+        "autobarcode": true,
+        "name": "ستربتوبين",
+        "price": 115,
+        "size": "50 سم",
+        "barcode": "43186432",
+        "buyHistory": [
+            {
+                "name": "ستربتوبين",
+                "distributorName": "رايت تريد",
+                "quantity": 50,
+                "total": 4500,
+                "buyPrice": 90,
+                "date": "2022-09-30"
+            }
+        ],
+        "company": "اكوا فارما"
+    },
+    {
+        "lowstock": "3",
+        "company": "ارابكوميد",
+        "size": "50 سم",
+        "barcode": "02976510",
+        "quantity": 0,
+        "buyHistory": [],
+        "name": "ايميدوجيكت",
+        "price": 120,
+        "autobarcode": true
+    },
+    {
+        "barcode": "77692549",
+        "autobarcode": true,
+        "lowstock": "2",
+        "name": "بولد جان",
+        "company": "ريكسال فارما جروب",
+        "price": 375,
+        "quantity": 2,
+        "size": "50 سم"
+    },
+    {
+        "autobarcode": true,
+        "quantity": 0,
+        "lowstock": "3",
+        "size": "100 سم",
+        "name": "ديفلام",
+        "price": 58,
+        "barcode": "90873915",
+        "company": "فارما سويد",
+        "buyHistory": []
+    },
+    {
+        "quantity": 4,
+        "name": "اوكسي نير   ط.م",
+        "buyHistory": [],
+        "autobarcode": true,
+        "size": "30 سم",
+        "company": "ارابكوميد",
+        "barcode": "87321659",
+        "lowstock": "5",
+        "price": 50
+    },
+    {
+        "autobarcode": true,
+        "name": "مترو رايت",
+        "price": 250,
+        "quantity": 0,
+        "barcode": "23747159",
+        "size": "500 مل",
+        "company": "رايت تريد",
+        "lowstock": "1"
+    },
+    {
+        "company": "بيو فارما",
+        "price": 300,
+        "buyHistory": [
+            {
+                "distributorName": "محمد عطية",
+                "quantity": 6,
+                "date": "2022-11-11",
+                "name": "اورنيكارنال بلس",
+                "buyPrice": 195,
+                "total": 1170
+            }
+        ],
+        "quantity": 2,
+        "barcode": "44029426",
+        "name": "اورنيكارنال بلس",
+        "autobarcode": true,
+        "lowstock": "2",
+        "size": "100 سم"
+    },
+    {
+        "price": 45,
+        "autobarcode": true,
+        "company": "فيت لارج",
+        "lowstock": "2",
+        "barcode": "24295761",
+        "quantity": 0,
+        "size": "100 سم",
+        "name": "اس جي سكور"
+    },
+    {
+        "company": "MSD",
+        "size": "50 سم",
+        "price": 120,
+        "quantity": 3,
+        "autobarcode": true,
+        "buyHistory": [],
+        "lowstock": "3",
+        "name": "تونوفوسفان 20%",
+        "barcode": "54882439"
+    },
+    {
+        "price": 55,
+        "barcode": "10639162943",
+        "autobarcode": true,
+        "quantity": 1,
+        "lowstock": "2",
+        "buyHistory": [],
+        "company": "ارابكوميد",
+        "size": "100 سم",
+        "name": "فولتامون 5%"
+    },
+    {
+        "autobarcode": false,
+        "company": "الكنانة",
+        "price": 62,
+        "name": "كينافيور",
+        "buyHistory": [],
+        "quantity": 0,
+        "lowstock": "5",
+        "size": "1 جم",
+        "barcode": "6224000959296"
+    },
+    {
+        "name": "دلتا اوكسى بلس",
+        "size": "100 سم",
+        "company": "دلتا فارما",
+        "quantity": 0,
+        "barcode": "6221163011311",
+        "buyHistory": [],
+        "lowstock": "2",
+        "autobarcode": false,
+        "price": 225
+    },
+    {
+        "company": "ارابكوميد",
+        "autobarcode": true,
+        "size": "100 سم",
+        "lowstock": "5",
+        "quantity": 1,
+        "name": "سلفاديميدين 33.3%",
+        "barcode": "56792682",
+        "price": 50
+    },
+    {
+        "quantity": 12,
+        "buyHistory": [],
+        "name": "مرهم يود 5%",
+        "barcode": "95859794",
+        "company": "ميجا فارما",
+        "lowstock": "2",
+        "size": "125 جم",
+        "autobarcode": true,
+        "price": 23
+    },
+    {
+        "price": 65,
+        "quantity": 0,
+        "company": "افاق",
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "500 سم",
+        "name": "ادد انرو 20",
+        "barcode": "64366916",
+        "lowstock": "2"
+    },
+    {
+        "company": "نانو فارما",
+        "quantity": 2,
+        "price": 35,
+        "buyHistory": [],
+        "autobarcode": true,
+        "lowstock": "2",
+        "name": "ريفازال",
+        "barcode": "12374642",
+        "size": "100 سم"
+    },
+    {
+        "size": "50 سم",
+        "price": 75,
+        "quantity": 1,
+        "barcode": "93058137",
+        "autobarcode": true,
+        "name": "مينارين",
+        "company": "ريكسال فارما",
+        "lowstock": "1",
+        "buyHistory": []
+    },
+    {
+        "name": "يونى بليكس",
+        "barcode": "29349604",
+        "autobarcode": true,
+        "price": 150,
+        "size": "100 سم",
+        "lowstock": "1",
+        "quantity": 1,
+        "company": "ريفال فارم"
+    },
+    {
+        "name": "الاتترا تاب",
+        "size": "8 اقراص",
+        "price": 15,
+        "company": "اورجانيك فارما",
+        "autobarcode": true,
+        "quantity": 0,
+        "barcode": "71447123",
+        "lowstock": "5"
+    },
+    {
+        "company": "فيت كير",
+        "autobarcode": true,
+        "barcode": "26246115",
+        "price": 63,
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "date": "2022-10-13",
+                "distributorName": "برايت فيت",
+                "name": "كيتونيل كير",
+                "buyPrice": 47,
+                "total": 188,
+                "quantity": 4
+            }
+        ],
+        "name": "كيتونيل كير",
+        "quantity": 0,
+        "size": "250 سم"
+    },
+    {
+        "name": "افيدرال",
+        "size": "1 قرص",
+        "quantity": 19,
+        "lowstock": "3",
+        "price": 100,
+        "barcode": "665194963468",
+        "autobarcode": true,
+        "buyHistory": [
+            {
+                "distributorName": "محمد عطية",
+                "date": "2022-09-07",
+                "total": 1728,
+                "buyPrice": 72,
+                "name": "ايفيدرال",
+                "quantity": 24
+            }
+        ],
+        "company": "زويتس"
+    },
+    {
+        "quantity": 3,
+        "name": "اوكسي جيكت",
+        "autobarcode": false,
+        "barcode": "6223002970537",
+        "company": "ادويا",
+        "size": "100 سم",
+        "price": 45,
+        "lowstock": "2"
+    },
+    {
+        "name": "لاكساميد",
+        "buyHistory": [
+            {
+                "date": "2022-09-07",
+                "name": "لاكساميد",
+                "total": 110,
+                "distributorName": "ساينس ميد",
+                "quantity": 10,
+                "buyPrice": 11
+            }
+        ],
+        "lowstock": "5",
+        "size": "100 جم",
+        "price": 15,
+        "company": "ساينس ميد",
+        "barcode": "25777051",
+        "autobarcode": true,
+        "quantity": 0
+    },
+    {
+        "barcode": "65700240",
+        "buyHistory": [],
+        "autobarcode": true,
+        "lowstock": "5",
+        "quantity": 0,
+        "size": "100 سم",
+        "price": 40,
+        "name": "اوكسي فيت 100سم",
+        "company": "فارما سويد"
+    },
+    {
+        "autobarcode": true,
+        "quantity": 12,
+        "price": 30,
+        "buyHistory": [
+            {
+                "total": 145,
+                "name": "ميجا ماست",
+                "date": "2022-10-13",
+                "quantity": 10,
+                "distributorName": "برايت فيت",
+                "buyPrice": 14.5
+            }
+        ],
+        "company": "ميجا فارما",
+        "size": "125 جم",
+        "name": "ميجا ماست",
+        "lowstock": "5",
+        "barcode": "85271064"
+    },
+    {
+        "company": "MSD",
+        "quantity": 0,
+        "size": "40 سم",
+        "barcode": "90240993",
+        "lowstock": "1",
+        "name": "بيوتاليكس",
+        "price": 1900,
+        "autobarcode": true
+    },
+    {
+        "buyHistory": [],
+        "autobarcode": false,
+        "company": "اومنى ماكس",
+        "price": 40,
+        "name": "اومنى جارد",
+        "quantity": 1,
+        "size": "30 سم",
+        "barcode": "6224010574045",
+        "lowstock": "1"
+    },
+    {
+        "company": "ادويا",
+        "quantity": 0,
+        "name": "سلفاديميدين",
+        "barcode": "6223002970308",
+        "price": 55,
+        "size": "100 سم",
+        "buyHistory": [],
+        "autobarcode": false,
+        "lowstock": "5"
+    },
+    {
+        "autobarcode": false,
+        "name": "بيوتاجيكت",
+        "quantity": 0,
+        "barcode": "6223002975297",
+        "buyHistory": [],
+        "company": "ادويا",
+        "size": "40 سم",
+        "price": 340,
+        "lowstock": "2"
+    },
+    {
+        "size": "100 سم",
+        "company": "فارما سويد",
+        "name": "ايمي كاربازول",
+        "price": 265,
+        "autobarcode": true,
+        "lowstock": "2",
+        "barcode": "12447780",
+        "quantity": 4,
+        "buyHistory": []
+    },
+    {
+        "size": "50 جم",
+        "company": "MSD",
+        "barcode": "51465199",
+        "name": "متري كيور",
+        "quantity": 1,
+        "price": 280,
+        "buyHistory": [],
+        "autobarcode": true,
+        "lowstock": "1"
+    },
+    {
+        "autobarcode": true,
+        "size": "10 سم",
+        "name": "اوربينين محقن تجفيف",
+        "barcode": "48769910",
+        "buyHistory": [],
+        "company": "زويتس",
+        "quantity": 22,
+        "lowstock": "4",
+        "price": 110
+    },
+    {
+        "company": "فارما سويد",
+        "autobarcode": true,
+        "barcode": "93056036",
+        "lowstock": "3",
+        "name": "ليفا فلوك",
+        "size": "لتر",
+        "quantity": 0,
+        "buyHistory": [],
+        "price": 330
+    },
+    {
+        "barcode": "91207173",
+        "price": 500,
+        "size": "100 سم",
+        "autobarcode": true,
+        "name": "اسيدو بلاس",
+        "lowstock": "1",
+        "company": "اي تى ام",
+        "quantity": 0
+    },
+    {
+        "lowstock": "3",
+        "buyHistory": [],
+        "company": "ادويا",
+        "barcode": "20432498",
+        "name": "فلوميكوين 10%",
+        "price": 40,
+        "quantity": 3,
+        "size": "100 جم",
+        "autobarcode": true
+    },
+    {
+        "price": 100,
+        "quantity": 4,
+        "autobarcode": true,
+        "size": "50 سم",
+        "lowstock": "3",
+        "buyHistory": [
+            {
+                "name": "ايفرمكتين سوبر الابرار",
+                "buyPrice": 70,
+                "total": 350,
+                "distributorName": "الشركه الشرقيه",
+                "date": "2022-11-11",
+                "quantity": 5
+            }
+        ],
+        "barcode": "36566941",
+        "name": "ايفرمكتين سوبر الابرار",
+        "company": "ارابكوميد"
+    },
+    {
+        "company": "بان فيت",
+        "quantity": 1,
+        "price": 200,
+        "buyHistory": [],
+        "size": "500 سم",
+        "autobarcode": true,
+        "lowstock": "3",
+        "barcode": "93038335",
+        "name": "بان مكس جروس"
+    },
+    {
+        "size": "100 سم",
+        "quantity": 0,
+        "barcode": "93052036",
+        "autobarcode": true,
+        "price": 140,
+        "lowstock": "3",
+        "name": "فلوكسون",
+        "buyHistory": [],
+        "company": "فارما سويد"
+    },
+    {
+        "name": "ليفا فلوك",
+        "price": 185,
+        "barcode": "93055986",
+        "buyHistory": [
+            {
+                "total": 270,
+                "name": "ليفا فلوك",
+                "buyPrice": 135,
+                "quantity": 2,
+                "distributorName": "دواء",
+                "date": "2022-09-15"
+            }
+        ],
+        "lowstock": "2",
+        "autobarcode": true,
+        "quantity": 0,
+        "size": "نصف لتر",
+        "company": "فارما سويد"
+    },
+    {
+        "price": 9,
+        "company": "أكما",
+        "barcode": "6224000318550",
+        "lowstock": "5",
+        "autobarcode": false,
+        "quantity": 10,
+        "name": "سترات البيبرازين",
+        "size": "20 جم"
+    },
+    {
+        "buyHistory": [],
+        "size": "1 كج",
+        "quantity": 26,
+        "company": "بان فيت",
+        "name": "بان يست",
+        "price": 73,
+        "lowstock": "5",
+        "autobarcode": true,
+        "barcode": "77971578"
+    },
+    {
+        "quantity": 0,
+        "company": "بيو فارما",
+        "barcode": "22801002",
+        "price": 15,
+        "lowstock": "3",
+        "autobarcode": true,
+        "name": "فيتابيور",
+        "size": "100 جم",
+        "buyHistory": []
+    },
+    {
+        "autobarcode": true,
+        "buyHistory": [],
+        "barcode": "75289703",
+        "price": 70,
+        "name": "منتومكس",
+        "company": "ساينس ميد",
+        "quantity": 1,
+        "lowstock": "2",
+        "size": "نصف لتر"
+    },
+    {
+        "autobarcode": true,
+        "company": "فارما سويد",
+        "buyHistory": [
+            {
+                "buyPrice": 32.5,
+                "distributorName": "فوزى كان فيت",
+                "name": "ميتافوسفان",
+                "date": "2022-11-16",
+                "quantity": 3,
+                "total": 97.5
+            },
+            {
+                "date": "2022-10-09",
+                "buyPrice": 31,
+                "total": 310,
+                "distributorName": "الكوثر",
+                "quantity": 10,
+                "name": "ميتافوسفان"
+            }
+        ],
+        "price": 63,
+        "name": "ميتافوسفان",
+        "barcode": "46611572",
+        "lowstock": "5",
+        "quantity": 4,
+        "size": "100 سم"
+    },
+    {
+        "company": "بان فيت",
+        "lowstock": "10",
+        "autobarcode": true,
+        "barcode": "78843304",
+        "price": 18,
+        "quantity": 24,
+        "name": "فسفور بلس",
+        "buyHistory": [
+            {
+                "name": "فسفور بلس",
+                "distributorName": "بان فيت",
+                "quantity": 28,
+                "total": 420,
+                "date": "2022-09-07",
+                "buyPrice": 15
+            }
+        ],
+        "size": "500 جم"
+    },
+    {
+        "lowstock": "5",
+        "quantity": 0,
+        "autobarcode": true,
+        "barcode": "65820977",
+        "company": "دور فيت",
+        "name": "ايزوتونيك صوديوم بيكاربونيت",
+        "size": "500 سم",
+        "price": 70
+    },
+    {
+        "size": "100 سم",
+        "company": "ادويا",
+        "quantity": 0,
+        "price": 365,
+        "barcode": "54236088",
+        "autobarcode": true,
+        "lowstock": "2",
+        "name": "كيورامنث"
+    },
+    {
+        "lowstock": "2",
+        "buyHistory": [],
+        "price": 145,
+        "quantity": 1,
+        "company": "انفيت فارما",
+        "barcode": "62322989",
+        "autobarcode": true,
+        "size": "50 سم",
+        "name": "انفلوكسين"
+    },
+    {
+        "name": "البندكس",
+        "barcode": "10278049",
+        "quantity": 2,
+        "company": "افيكو",
+        "lowstock": "3",
+        "buyHistory": [
+            {
+                "buyPrice": 75,
+                "date": "2022-10-04",
+                "distributorName": "برايت فيت",
+                "total": 150,
+                "name": "البندكس",
+                "quantity": 2
+            }
+        ],
+        "price": 80,
+        "autobarcode": true,
+        "size": "500 سم"
+    },
+    {
+        "price": 40,
+        "lowstock": "5",
+        "buyHistory": [],
+        "size": "30 سم",
+        "barcode": "6221163001961",
+        "autobarcode": false,
+        "name": "دلتا اوكسى 20% ط م",
+        "company": "دلتا فارما",
+        "quantity": 3
+    },
+    {
+        "company": "MSD",
+        "name": "زانيل",
+        "price": 1150,
+        "size": "لتر",
+        "autobarcode": true,
+        "lowstock": "1",
+        "quantity": 2,
+        "buyHistory": [],
+        "barcode": "66541036"
+    },
+    {
+        "autobarcode": true,
+        "price": 65,
+        "quantity": 60,
+        "lowstock": "2",
+        "barcode": "97292161",
+        "buyHistory": [],
+        "name": "جينافيت",
+        "company": "ايماك فارما",
+        "size": "290 مل"
+    },
+    {
+        "barcode": "05036404",
+        "name": "تراي بيزك",
+        "company": "ساينس ميد",
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "1000 سم",
+        "price": 70,
+        "lowstock": "2",
+        "quantity": 5
+    },
+    {
+        "size": "20 جم",
+        "autobarcode": true,
+        "quantity": 14,
+        "company": "العبور",
+        "price": 7.5,
+        "name": "سترات الببرازين",
+        "lowstock": "5",
+        "barcode": "96398447"
+    },
+    {
+        "size": "50 سم",
+        "autobarcode": true,
+        "lowstock": "2",
+        "company": "مريال",
+        "barcode": "12401477",
+        "price": 1200,
+        "buyHistory": [],
+        "name": "ايفواك سوبر امريكي",
+        "quantity": 4
+    },
+    {
+        "barcode": "6223002975839",
+        "lowstock": "5",
+        "buyHistory": [],
+        "autobarcode": false,
+        "name": "اوكسى ميج ط م",
+        "size": "30 سم",
+        "price": 105,
+        "company": "ادويا",
+        "quantity": 36
+    },
+    {
+        "size": "100 سم",
+        "company": "ادويا",
+        "barcode": "01152144",
+        "quantity": 10,
+        "lowstock": "3",
+        "price": 43,
+        "autobarcode": true,
+        "buyHistory": [
+            {
+                "date": "2022-11-11",
+                "distributorName": "الشركه الشرقيه",
+                "buyPrice": 32,
+                "name": "اوكسي جيكت",
+                "quantity": 10,
+                "total": 320
+            }
+        ],
+        "name": "اوكسي جيكت"
+    },
+    {
+        "name": "اوكسي فيت",
+        "price": 45,
+        "quantity": 0,
+        "buyHistory": [],
+        "autobarcode": true,
+        "company": "فارما سويد",
+        "lowstock": "3",
+        "barcode": "35050871",
+        "size": "30 سم"
+    },
+    {
+        "barcode": "93272484",
+        "company": "بان فيت",
+        "lowstock": "5",
+        "price": 85,
+        "size": "لتر",
+        "quantity": 10,
+        "buyHistory": [
+            {
+                "total": 645,
+                "distributorName": "بان فيت",
+                "name": "بان برافين",
+                "date": "2022-09-04",
+                "quantity": 15,
+                "buyPrice": 43
+            }
+        ],
+        "name": "بان برافين",
+        "autobarcode": true
+    },
+    {
+        "autobarcode": false,
+        "barcode": "8906066869174",
+        "lowstock": "3",
+        "quantity": 1,
+        "price": 123,
+        "company": "اليفيرا",
+        "buyHistory": [],
+        "size": "100 سم",
+        "name": "الفيت"
+    },
+    {
+        "size": "100 سم",
+        "quantity": 0,
+        "price": 46,
+        "lowstock": "2",
+        "autobarcode": true,
+        "name": "اوكسي فايف",
+        "barcode": "30552241",
+        "company": "ارابكوميد"
+    },
+    {
+        "quantity": 2,
+        "barcode": "8110699621",
+        "price": 17,
+        "autobarcode": true,
+        "size": "100 سم",
+        "buyHistory": [],
+        "lowstock": "2",
+        "company": "جولد كيم",
+        "name": "مينج سبراى"
+    },
+    {
+        "name": "دراكسن",
+        "autobarcode": false,
+        "size": "50 سم",
+        "price": 2200,
+        "buyHistory": [],
+        "lowstock": "1",
+        "company": "زويتس",
+        "quantity": 2,
+        "barcode": "5013457079227"
+    },
+    {
+        "company": "ادويا",
+        "price": 125,
+        "barcode": "6223002975327",
+        "lowstock": "2",
+        "quantity": 1,
+        "name": "كاربروفين 5%",
+        "size": "100 سم",
+        "buyHistory": [],
+        "autobarcode": false
+    },
+    {
+        "barcode": "88593994",
+        "name": "جنتا اكس سبراى",
+        "quantity": 2,
+        "size": "200 مل",
+        "buyHistory": [
+            {
+                "distributorName": "فارما بيور",
+                "name": "جنتا اكس سبراى",
+                "buyPrice": 50,
+                "total": 100,
+                "quantity": 2,
+                "date": "2022-09-18"
+            }
+        ],
+        "lowstock": "2",
+        "autobarcode": true,
+        "company": "-",
+        "price": 55
+    },
+    {
+        "quantity": 2,
+        "price": 115,
+        "lowstock": "3",
+        "buyHistory": [],
+        "barcode": "6223002974641",
+        "company": "ادويا",
+        "autobarcode": false,
+        "size": "500 سم",
+        "name": "ايزوتونيك صوديوم بيكربونات"
+    },
+    {
+        "autobarcode": true,
+        "lowstock": "1",
+        "price": 55,
+        "company": "فورفيت",
+        "buyHistory": [],
+        "barcode": "93050086",
+        "name": "شامبيت فوم موز",
+        "quantity": 1,
+        "size": "250 جم"
+    },
+    {
+        "barcode": "73213804",
+        "name": "اف بلكس",
+        "buyHistory": [],
+        "size": "100 سم",
+        "autobarcode": true,
+        "company": "فيوتشر تايم",
+        "lowstock": "2",
+        "quantity": 1,
+        "price": 80
+    },
+    {
+        "price": 48,
+        "buyHistory": [],
+        "quantity": 43,
+        "lowstock": "10",
+        "autobarcode": false,
+        "name": "دلتا اوكسى 5%",
+        "barcode": "6221163009370",
+        "company": "دلتا فارما",
+        "size": "100 سم"
+    },
+    {
+        "price": 105,
+        "quantity": 0,
+        "autobarcode": true,
+        "company": "SONE",
+        "barcode": "93040085",
+        "lowstock": "2",
+        "name": "بوفى فلوكس 100",
+        "buyHistory": [],
+        "size": "100 سم"
+    },
+    {
+        "lowstock": "2",
+        "name": "لوتاليز",
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "10 سم",
+        "quantity": 1,
+        "price": 213,
+        "company": "زويتس",
+        "barcode": "51122156"
+    },
+    {
+        "size": "50 سم",
+        "buyHistory": [],
+        "name": "بارامكتين",
+        "barcode": "93037835",
+        "lowstock": "3",
+        "quantity": 0,
+        "price": 50,
+        "autobarcode": true,
+        "company": "فارما سويد"
+    },
+    {
+        "name": "البندازول 5%",
+        "barcode": "2236424222",
+        "lowstock": "5",
+        "buyHistory": [],
+        "company": "فارما سويد",
+        "price": 25,
+        "quantity": 2,
+        "size": "100 سم",
+        "autobarcode": true
+    },
+    {
+        "name": "ماستي جيكت فورت",
+        "size": "9 جم",
+        "price": 70,
+        "lowstock": "4",
+        "quantity": 14,
+        "autobarcode": true,
+        "company": "انترفيت",
+        "barcode": "24884954",
+        "buyHistory": []
+    },
+    {
+        "company": "اريا روسيا",
+        "name": "حمى قلاعيه",
+        "price": 660,
+        "buyHistory": [],
+        "quantity": 5,
+        "barcode": "45889445",
+        "size": "15 سم",
+        "lowstock": "3",
+        "autobarcode": true
+    },
+    {
+        "size": "لتر",
+        "barcode": "17097284",
+        "lowstock": "1",
+        "price": 64,
+        "company": "بان فيت",
+        "autobarcode": true,
+        "quantity": 1,
+        "name": "بان فوس",
+        "buyHistory": []
+    },
+    {
+        "quantity": 0,
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "100 سم",
+        "price": 80,
+        "company": "فيت لارج",
+        "barcode": "93056736",
+        "lowstock": "1",
+        "name": "مالتى بلاس"
+    },
+    {
+        "company": "مام ايجيبت",
+        "buyHistory": [],
+        "lowstock": "2",
+        "autobarcode": true,
+        "quantity": 1,
+        "size": "100 سم",
+        "barcode": "42508223",
+        "name": "ماميزول 12%",
+        "price": 202
+    },
+    {
+        "company": "فالكون ايجيبت",
+        "quantity": 1,
+        "size": "لتر",
+        "name": "امينوكون",
+        "barcode": "93035584",
+        "lowstock": "1",
+        "price": 120,
+        "autobarcode": true,
+        "buyHistory": []
+    },
+    {
+        "barcode": "62997573",
+        "company": "افيكو",
+        "quantity": 4,
+        "autobarcode": true,
+        "price": 175,
+        "lowstock": "1",
+        "name": "تايلوزين افيكو",
+        "size": "100 سم"
+    },
+    {
+        "name": "ماري ميكس",
+        "quantity": 2,
+        "size": "500 سم",
+        "buyHistory": [],
+        "autobarcode": true,
+        "price": 55,
+        "barcode": "18020964",
+        "lowstock": "2",
+        "company": "فارما كيور"
+    },
+    {
+        "size": "100 سم",
+        "name": "فلوكس",
+        "company": "نيرو فارما",
+        "barcode": "71730537",
+        "lowstock": "2",
+        "price": 100,
+        "quantity": 5,
+        "autobarcode": true
+    },
+    {
+        "quantity": 0,
+        "company": "دان كروا",
+        "size": "40 سم",
+        "barcode": "58521346",
+        "lowstock": "1",
+        "name": "ايما لوكس",
+        "autobarcode": true,
+        "price": 146
+    },
+    {
+        "name": "دلتا اوكسي بلس30سم",
+        "autobarcode": false,
+        "lowstock": "2",
+        "company": "دلتا فارما",
+        "barcode": "6221163011274",
+        "price": 105,
+        "quantity": 2,
+        "size": "30 سم"
+    },
+    {
+        "price": 20,
+        "lowstock": "4",
+        "autobarcode": true,
+        "quantity": 0,
+        "company": "فارما سويد",
+        "size": "10 سم",
+        "name": "نيو  اوكسي",
+        "barcode": "25715194"
+    },
+    {
+        "autobarcode": true,
+        "quantity": 1,
+        "size": "100 سم",
+        "company": "-",
+        "name": "بولدن بلس",
+        "barcode": "39917342",
+        "lowstock": "1",
+        "price": 100
+    },
+    {
+        "lowstock": "500",
+        "barcode": "08775158",
+        "quantity": 2,
+        "name": "سوبر اميون",
+        "price": 42,
+        "size": "100 مل",
+        "autobarcode": true,
+        "company": "مابكو",
+        "buyHistory": [
+            {
+                "distributorName": "فارما بيور",
+                "quantity": 5,
+                "total": 190,
+                "buyPrice": 38,
+                "date": "2022-09-15",
+                "name": "سوبر اميون"
+            }
+        ]
+    },
+    {
+        "buyHistory": [],
+        "lowstock": "2",
+        "barcode": "38644484",
+        "name": "مايسين سبراى",
+        "company": "جى فيت فارما",
+        "quantity": 2,
+        "price": 63,
+        "size": "350 مل",
+        "autobarcode": true
+    },
+    {
+        "name": "دوفاليت",
+        "quantity": 0,
+        "size": "500 سم",
+        "lowstock": "1",
+        "autobarcode": true,
+        "barcode": "19527207",
+        "company": "زويتس",
+        "buyHistory": [],
+        "price": 485
+    },
+    {
+        "quantity": 0,
+        "lowstock": "2",
+        "autobarcode": true,
+        "company": "نانو فارما",
+        "buyHistory": [],
+        "size": "500 سم",
+        "barcode": "95947596",
+        "name": "بي بون",
+        "price": 100
+    },
+    {
+        "lowstock": "1",
+        "size": "لتر",
+        "company": "فارما سويد",
+        "price": 310,
+        "name": "ترايمك",
+        "autobarcode": true,
+        "quantity": 0,
+        "barcode": "86925274"
+    },
+    {
+        "quantity": 1,
+        "barcode": "60025766",
+        "company": "بان فيت",
+        "name": "بان فيد",
+        "size": "لتر",
+        "buyHistory": [],
+        "price": 165,
+        "lowstock": "1",
+        "autobarcode": true
+    },
+    {
+        "barcode": "62643543",
+        "lowstock": "5",
+        "price": 125,
+        "size": "20 سم",
+        "company": "اي بي اي",
+        "quantity": 22,
+        "autobarcode": true,
+        "name": "سبيرا فكس"
+    },
+    {
+        "name": "استروميت",
+        "price": 900,
+        "company": "انترفيت",
+        "lowstock": "2",
+        "barcode": "09456366",
+        "size": "20 سم",
+        "buyHistory": [
+            {
+                "name": "استروميت",
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 700,
+                "quantity": 1,
+                "total": 700,
+                "date": "2022-11-16"
+            }
+        ],
+        "quantity": 4,
+        "autobarcode": true
+    },
+    {
+        "barcode": "93054986",
+        "price": 60,
+        "company": "نيو فيت",
+        "quantity": 1,
+        "buyHistory": [],
+        "lowstock": "2",
+        "autobarcode": true,
+        "size": "250 سم",
+        "name": "كولى كير لايت"
+    },
+    {
+        "size": "50 سم",
+        "name": "فلامكيور",
+        "autobarcode": true,
+        "buyHistory": [
+            {
+                "total": 375,
+                "quantity": 3,
+                "date": "2022-11-11",
+                "buyPrice": 125,
+                "name": "فلامكيور",
+                "distributorName": "الكوثر"
+            },
+            {
+                "name": "فلامكيور",
+                "total": 575,
+                "quantity": 5,
+                "buyPrice": 115,
+                "date": "2022-09-30",
+                "distributorName": "الكوثر"
+            },
+            {
+                "date": "2022-09-30",
+                "quantity": 3,
+                "buyPrice": 117,
+                "name": "فلامكيور",
+                "distributorName": "فوزى كان فيت",
+                "total": 351
+            }
+        ],
+        "price": 150,
+        "barcode": "93051436",
+        "quantity": 8,
+        "company": "فارما سويد",
+        "lowstock": "5"
+    },
+    {
+        "company": "MSD",
+        "quantity": 0,
+        "size": "100 سم",
+        "autobarcode": true,
+        "lowstock": "1",
+        "barcode": "44841943",
+        "price": 325,
+        "name": "ميجاكال"
+    },
+    {
+        "buyHistory": [],
+        "name": "دياريست",
+        "barcode": "28563244",
+        "company": "رايت تريد",
+        "quantity": 60,
+        "size": "100 سم",
+        "lowstock": "10",
+        "price": 12,
+        "autobarcode": true
+    },
+    {
+        "barcode": "93044335",
+        "price": 34,
+        "size": "100 سم",
+        "autobarcode": true,
+        "quantity": 9,
+        "name": "دايميثيكون 1%",
+        "buyHistory": [
+            {
+                "total": 180,
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 18,
+                "quantity": 10,
+                "date": "2022-11-16",
+                "name": "دايميثيكون 1%"
+            }
+        ],
+        "company": "ادويا",
+        "lowstock": "5"
+    },
+    {
+        "quantity": 5,
+        "autobarcode": true,
+        "price": 89,
+        "size": "50 سم",
+        "lowstock": "3",
+        "buyHistory": [],
+        "name": "مام فيدين 5%",
+        "barcode": "56172974",
+        "company": "مام ايجيبت"
+    },
+    {
+        "size": "100 سم",
+        "company": "MSD",
+        "quantity": 2,
+        "lowstock": "1",
+        "buyHistory": [
+            {
+                "name": "فينادين",
+                "distributorName": "فوزى كان فيت",
+                "date": "2022-11-16",
+                "buyPrice": 1320,
+                "total": 1320,
+                "quantity": 1
+            }
+        ],
+        "barcode": "80074610",
+        "autobarcode": true,
+        "price": 1700,
+        "name": "فينادين"
+    },
+    {
+        "lowstock": "1",
+        "price": 8.5,
+        "size": "15 جم",
+        "name": "مرهم زنك 10%",
+        "company": "نيو السلام",
+        "autobarcode": true,
+        "quantity": 4,
+        "barcode": "14156894"
+    },
+    {
+        "company": "فيوتشر تايم",
+        "buyHistory": [],
+        "quantity": 1,
+        "price": 50,
+        "autobarcode": true,
+        "name": "اس جى فير سبراى",
+        "size": "120 مل",
+        "lowstock": "1",
+        "barcode": "12419745"
+    },
+    {
+        "barcode": "04557113",
+        "price": 30,
+        "buyHistory": [
+            {
+                "total": 308,
+                "name": "كاتو زال",
+                "buyPrice": 28,
+                "quantity": 11,
+                "distributorName": "رايت تريد",
+                "date": "2022-09-07"
+            }
+        ],
+        "quantity": 5,
+        "lowstock": "3",
+        "company": "يونيون جروب",
+        "autobarcode": true,
+        "size": "100 سم",
+        "name": "كاتو زال"
+    },
+    {
+        "company": "اكوا فارما",
+        "lowstock": "10",
+        "name": "ستربتوبين",
+        "price": 190,
+        "buyHistory": [],
+        "barcode": "91535594",
+        "quantity": 0,
+        "size": "100 سم",
+        "autobarcode": true
+    },
+    {
+        "barcode": "27591948",
+        "autobarcode": true,
+        "price": 475,
+        "quantity": 0,
+        "size": "500 مل",
+        "lowstock": "1",
+        "company": "افاق",
+        "name": "اليفيتور"
+    },
+    {
+        "barcode": "73037752",
+        "autobarcode": true,
+        "quantity": 0,
+        "company": "vetoquinol",
+        "lowstock": "2",
+        "price": 400,
+        "name": "دياريزون",
+        "size": "50 سم"
+    },
+    {
+        "price": 1780,
+        "lowstock": "1",
+        "quantity": 2,
+        "size": "1000 سم",
+        "name": "كيورافلوك",
+        "company": "يونيفيت",
+        "barcode": "10622848",
+        "autobarcode": true
+    },
+    {
+        "price": 1520,
+        "company": "vetoquinol",
+        "quantity": 1,
+        "size": "50 سم",
+        "barcode": "87053499",
+        "lowstock": "2",
+        "name": "ماربوسيل 10%",
+        "autobarcode": true
+    },
+    {
+        "barcode": "62750874",
+        "size": "250 مل",
+        "buyHistory": [
+            {
+                "quantity": 2,
+                "distributorName": "الكوثر",
+                "buyPrice": 45,
+                "name": "جينا سبراى",
+                "date": "2022-10-13",
+                "total": 90
+            }
+        ],
+        "autobarcode": true,
+        "quantity": 1,
+        "price": 60,
+        "name": "جينا سبراى",
+        "company": "IXIR",
+        "lowstock": "2"
+    },
+    {
+        "quantity": 0,
+        "lowstock": "1",
+        "barcode": "04369583",
+        "size": "100 سم",
+        "autobarcode": true,
+        "company": "MSD",
+        "price": 3400,
+        "name": "اكسيد"
+    },
+    {
+        "barcode": "93042635",
+        "size": "20 سم",
+        "company": "فارما سويد",
+        "buyHistory": [],
+        "price": 190,
+        "quantity": 0,
+        "name": "ثيل كيور",
+        "lowstock": "5",
+        "autobarcode": true
+    },
+    {
+        "company": "vetoquinol",
+        "quantity": 0,
+        "size": "100 سم",
+        "autobarcode": true,
+        "lowstock": "1",
+        "name": "اورني بيورال",
+        "barcode": "42989648",
+        "price": 700
+    },
+    {
+        "price": 270,
+        "size": "100 سم",
+        "buyHistory": [],
+        "name": "اميدو كارب",
+        "company": "ادويا",
+        "quantity": 0,
+        "autobarcode": true,
+        "lowstock": "1",
+        "barcode": "73798275"
+    },
+    {
+        "name": "فالكون بلاست",
+        "quantity": 20,
+        "lowstock": "1",
+        "size": "100جم",
+        "company": "فالكون ايجيبت",
+        "price": 15,
+        "barcode": "04971546",
+        "autobarcode": true
+    },
+    {
+        "name": "جنتاكيور",
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "name": "جنتاكيور",
+                "date": "2022-09-15",
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 46,
+                "total": 230,
+                "quantity": 5
+            }
+        ],
+        "size": "50 سم",
+        "barcode": "95082344",
+        "company": "فارما سويد",
+        "price": 90,
+        "quantity": 7,
+        "autobarcode": true
+    },
+    {
+        "price": 180,
+        "barcode": "71967437",
+        "size": "40 سم",
+        "lowstock": "1",
+        "quantity": 1,
+        "name": "كالفيلوكس",
+        "autobarcode": true,
+        "company": "APA"
+    },
+    {
+        "quantity": 3,
+        "barcode": "10980174",
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 300,
+        "buyHistory": [],
+        "lowstock": "2",
+        "name": "بنتومايسين",
+        "company": "يونى فيت"
+    },
+    {
+        "quantity": 2,
+        "price": 850,
+        "barcode": "9322387002721",
+        "size": "100 سم",
+        "autobarcode": false,
+        "lowstock": "2",
+        "company": "سيفا سانتى",
+        "name": "ايميدوكس",
+        "buyHistory": []
+    },
+    {
+        "company": "افيكو",
+        "quantity": 3,
+        "buyHistory": [],
+        "barcode": "532849084624",
+        "name": "افيكون",
+        "price": 190,
+        "autobarcode": true,
+        "size": "20 سم",
+        "lowstock": "3"
+    },
+    {
+        "name": "انجكتال",
+        "quantity": 4,
+        "lowstock": "5",
+        "company": "كابيون فارما",
+        "size": "100 سم",
+        "price": 55,
+        "autobarcode": true,
+        "barcode": "51982424"
+    },
+    {
+        "autobarcode": true,
+        "size": "250 سم",
+        "barcode": "22401814",
+        "company": "ارابكوميد",
+        "quantity": 0,
+        "name": "دوفكس 250سم",
+        "lowstock": "1",
+        "price": 410
+    },
+    {
+        "barcode": "06745261",
+        "quantity": 0,
+        "size": "500 مل",
+        "price": 65,
+        "lowstock": "2",
+        "name": "الكتروتون بلس",
+        "company": "الفنار",
+        "autobarcode": true,
+        "buyHistory": []
+    },
+    {
+        "quantity": 1,
+        "price": 900,
+        "barcode": "04946274",
+        "size": "500 سم",
+        "company": "اوفى كيم جروب",
+        "name": "اكتوفوكسال 50%",
+        "lowstock": "1",
+        "buyHistory": [],
+        "autobarcode": true
+    },
+    {
+        "company": "بان فيت",
+        "size": "250 سم",
+        "lowstock": "2",
+        "buyHistory": [],
+        "name": "منتوبان",
+        "price": 120,
+        "autobarcode": true,
+        "barcode": "93057436",
+        "quantity": 16
+    },
+    {
+        "lowstock": "1",
+        "size": "300 جم",
+        "price": 55,
+        "barcode": "93050036",
+        "company": "فورفيت",
+        "name": "شامبيت مانجو",
+        "buyHistory": [],
+        "quantity": 1,
+        "autobarcode": true
+    },
+    {
+        "name": "كال ماج كالسيوم",
+        "size": "100 سم",
+        "autobarcode": true,
+        "barcode": "95424138",
+        "price": 80,
+        "lowstock": "5",
+        "company": "جولف فيت فارما",
+        "quantity": 0
+    },
+    {
+        "buyHistory": [],
+        "size": "100 سم",
+        "company": "ادويا",
+        "lowstock": "1",
+        "name": "ادويجمين",
+        "price": 200,
+        "quantity": 2,
+        "autobarcode": false,
+        "barcode": "6223002975570"
+    },
+    {
+        "name": "مينازين",
+        "quantity": 5,
+        "buyHistory": [],
+        "autobarcode": true,
+        "company": "ارابكوميد",
+        "lowstock": "4",
+        "barcode": "25304593",
+        "size": "5.2 جم",
+        "price": 40
+    },
+    {
+        "quantity": 0,
+        "price": 40,
+        "name": "ثنائى فوسفات الصوديوم",
+        "company": "الندا",
+        "autobarcode": true,
+        "lowstock": "5",
+        "size": "1 كج",
+        "barcode": "58020406"
+    },
+    {
+        "price": 125,
+        "name": "كانيماج",
+        "company": "فارما سويد",
+        "lowstock": "2",
+        "autobarcode": true,
+        "size": "500 سم",
+        "quantity": 1,
+        "barcode": "46667480"
+    },
+    {
+        "price": 165,
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "total": 260,
+                "date": "2022-10-04",
+                "buyPrice": 130,
+                "name": "اراب ميجلونيكس",
+                "quantity": 2,
+                "distributorName": "برايت فيت"
+            },
+            {
+                "quantity": 2,
+                "buyPrice": 132,
+                "date": "2022-09-30",
+                "total": 264,
+                "distributorName": "فارما بيور",
+                "name": "اراب ميجلونيكس"
+            },
+            {
+                "date": "2022-09-15",
+                "quantity": 5,
+                "distributorName": "فارما بيور",
+                "buyPrice": 135,
+                "total": 675,
+                "name": "اراب ميجلونيكس"
+            }
+        ],
+        "name": "اراب ميجلونيكس",
+        "barcode": "6223003987985",
+        "quantity": 0,
+        "company": "اراب كابس",
+        "autobarcode": false,
+        "size": "100 سم"
+    },
+    {
+        "buyHistory": [
+            {
+                "quantity": 10,
+                "total": 340,
+                "buyPrice": 34,
+                "name": "اوكسى تتراسيكلين 5%",
+                "distributorName": "الكوثر",
+                "date": "2022-11-11"
+            },
+            {
+                "date": "2022-09-15",
+                "name": "اوكسى تتراسيكلين 5%",
+                "quantity": 10,
+                "buyPrice": 32.5,
+                "distributorName": "بان فيت",
+                "total": 325
+            }
+        ],
+        "price": 46,
+        "quantity": 16,
+        "lowstock": "5",
+        "barcode": "45766400",
+        "company": "النصر",
+        "autobarcode": true,
+        "name": "اوكسى تتراسيكلين 5%",
+        "size": "100 سم"
+    },
+    {
+        "barcode": "52915847",
+        "quantity": 0,
+        "lowstock": "1",
+        "autobarcode": true,
+        "company": "فيت واي",
+        "size": "500 سم",
+        "price": 89,
+        "name": "كالسي كيور"
+    },
+    {
+        "barcode": "948603",
+        "quantity": 2,
+        "size": "250 سم",
+        "buyHistory": [
+            {
+                "quantity": 1,
+                "name": "ديازينون",
+                "distributorName": "الشركه الشرقيه",
+                "buyPrice": 140,
+                "date": "2022-11-16",
+                "total": 140
+            }
+        ],
+        "lowstock": "1",
+        "price": 140,
+        "autobarcode": true,
+        "company": "افيكو",
+        "name": "فابكو ديازينون"
+    },
+    {
+        "autobarcode": true,
+        "name": "فاست جان",
+        "size": "100 سم",
+        "quantity": 9,
+        "barcode": "65595055",
+        "lowstock": "5",
+        "price": 250,
+        "company": "بايدكس فارما"
+    },
+    {
+        "buyHistory": [],
+        "quantity": 1,
+        "barcode": "06039514",
+        "size": "200 جم",
+        "price": 113,
+        "lowstock": "1",
+        "name": "تيترافيت ايروسول",
+        "company": "باير",
+        "autobarcode": true
+    },
+    {
+        "price": 115,
+        "size": "100 سم",
+        "name": "كيتوكيور 100 سم",
+        "company": "فارما سويد",
+        "quantity": 0,
+        "barcode": "91007343",
+        "autobarcode": true,
+        "lowstock": "1"
+    },
+    {
+        "price": 450,
+        "lowstock": "2",
+        "barcode": "8936186080388",
+        "company": "Thien Quan",
+        "quantity": 1,
+        "buyHistory": [],
+        "size": "100 سم",
+        "name": "فلونكسين",
+        "autobarcode": false
+    },
+    {
+        "name": "دايجست بانش",
+        "company": "ايبيفيت",
+        "size": "100 سم",
+        "price": 38,
+        "lowstock": "2",
+        "quantity": 0,
+        "barcode": "63842748",
+        "autobarcode": true
+    },
+    {
+        "barcode": "70634394",
+        "size": "5.2 جم",
+        "name": "سيفو برو",
+        "lowstock": "5",
+        "autobarcode": true,
+        "price": 60,
+        "quantity": 20,
+        "company": "-"
+    },
+    {
+        "lowstock": "8",
+        "barcode": "01864968",
+        "name": "دراى كلوكساكيل",
+        "autobarcode": true,
+        "size": "9 جم",
+        "price": 100,
+        "buyHistory": [],
+        "quantity": 6,
+        "company": "كيلا"
+    },
+    {
+        "autobarcode": true,
+        "size": "100جم",
+        "barcode": "01110024",
+        "price": 30,
+        "lowstock": "5",
+        "quantity": 0,
+        "company": "جيو فيت",
+        "name": "اريثروستين"
+    },
+    {
+        "quantity": 1,
+        "buyHistory": [],
+        "autobarcode": true,
+        "barcode": "14995148",
+        "price": 730,
+        "size": "لتر",
+        "company": "اجرو ايفو",
+        "lowstock": "1",
+        "name": "ميتاك"
+    },
+    {
+        "autobarcode": true,
+        "company": "ساينس ميد",
+        "size": "125 سم",
+        "buyHistory": [],
+        "barcode": "62354514",
+        "quantity": 90,
+        "lowstock": "20",
+        "price": 20,
+        "name": "منتومكس"
+    },
+    {
+        "name": "سبكترا فيرا",
+        "company": "سيفا سانتى",
+        "buyHistory": [
+            {
+                "date": "2022-10-04",
+                "distributorName": "الكوثر",
+                "buyPrice": 35,
+                "total": 175,
+                "name": "سبكترا فيرا",
+                "quantity": 5
+            }
+        ],
+        "size": "100 سم",
+        "quantity": 3,
+        "barcode": "81667367",
+        "autobarcode": true,
+        "price": 90,
+        "lowstock": "5"
+    },
+    {
+        "price": 110,
+        "lowstock": "5",
+        "barcode": "93033484",
+        "autobarcode": true,
+        "name": "افيميك",
+        "size": "20 سم",
+        "quantity": 0,
+        "company": "افيكو",
+        "buyHistory": []
+    },
+    {
+        "quantity": 2,
+        "price": 115,
+        "company": "جولف فيت فارما",
+        "size": "100 سم",
+        "autobarcode": true,
+        "lowstock": "1",
+        "name": "ايرونيل",
+        "barcode": "67168534"
+    },
+    {
+        "barcode": "38801229",
+        "lowstock": "2",
+        "company": "كيلا",
+        "size": "500 سم",
+        "name": "كالسى كيل",
+        "quantity": 6,
+        "price": 250,
+        "buyHistory": [
+            {
+                "name": "كالسى كيل",
+                "total": 310,
+                "quantity": 2,
+                "buyPrice": 155,
+                "date": "2022-09-30",
+                "distributorName": "فارما بيور"
+            },
+            {
+                "date": "2022-09-30",
+                "total": 326,
+                "name": "كالسى كيل",
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 163,
+                "quantity": 2
+            }
+        ],
+        "autobarcode": true
+    },
+    {
+        "quantity": 0,
+        "autobarcode": false,
+        "price": 30,
+        "barcode": "6221067022147",
+        "name": "نصرومكتين",
+        "buyHistory": [
+            {
+                "total": 225,
+                "quantity": 10,
+                "buyPrice": 22.5,
+                "distributorName": "بان فيت",
+                "date": "2022-09-15",
+                "name": "نصرومكتين"
+            }
+        ],
+        "company": "النصر",
+        "size": "50 سم",
+        "lowstock": "5"
+    },
+    {
+        "name": "نيومايسين أدويا",
+        "price": 110,
+        "buyHistory": [],
+        "autobarcode": true,
+        "quantity": 1,
+        "lowstock": "2",
+        "company": "ادويا",
+        "barcode": "93058837",
+        "size": "500 جم"
+    },
+    {
+        "size": "100 سم",
+        "price": 820,
+        "lowstock": "2",
+        "name": "فلونكس",
+        "quantity": 3,
+        "company": "باير",
+        "barcode": "25715874",
+        "buyHistory": [],
+        "autobarcode": true
+    },
+    {
+        "price": 65,
+        "barcode": "67771116",
+        "autobarcode": true,
+        "buyHistory": [],
+        "company": "ادويا",
+        "quantity": 0,
+        "name": "فيتاسللين",
+        "lowstock": "3",
+        "size": "100 سم"
+    },
+    {
+        "quantity": 1,
+        "name": "ساركى - كون",
+        "lowstock": "5",
+        "size": "لتر",
+        "barcode": "80690049",
+        "autobarcode": true,
+        "price": 165,
+        "company": "فالكون ايجيبت"
+    },
+    {
+        "quantity": 5,
+        "autobarcode": true,
+        "company": "ارابكوميد",
+        "lowstock": "2",
+        "barcode": "35987484",
+        "buyHistory": [],
+        "name": "ديكساميثازون",
+        "size": "100 سم",
+        "price": 40
+    },
+    {
+        "name": "تونوفوسفان 20%",
+        "price": 250,
+        "company": "MSD",
+        "lowstock": "1",
+        "quantity": 0,
+        "autobarcode": true,
+        "barcode": "18128146",
+        "size": "100 سم"
+    },
+    {
+        "price": 13,
+        "size": "100 جم",
+        "quantity": 10,
+        "name": "مسحوق ثوم",
+        "autobarcode": true,
+        "lowstock": "5",
+        "company": "جوفيت",
+        "barcode": "67704520"
+    },
+    {
+        "name": "دوميستوم",
+        "lowstock": "1",
+        "barcode": "84728686",
+        "company": "سيفا سانتى",
+        "price": 1000,
+        "quantity": 0,
+        "size": "لتر",
+        "autobarcode": true
+    },
+    {
+        "lowstock": "1",
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "250 سم",
+        "quantity": 0,
+        "company": "تورنيل",
+        "barcode": "61466725",
+        "name": "كالسيوم امينوبلكس 250سم",
+        "price": 260
+    },
+    {
+        "barcode": "25612140",
+        "size": "4 جرام",
+        "autobarcode": true,
+        "lowstock": "1",
+        "company": "هيلكس فارما",
+        "price": 25,
+        "name": "بن ستربتو",
+        "quantity": 21
+    },
+    {
+        "price": 70,
+        "size": "330 مل",
+        "quantity": 5,
+        "barcode": "17780245",
+        "company": "بيو ميديا",
+        "name": "جينا مور فيت",
+        "lowstock": "5",
+        "autobarcode": true
+    },
+    {
+        "barcode": "59668452",
+        "buyHistory": [
+            {
+                "buyPrice": 210,
+                "total": 420,
+                "distributorName": "فوزى كان فيت",
+                "quantity": 2,
+                "name": "كوفاكالسيوم",
+                "date": "2022-11-16"
+            },
+            {
+                "distributorName": "الكوثر",
+                "date": "2022-11-11",
+                "name": "كوفاكالسيوم",
+                "quantity": 2,
+                "total": 430,
+                "buyPrice": 215
+            }
+        ],
+        "lowstock": "2",
+        "size": "نصف لتر",
+        "name": "كوفاكالسيوم",
+        "price": 285,
+        "autobarcode": true,
+        "quantity": 2,
+        "company": "دوبا فارما"
+    },
+    {
+        "buyHistory": [],
+        "size": "100 سم",
+        "barcode": "6221163001947",
+        "autobarcode": false,
+        "name": "دلتا اوكسى 20% ط م",
+        "lowstock": "3",
+        "price": 130,
+        "company": "دلتا فارما",
+        "quantity": 0
+    },
+    {
+        "name": "ثيل كيور",
+        "company": "فارما سويد",
+        "buyHistory": [
+            {
+                "total": 500,
+                "quantity": 2,
+                "date": "2022-10-13",
+                "distributorName": "برايت فيت",
+                "buyPrice": 250,
+                "name": "ثيل كيور"
+            },
+            {
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 235,
+                "quantity": 2,
+                "total": 470,
+                "name": "ثيل كيور",
+                "date": "2022-10-13"
+            }
+        ],
+        "lowstock": "2",
+        "size": "40 سم",
+        "quantity": 2,
+        "autobarcode": true,
+        "barcode": "20963639",
+        "price": 250
+    },
+    {
+        "size": "100 جم",
+        "lowstock": "3",
+        "company": "اي تى ام",
+        "buyHistory": [
+            {
+                "distributorName": "محمد عطية",
+                "date": "2022-11-11",
+                "quantity": 4,
+                "buyPrice": 70,
+                "name": "اقراص فوارة للعجول تركي",
+                "total": 280
+            }
+        ],
+        "autobarcode": true,
+        "barcode": "08588333",
+        "price": 100,
+        "quantity": 3,
+        "name": "اقراص فوارة للعجول تركي"
+    },
+    {
+        "autobarcode": true,
+        "barcode": "08374397",
+        "quantity": 0,
+        "price": 250,
+        "company": "نوربروك",
+        "size": "50 سم",
+        "name": "بن سترب",
+        "buyHistory": [],
+        "lowstock": "1"
+    },
+    {
+        "price": 190,
+        "name": "روميتون",
+        "lowstock": "2",
+        "buyHistory": [],
+        "company": "ايفا فارم",
+        "quantity": 0,
+        "size": "100 سم",
+        "barcode": "6223004517648",
+        "autobarcode": false
+    },
+    {
+        "size": "20 سم",
+        "buyHistory": [],
+        "barcode": "43986647",
+        "price": 75,
+        "lowstock": "3",
+        "quantity": 0,
+        "name": "سرنجه فايبر",
+        "company": "IXIR",
+        "autobarcode": true
+    },
+    {
+        "barcode": "94538574",
+        "name": "جيو كوكس بلس",
+        "lowstock": "5",
+        "size": "100 جم",
+        "quantity": 8,
+        "price": 26,
+        "buyHistory": [
+            {
+                "date": "2022-09-07",
+                "name": "جيو كوكس بلس",
+                "total": 320,
+                "buyPrice": 16,
+                "quantity": 20,
+                "distributorName": "رايت تريد"
+            }
+        ],
+        "autobarcode": true,
+        "company": "جيو فيت"
+    },
+    {
+        "name": "بان اسيد",
+        "size": "100 سم",
+        "company": "ايسترن فارما",
+        "autobarcode": true,
+        "price": 15,
+        "barcode": "46913967",
+        "quantity": 0,
+        "lowstock": "1"
+    },
+    {
+        "price": 430,
+        "quantity": 13,
+        "size": "100 سم",
+        "name": "تريوكسيل",
+        "buyHistory": [
+            {
+                "name": "تريوكسيل",
+                "date": "2022-09-18",
+                "quantity": 3,
+                "buyPrice": 205,
+                "total": 615,
+                "distributorName": "الكوثر"
+            },
+            {
+                "distributorName": "محمود المجموعه",
+                "name": "تريوكسيل",
+                "buyPrice": 210,
+                "date": "2022-09-07",
+                "total": 1260,
+                "quantity": 6
+            }
+        ],
+        "autobarcode": true,
+        "barcode": "28294422",
+        "company": "يونى فيت",
+        "lowstock": "3"
+    },
+    {
+        "quantity": 0,
+        "lowstock": "5",
+        "autobarcode": true,
+        "price": 68,
+        "barcode": "93051936",
+        "company": "فارما سويد",
+        "name": "فلوريكول",
+        "buyHistory": [],
+        "size": "100 سم"
+    },
+    {
+        "barcode": "86097251",
+        "price": 13,
+        "name": "ي---",
+        "company": "بان فيت",
+        "size": "50 سم",
+        "lowstock": "2",
+        "quantity": 5,
+        "autobarcode": true,
+        "buyHistory": []
+    },
+    {
+        "lowstock": "5",
+        "autobarcode": false,
+        "size": "100 سم",
+        "quantity": 10,
+        "barcode": "6223002970858",
+        "price": 210,
+        "buyHistory": [],
+        "name": "اوكسي توسين",
+        "company": "ادويا"
+    },
+    {
+        "company": "رايت تريد",
+        "barcode": "93040835",
+        "autobarcode": true,
+        "name": "بيوماكس",
+        "price": 145,
+        "size": "500 سم",
+        "quantity": 18,
+        "buyHistory": [],
+        "lowstock": "5"
+    },
+    {
+        "lowstock": "0",
+        "autobarcode": true,
+        "buyHistory": [
+            {
+                "date": "2022-10-13",
+                "total": 525,
+                "quantity": 1,
+                "buyPrice": 525,
+                "distributorName": "الكوثر",
+                "name": "كوبكتان 2.5%"
+            }
+        ],
+        "name": "كوبكتان 2.5%",
+        "barcode": "93054636",
+        "size": "50 سم",
+        "quantity": 1,
+        "company": "MSD",
+        "price": 775
+    },
+    {
+        "buyHistory": [],
+        "lowstock": "2",
+        "name": "فاميزول",
+        "price": 30,
+        "company": "بدر فارما",
+        "size": "100 سم",
+        "barcode": "6222018600193",
+        "autobarcode": false,
+        "quantity": 1
+    },
+    {
+        "autobarcode": false,
+        "size": "50 سم",
+        "name": "ايفر مكتين 1%",
+        "lowstock": "3",
+        "company": "أكما",
+        "buyHistory": [],
+        "price": 32,
+        "barcode": "6222036900992",
+        "quantity": 20
+    },
+    {
+        "company": "ايبيفيت",
+        "price": 600,
+        "quantity": 1,
+        "barcode": "8430274130141",
+        "lowstock": "1",
+        "size": "100 سم",
+        "buyHistory": [],
+        "name": "نيكسى فيت",
+        "autobarcode": false
+    },
+    {
+        "barcode": "25748345",
+        "price": 0,
+        "company": "اريا روسيا",
+        "lowstock": "0",
+        "quantity": 0,
+        "autobarcode": true,
+        "name": "سن معدن",
+        "buyHistory": [],
+        "size": "10 سم"
+    },
+    {
+        "size": "50 سم",
+        "name": "ماربكون",
+        "lowstock": "1",
+        "autobarcode": true,
+        "quantity": 1,
+        "price": 395,
+        "company": "ايفا فارما",
+        "barcode": "69812567"
+    },
+    {
+        "barcode": "6223003987992",
+        "price": 90,
+        "lowstock": "3",
+        "company": "اراب كابس",
+        "quantity": 0,
+        "size": "50 سم",
+        "autobarcode": false,
+        "name": "اراب ميجلونيكس",
+        "buyHistory": [
+            {
+                "distributorName": "دواء",
+                "date": "2022-09-18",
+                "total": 210,
+                "name": "اراب ميجلونيكس",
+                "quantity": 3,
+                "buyPrice": 70
+            }
+        ]
+    },
+    {
+        "buyHistory": [],
+        "price": 120,
+        "company": "بروكسى فيت",
+        "name": "كالسى برو",
+        "size": "100 سم",
+        "lowstock": "3",
+        "barcode": "56576486",
+        "quantity": 3,
+        "autobarcode": true
+    },
+    {
+        "quantity": 7,
+        "size": "250 سم",
+        "name": "جنتيانا",
+        "buyHistory": [],
+        "autobarcode": true,
+        "price": 6,
+        "barcode": "44612442",
+        "lowstock": "2",
+        "company": "-"
+    },
+    {
+        "company": "نانو فارما",
+        "autobarcode": true,
+        "barcode": "75728414",
+        "quantity": 10,
+        "price": 155,
+        "lowstock": "500",
+        "size": "100 سم",
+        "buyHistory": [
+            {
+                "buyPrice": 140,
+                "name": "اوكسى توسن",
+                "distributorName": "محمد عطية",
+                "date": "2022-09-15",
+                "total": 1400,
+                "quantity": 10
+            }
+        ],
+        "name": "اوكسى توسن"
+    },
+    {
+        "autobarcode": true,
+        "size": "100 سم",
+        "barcode": "30943455",
+        "quantity": 26,
+        "lowstock": "5",
+        "name": "توم اكس",
+        "price": 14,
+        "company": "رايت تريد"
+    },
+    {
+        "quantity": 20,
+        "lowstock": "5",
+        "autobarcode": true,
+        "name": "بكتى فورت",
+        "size": "30 جم",
+        "barcode": "06349476",
+        "price": 18.5,
+        "company": "جانور"
+    },
+    {
+        "size": "20 سم",
+        "company": "ارابكوميد",
+        "autobarcode": false,
+        "barcode": "6223005438829",
+        "price": 190,
+        "name": "نوتاليكس",
+        "quantity": 2,
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "buyPrice": 130,
+                "quantity": 2,
+                "distributorName": "دواء",
+                "total": 260,
+                "name": "نوتاليكس",
+                "date": "2022-09-18"
+            }
+        ]
+    },
+    {
+        "lowstock": "1",
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 43,
+        "barcode": "63593424",
+        "name": "فيتراجين",
+        "quantity": 1,
+        "company": "ادويا"
+    },
+    {
+        "name": "تترالونج",
+        "price": 80,
+        "buyHistory": [],
+        "company": "سما فيت",
+        "lowstock": "3",
+        "quantity": 0,
+        "autobarcode": true,
+        "size": "100 سم",
+        "barcode": "22486974"
+    },
+    {
+        "quantity": 0,
+        "lowstock": "2",
+        "name": "نيرادوزول",
+        "price": 130,
+        "buyHistory": [],
+        "autobarcode": false,
+        "company": "نيرو فارما",
+        "size": "لتر",
+        "barcode": "6224007813225"
+    },
+    {
+        "lowstock": "2",
+        "name": "ليموكسين فورتى سبراى",
+        "quantity": 0,
+        "autobarcode": true,
+        "barcode": "66275798",
+        "price": 65,
+        "company": "هولاند",
+        "buyHistory": [],
+        "size": "320 مل"
+    },
+    {
+        "barcode": "12807070",
+        "price": 170,
+        "autobarcode": true,
+        "lowstock": "5",
+        "quantity": 2,
+        "name": "كالف لوكس",
+        "company": "APA",
+        "size": "40 سم"
+    },
+    {
+        "size": "40 سم",
+        "name": "كلاف لوكس",
+        "autobarcode": true,
+        "price": 200,
+        "company": "APA",
+        "barcode": "76002947",
+        "lowstock": "2",
+        "quantity": 0
+    },
+    {
+        "name": "جروفايت بلس",
+        "size": "لتر",
+        "quantity": 1,
+        "lowstock": "5",
+        "barcode": "42650477",
+        "company": "يونى فيت",
+        "autobarcode": true,
+        "price": 530
+    },
+    {
+        "autobarcode": true,
+        "barcode": "37518432",
+        "company": "المصرية الامريكية",
+        "price": 25,
+        "lowstock": "5",
+        "size": "100 سم",
+        "quantity": 19,
+        "name": "تى كوكس",
+        "buyHistory": [
+            {
+                "date": "2022-10-13",
+                "buyPrice": 9,
+                "name": "تى كوكس",
+                "distributorName": "الكوثر",
+                "quantity": 25,
+                "total": 225
+            }
+        ]
+    },
+    {
+        "price": 13,
+        "name": "بان فيد",
+        "lowstock": "1",
+        "autobarcode": true,
+        "barcode": "44459272",
+        "company": "بان فيت",
+        "size": "50 سم",
+        "quantity": 61
+    },
+    {
+        "price": 42,
+        "size": "100 سم",
+        "quantity": 6,
+        "autobarcode": true,
+        "barcode": "93036384",
+        "lowstock": "5",
+        "buyHistory": [],
+        "company": "فارما سويد",
+        "name": "اوكسى فيت فارما 5%"
+    },
+    {
+        "price": 115,
+        "barcode": "49454943",
+        "autobarcode": true,
+        "quantity": 25,
+        "buyHistory": [
+            {
+                "total": 700,
+                "name": "كالف جارد",
+                "distributorName": "دواء",
+                "date": "2022-09-15",
+                "quantity": 10,
+                "buyPrice": 70
+            },
+            {
+                "quantity": 2,
+                "date": "2022-09-04",
+                "total": 140,
+                "distributorName": "دواء",
+                "buyPrice": 70,
+                "name": "كالف جارد"
+            }
+        ],
+        "company": "زويتس",
+        "lowstock": "5",
+        "size": "3 مل",
+        "name": "كالف جارد"
+    },
+    {
+        "price": 705,
+        "lowstock": "5",
+        "barcode": "05546462",
+        "quantity": 0,
+        "company": "SONE",
+        "autobarcode": true,
+        "size": "50 سم",
+        "name": "بوفى جان 500"
+    },
+    {
+        "price": 46,
+        "barcode": "15073047",
+        "lowstock": "5",
+        "size": "1 كج",
+        "autobarcode": true,
+        "company": "بان فيت",
+        "quantity": 15,
+        "name": "فسفور بلس",
+        "buyHistory": [
+            {
+                "date": "2022-09-07",
+                "distributorName": "بان فيت",
+                "total": 375,
+                "name": "فسفور بلس",
+                "buyPrice": 25,
+                "quantity": 15
+            }
+        ]
+    },
+    {
+        "company": "يونى فيت",
+        "autobarcode": false,
+        "size": "10 جم",
+        "price": 80,
+        "lowstock": "8",
+        "quantity": 11,
+        "barcode": "5391504730001",
+        "buyHistory": [],
+        "name": "تريكسن محقن"
+    },
+    {
+        "autobarcode": true,
+        "name": "سلفافيت",
+        "quantity": 0,
+        "lowstock": "3",
+        "buyHistory": [],
+        "barcode": "27970174",
+        "price": 31,
+        "company": "ممفيس",
+        "size": "100 سم"
+    },
+    {
+        "company": "بان فيت",
+        "quantity": 1,
+        "lowstock": "1",
+        "price": 0,
+        "size": "لتر",
+        "barcode": "29183341",
+        "name": "ه سيلينيوم",
+        "autobarcode": true,
+        "buyHistory": []
+    },
+    {
+        "company": "فارما سويد",
+        "buyHistory": [],
+        "name": "اوكسى فيت فارما 20%",
+        "autobarcode": true,
+        "barcode": "93036734",
+        "quantity": 0,
+        "price": 40,
+        "size": "30 سم",
+        "lowstock": "5"
+    },
+    {
+        "price": 190,
+        "name": "بيوتاجيكت",
+        "autobarcode": true,
+        "barcode": "6223002975969",
+        "lowstock": "3",
+        "size": "20 سم",
+        "buyHistory": [],
+        "quantity": 0,
+        "company": "ادويا"
+    },
+    {
+        "autobarcode": true,
+        "price": 48,
+        "company": "جولف فيت فارما",
+        "lowstock": "1",
+        "name": "فوس",
+        "barcode": "57251403",
+        "quantity": 1,
+        "size": "100 سم"
+    },
+    {
+        "size": "50 سم",
+        "autobarcode": false,
+        "lowstock": "6",
+        "quantity": 19,
+        "barcode": "6223002970049",
+        "name": "ايفين",
+        "company": "ادويا",
+        "buyHistory": [
+            {
+                "date": "2022-10-09",
+                "name": "ايفين",
+                "buyPrice": 21,
+                "distributorName": "الكوثر",
+                "total": 210,
+                "quantity": 10
+            }
+        ],
+        "price": 32
+    },
+    {
+        "barcode": "93039985",
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 180,
+        "company": "انترفيت",
+        "lowstock": "2",
+        "name": "بورجال 24%",
+        "quantity": 1,
+        "buyHistory": []
+    },
+    {
+        "lowstock": "3",
+        "company": "فارما سويد",
+        "price": 90,
+        "buyHistory": [
+            {
+                "distributorName": "برايت فيت",
+                "date": "2022-10-04",
+                "total": 720,
+                "name": "تيلوفيت 20%",
+                "quantity": 15,
+                "buyPrice": 48
+            },
+            {
+                "date": "2022-09-15",
+                "distributorName": "برايت فيت",
+                "buyPrice": 48,
+                "name": "تيلوفيت 20%",
+                "total": 480,
+                "quantity": 10
+            }
+        ],
+        "size": "50 سم",
+        "autobarcode": true,
+        "name": "تيلوفيت 20%",
+        "barcode": "93041185",
+        "quantity": 28
+    },
+    {
+        "autobarcode": true,
+        "price": 12,
+        "company": "رايت تريد",
+        "quantity": 7,
+        "lowstock": "5",
+        "size": "100 سم",
+        "name": "دايا رست",
+        "barcode": "18260506"
+    },
+    {
+        "size": "500 جم",
+        "price": 665,
+        "quantity": 20,
+        "lowstock": "1",
+        "buyHistory": [
+            {
+                "distributorName": "دواء",
+                "name": "سينولوكس أقراص",
+                "date": "2022-09-18",
+                "buyPrice": 335,
+                "total": 335,
+                "quantity": 1
+            },
+            {
+                "distributorName": "فوزى كان فيت",
+                "total": 335,
+                "date": "2022-09-15",
+                "quantity": 1,
+                "name": "سينولوكس أقراص",
+                "buyPrice": 335
+            }
+        ],
+        "name": "سينولوكس أقراص",
+        "company": "زويتس",
+        "barcode": "62433164",
+        "autobarcode": true
+    },
+    {
+        "name": "جارافيت 10%",
+        "quantity": 0,
+        "company": "ممفيس",
+        "lowstock": "2",
+        "autobarcode": false,
+        "price": 65,
+        "size": "50 سم",
+        "buyHistory": [],
+        "barcode": "6221050020167"
+    },
+    {
+        "company": "الكنانه",
+        "lowstock": "1",
+        "size": "50 سم",
+        "name": "كينا ادول",
+        "barcode": "6224000959289",
+        "quantity": 0,
+        "price": 108,
+        "autobarcode": false
+    },
+    {
+        "autobarcode": true,
+        "quantity": 16,
+        "name": "جينا فورتى",
+        "price": 80,
+        "company": "جوروكس",
+        "buyHistory": [
+            {
+                "name": "جينا فورتى",
+                "date": "2022-09-15",
+                "buyPrice": 60,
+                "quantity": 18,
+                "total": 1080,
+                "distributorName": "محمد عطية"
+            }
+        ],
+        "lowstock": "500",
+        "barcode": "68109121",
+        "size": "50 سم"
+    },
+    {
+        "barcode": "64716042",
+        "size": "100 سم",
+        "name": "اليفير",
+        "lowstock": "5",
+        "price": 0,
+        "quantity": 1,
+        "company": "غنام جروب",
+        "autobarcode": true
+    },
+    {
+        "size": "100 سم",
+        "name": "بن سترب",
+        "buyHistory": [
+            {
+                "date": "2022-11-16",
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 285,
+                "total": 285,
+                "quantity": 1,
+                "name": "بن سترب"
+            }
+        ],
+        "quantity": 0,
+        "barcode": "09598474",
+        "lowstock": "2",
+        "autobarcode": true,
+        "company": "نوربروك",
+        "price": 450
+    },
+    {
+        "barcode": "05134577",
+        "company": "امكوميد",
+        "lowstock": "2",
+        "quantity": 1,
+        "price": 205,
+        "name": "امينو بلس",
+        "size": "لتر",
+        "buyHistory": [],
+        "autobarcode": true
+    },
+    {
+        "barcode": "6221067021539",
+        "buyHistory": [],
+        "quantity": 2,
+        "company": "النصر",
+        "price": 63,
+        "autobarcode": false,
+        "lowstock": "2",
+        "name": "ليفاميزول",
+        "size": "100 سم"
+    },
+    {
+        "barcode": "6225000087774",
+        "size": "50 سم",
+        "buyHistory": [],
+        "autobarcode": false,
+        "company": "دان كروا",
+        "lowstock": "2",
+        "quantity": 5,
+        "price": 80,
+        "name": "دان ايفرميك"
+    },
+    {
+        "quantity": 0,
+        "price": 43,
+        "buyHistory": [
+            {
+                "quantity": 5,
+                "date": "2022-11-11",
+                "distributorName": "فوزى كان فيت",
+                "name": "ليفا فلوك",
+                "total": 175,
+                "buyPrice": 35
+            },
+            {
+                "quantity": 10,
+                "buyPrice": 35,
+                "distributorName": "الكوثر",
+                "total": 350,
+                "name": "ليفا فلوك",
+                "date": "2022-10-04"
+            },
+            {
+                "distributorName": "الكوثر",
+                "date": "2022-09-18",
+                "total": 175,
+                "name": "ليفا فلوك",
+                "quantity": 5,
+                "buyPrice": 35
+            },
+            {
+                "total": 175,
+                "date": "2022-09-15",
+                "buyPrice": 35,
+                "name": "ليفا فلوك",
+                "quantity": 5,
+                "distributorName": "بان فيت"
+            },
+            {
+                "total": 175,
+                "name": "ليفا فلوك",
+                "buyPrice": 35,
+                "quantity": 5,
+                "date": "2022-09-04",
+                "distributorName": "الكوثر"
+            }
+        ],
+        "lowstock": "5",
+        "autobarcode": true,
+        "name": "ليفا فلوك",
+        "barcode": "66398784",
+        "size": "100 سم",
+        "company": "فارما سويد"
+    },
+    {
+        "company": "ايسترن فارما",
+        "quantity": 0,
+        "lowstock": "1",
+        "autobarcode": true,
+        "price": 150,
+        "barcode": "90924484",
+        "name": "فلوروستين",
+        "size": "250 سم"
+    },
+    {
+        "name": "كالف كير",
+        "size": "100 جم",
+        "autobarcode": true,
+        "company": "بان فيت",
+        "buyHistory": [],
+        "quantity": 225,
+        "lowstock": "10",
+        "price": 20,
+        "barcode": "58714470"
+    },
+    {
+        "company": "زويتس",
+        "lowstock": "1",
+        "barcode": "57026616",
+        "size": "50 سم",
+        "autobarcode": true,
+        "name": "سيداكتين",
+        "price": 2500,
+        "quantity": 1
+    },
+    {
+        "buyHistory": [],
+        "price": 23,
+        "quantity": 14,
+        "size": "125 جم",
+        "autobarcode": true,
+        "name": "ميجا كيور",
+        "company": "ميجا فارما",
+        "lowstock": "5",
+        "barcode": "42356672"
+    },
+    {
+        "size": "50 سم",
+        "company": "الاسكندرية",
+        "buyHistory": [
+            {
+                "date": "2022-10-09",
+                "buyPrice": 39,
+                "quantity": 1,
+                "total": 39,
+                "distributorName": "الكوثر",
+                "name": "جنتاميسين 10%"
+            }
+        ],
+        "price": 50,
+        "name": "جنتاميسين 10%",
+        "lowstock": "2",
+        "barcode": "6222010685013",
+        "quantity": 3,
+        "autobarcode": false
+    },
+    {
+        "autobarcode": true,
+        "barcode": "21420788",
+        "price": 17,
+        "name": "اوميجران100سم",
+        "size": "100 جم",
+        "quantity": 0,
+        "company": "بى سى جروب",
+        "buyHistory": [],
+        "lowstock": "5"
+    },
+    {
+        "lowstock": "1",
+        "barcode": "98422431",
+        "size": "50 سم",
+        "quantity": 1,
+        "name": "دراكسن بلس",
+        "company": "زويتس",
+        "price": 3150,
+        "autobarcode": true
+    },
+    {
+        "lowstock": "1",
+        "barcode": "72893124",
+        "autobarcode": true,
+        "quantity": 7,
+        "company": "بدر فارما",
+        "price": 100,
+        "name": "سيفوبدر",
+        "size": "5 جم"
+    },
+    {
+        "company": "ساينس ميد",
+        "autobarcode": true,
+        "lowstock": "6",
+        "quantity": 46,
+        "barcode": "67092332",
+        "size": "100 سم",
+        "price": 10,
+        "name": "كولي تاك"
+    },
+    {
+        "barcode": "59624035",
+        "size": "20 سم",
+        "company": "اي بي اي",
+        "price": 100,
+        "lowstock": "5",
+        "name": "سيفتى فورد",
+        "autobarcode": true,
+        "quantity": 49
+    },
+    {
+        "name": "ميلومات",
+        "quantity": 0,
+        "buyHistory": [],
+        "company": "اي تى ام",
+        "price": 190,
+        "barcode": "2058895841",
+        "lowstock": "2",
+        "size": "50 سم",
+        "autobarcode": true
+    },
+    {
+        "name": "كلاموكسيل",
+        "size": "50 سم",
+        "lowstock": "0",
+        "buyHistory": [],
+        "barcode": "93054386",
+        "autobarcode": true,
+        "price": 400,
+        "quantity": 2,
+        "company": "زويتس"
+    },
+    {
+        "price": 65,
+        "quantity": 0,
+        "company": "فارما سويد",
+        "lowstock": "4",
+        "autobarcode": true,
+        "name": "فوسفو تونك",
+        "buyHistory": [],
+        "barcode": "3889736448",
+        "size": "50 سم"
+    },
+    {
+        "autobarcode": true,
+        "name": "هاى فوس",
+        "company": "ريفال فارم",
+        "barcode": "96432434",
+        "quantity": 1,
+        "size": "100 سم",
+        "price": 40,
+        "lowstock": "1"
+    },
+    {
+        "name": "رسيبتال",
+        "buyHistory": [
+            {
+                "quantity": 1,
+                "date": "2022-11-16",
+                "total": 280,
+                "buyPrice": 280,
+                "name": "رسيبتال",
+                "distributorName": "فوزى كان فيت"
+            },
+            {
+                "buyPrice": 255,
+                "name": "رسيبتال",
+                "total": 510,
+                "distributorName": "فوزى كان فيت",
+                "date": "2022-11-11",
+                "quantity": 2
+            },
+            {
+                "date": "2022-10-09",
+                "buyPrice": 225,
+                "distributorName": "الكوثر",
+                "name": "رسيبتال",
+                "quantity": 1,
+                "total": 225
+            }
+        ],
+        "size": "10 سم",
+        "autobarcode": true,
+        "price": 340,
+        "quantity": 5,
+        "lowstock": "2",
+        "barcode": "97360329",
+        "company": "MSD"
+    },
+    {
+        "name": "دان فلام",
+        "company": "دان كروا",
+        "size": "100 سم",
+        "autobarcode": false,
+        "lowstock": "5",
+        "barcode": "6225000087705",
+        "buyHistory": [],
+        "price": 65,
+        "quantity": 15
+    },
+    {
+        "company": "بايو سين",
+        "lowstock": "5",
+        "size": "35 مل",
+        "price": 25,
+        "barcode": "55130085",
+        "quantity": 3,
+        "name": "كالم كير",
+        "autobarcode": true
+    },
+    {
+        "barcode": "6221163009332",
+        "quantity": 0,
+        "size": "8 اقراص",
+        "autobarcode": false,
+        "company": "دلتا فارما",
+        "name": "دلتا اوكسى",
+        "lowstock": "5",
+        "price": 15
+    },
+    {
+        "company": "جوروكس",
+        "buyHistory": [],
+        "barcode": "14248523",
+        "name": "ايفومك سوبر استرالي",
+        "size": "50 سم",
+        "autobarcode": true,
+        "quantity": 2,
+        "price": 205,
+        "lowstock": "4"
+    },
+    {
+        "barcode": "20796295",
+        "name": "داى فلوكسال",
+        "quantity": 4,
+        "company": "فيوتشار تايم",
+        "autobarcode": true,
+        "lowstock": "1",
+        "price": 50,
+        "buyHistory": [],
+        "size": "200 سم"
+    },
+    {
+        "lowstock": "5",
+        "buyHistory": [],
+        "price": 14,
+        "quantity": 100,
+        "name": "اوكسى فيت - فارما",
+        "barcode": "78846144",
+        "company": "فارما سويد",
+        "size": "8 اقراص",
+        "autobarcode": true
+    },
+    {
+        "company": "ميجا فارما",
+        "price": 19.5,
+        "buyHistory": [],
+        "quantity": 16,
+        "lowstock": "5",
+        "autobarcode": true,
+        "size": "125 جم",
+        "barcode": "53260599",
+        "name": "مينج سايد"
+    },
+    {
+        "barcode": "6224007813157",
+        "quantity": 0,
+        "price": 0,
+        "company": "نيرو فارما",
+        "autobarcode": false,
+        "name": "فلورونير",
+        "size": "100 سم",
+        "lowstock": "5"
+    },
+    {
+        "size": "100 سم",
+        "lowstock": "10",
+        "price": 1.5,
+        "name": "فيتامين أ د 4 هـ",
+        "quantity": 100,
+        "barcode": "18759041",
+        "company": "رايت تريد",
+        "autobarcode": true,
+        "buyHistory": []
+    },
+    {
+        "autobarcode": false,
+        "buyHistory": [],
+        "price": 45,
+        "company": "العربى",
+        "size": "100 سم",
+        "lowstock": "5",
+        "name": "فوتوزال",
+        "barcode": "6223003981792",
+        "quantity": 10
+    },
+    {
+        "quantity": 20,
+        "company": "أكما",
+        "barcode": "6224000318260",
+        "size": "20 جم",
+        "buyHistory": [],
+        "name": "اموكسى 20%",
+        "price": 12,
+        "autobarcode": false,
+        "lowstock": "5"
+    },
+    {
+        "buyHistory": [
+            {
+                "name": "اوكسى 20% ط م",
+                "distributorName": "برايت فيت",
+                "buyPrice": 68,
+                "date": "2022-10-04",
+                "total": 204,
+                "quantity": 3
+            }
+        ],
+        "price": 121,
+        "name": "اوكسى 20% ط م",
+        "autobarcode": true,
+        "company": "ارابكوميد",
+        "barcode": "93036534",
+        "lowstock": "3",
+        "quantity": 0,
+        "size": "100 سم"
+    },
+    {
+        "name": "كوبوزال",
+        "autobarcode": true,
+        "price": 70,
+        "buyHistory": [],
+        "company": "ارابكوميد",
+        "barcode": "93054686",
+        "quantity": 0,
+        "lowstock": "3",
+        "size": "100 سم"
+    },
+    {
+        "company": "ارابكوميد",
+        "quantity": 11,
+        "size": "100 سم",
+        "barcode": "37971853",
+        "lowstock": "3",
+        "name": "كيم فوسفان",
+        "autobarcode": true,
+        "price": 40
+    },
+    {
+        "barcode": "41560684",
+        "buyHistory": [],
+        "size": "100 سم",
+        "name": "ميدفنيكول",
+        "company": "اتكو فارما",
+        "lowstock": "2",
+        "quantity": 0,
+        "price": 50,
+        "autobarcode": true
+    },
+    {
+        "size": "500 سم",
+        "quantity": 4,
+        "barcode": "6223002970810",
+        "autobarcode": false,
+        "company": "ادويا",
+        "price": 140,
+        "lowstock": "4",
+        "buyHistory": [
+            {
+                "name": "كال بور ماج",
+                "buyPrice": 77,
+                "total": 462,
+                "distributorName": "برايت فيت",
+                "date": "2022-10-13",
+                "quantity": 6
+            }
+        ],
+        "name": "كال بور ماج"
+    },
+    {
+        "lowstock": "3",
+        "company": "رايت تريد",
+        "buyHistory": [],
+        "size": "100 سم",
+        "quantity": 15,
+        "autobarcode": true,
+        "barcode": "25784645",
+        "price": 15,
+        "name": "رايت فيرو"
+    },
+    {
+        "company": "فارما سويد",
+        "lowstock": "1",
+        "autobarcode": true,
+        "barcode": "76346948",
+        "size": "100 سم",
+        "price": 275,
+        "quantity": 0,
+        "name": "فاشيو كيور"
+    },
+    {
+        "barcode": "49049879",
+        "quantity": 82,
+        "company": "سيفا",
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "quantity": 20,
+                "buyPrice": 30,
+                "total": 600,
+                "name": "مامى فورت",
+                "distributorName": "الكوثر",
+                "date": "2022-10-09"
+            },
+            {
+                "name": "مامى فورت",
+                "quantity": 22,
+                "buyPrice": 30,
+                "total": 660,
+                "date": "2022-10-04",
+                "distributorName": "الكوثر"
+            },
+            {
+                "distributorName": "الكوثر",
+                "buyPrice": 30,
+                "name": "مامى فورت",
+                "date": "2022-09-30",
+                "quantity": 20,
+                "total": 600
+            },
+            {
+                "date": "2022-09-18",
+                "distributorName": "الكوثر",
+                "buyPrice": 30,
+                "quantity": 20,
+                "total": 600,
+                "name": "مامى فورت"
+            }
+        ],
+        "size": "9 جم",
+        "name": "مامى فورت",
+        "autobarcode": true,
+        "price": 47
+    },
+    {
+        "size": "1 كج",
+        "lowstock": "5",
+        "barcode": "77363941",
+        "company": "فيوتشار تايم",
+        "price": 50,
+        "autobarcode": true,
+        "quantity": 0,
+        "name": "اوفى اكت"
+    },
+    {
+        "company": "يونى فارما",
+        "barcode": "6224001183508",
+        "quantity": 0,
+        "name": "كلوروميسين ابلونج",
+        "size": "8 اقراص",
+        "price": 15,
+        "autobarcode": false,
+        "lowstock": "5"
+    },
+    {
+        "name": "كولى تريم",
+        "company": "فارما سويد",
+        "barcode": "93055186",
+        "quantity": 1,
+        "price": 200,
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "200 مل",
+        "lowstock": "1"
+    },
+    {
+        "name": "جروفيت لاير",
+        "price": 570,
+        "barcode": "88851914",
+        "autobarcode": true,
+        "quantity": 0,
+        "company": "يونى فيت",
+        "size": "لتر",
+        "lowstock": "1"
+    },
+    {
+        "buyHistory": [
+            {
+                "name": "ميلومات",
+                "quantity": 2,
+                "date": "2022-10-13",
+                "buyPrice": 395,
+                "total": 790,
+                "distributorName": "الكوثر"
+            }
+        ],
+        "name": "ميلومات",
+        "size": "100 سم",
+        "lowstock": "1",
+        "company": "اي تى ام",
+        "quantity": 3,
+        "barcode": "38491058",
+        "autobarcode": true,
+        "price": 390
+    },
+    {
+        "buyHistory": [],
+        "barcode": "11760268",
+        "company": "يونى فيت",
+        "size": "50 سم",
+        "lowstock": "3",
+        "autobarcode": true,
+        "quantity": 0,
+        "price": 230,
+        "name": "تريوكسيل"
+    },
+    {
+        "price": 53,
+        "buyHistory": [],
+        "name": "فينلدين",
+        "company": "الوطنية",
+        "lowstock": "2",
+        "barcode": "982967954569",
+        "autobarcode": true,
+        "size": "100 سم",
+        "quantity": 3
+    },
+    {
+        "barcode": "78108636",
+        "lowstock": "0",
+        "autobarcode": true,
+        "name": "لعنة الفراعنة",
+        "company": "-",
+        "quantity": 1,
+        "price": 0,
+        "size": "500 سم"
+    },
+    {
+        "size": "50 سم",
+        "buyHistory": [],
+        "lowstock": "2",
+        "autobarcode": true,
+        "price": 110,
+        "company": "مام ايجيبت",
+        "quantity": 0,
+        "barcode": "99564557",
+        "name": "ماميزول 12%"
+    },
+    {
+        "lowstock": "2",
+        "buyHistory": [
+            {
+                "total": 100,
+                "date": "2022-10-04",
+                "quantity": 1,
+                "buyPrice": 100,
+                "name": "كيتومد",
+                "distributorName": "برايت فيت"
+            }
+        ],
+        "quantity": 1,
+        "company": "ارابكوميد",
+        "price": 125,
+        "barcode": "89165468",
+        "autobarcode": true,
+        "size": "100 سم",
+        "name": "كيتوميد 10%"
+    },
+    {
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "500 سم",
+        "company": "هيربال",
+        "name": "هيرباتونيك",
+        "lowstock": "2",
+        "quantity": 6,
+        "price": 55,
+        "barcode": "04877640"
+    },
+    {
+        "autobarcode": true,
+        "quantity": 1,
+        "lowstock": "5",
+        "barcode": "28894818",
+        "company": "يونيفيت",
+        "price": 3750,
+        "size": "2.5 لتر",
+        "name": "كيورافلوك"
+    },
+    {
+        "price": 55,
+        "barcode": "03878534",
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "buyPrice": 23,
+                "quantity": 30,
+                "total": 690,
+                "distributorName": "بان فيت",
+                "date": "2022-09-04",
+                "name": "بان برافين"
+            }
+        ],
+        "company": "بان فيت",
+        "name": "بان برافين",
+        "size": "450 مل",
+        "autobarcode": true,
+        "quantity": 29
+    },
+    {
+        "autobarcode": true,
+        "quantity": 5,
+        "buyHistory": [],
+        "company": "النصر",
+        "price": 46,
+        "size": "100 سم",
+        "name": "انالجين",
+        "barcode": "28010444",
+        "lowstock": "20"
+    },
+    {
+        "size": "100 جم",
+        "autobarcode": true,
+        "company": "النصر",
+        "quantity": 3,
+        "barcode": "7426685022",
+        "buyHistory": [],
+        "price": 125,
+        "lowstock": "2",
+        "name": "تايلوزين ترترات"
+    },
+    {
+        "quantity": 15,
+        "autobarcode": true,
+        "size": "100 سم",
+        "barcode": "85806710",
+        "price": 60,
+        "name": "ايرادكس",
+        "lowstock": "5",
+        "company": "فارما سويد"
+    },
+    {
+        "lowstock": "1",
+        "quantity": 1,
+        "size": "لتر",
+        "name": "هيباتريميد",
+        "price": 290,
+        "company": "ViG",
+        "autobarcode": true,
+        "barcode": "86788689"
+    },
+    {
+        "company": "فارما سويد",
+        "barcode": "09715420",
+        "quantity": 1,
+        "buyHistory": [
+            {
+                "distributorName": "فوزى كان فيت",
+                "quantity": 2,
+                "total": 154,
+                "buyPrice": 77,
+                "date": "2022-11-16",
+                "name": "كولي تريم"
+            },
+            {
+                "name": "كولي تريم",
+                "distributorName": "الشركه الشرقيه",
+                "quantity": 5,
+                "date": "2022-11-11",
+                "total": 400,
+                "buyPrice": 80
+            }
+        ],
+        "name": "كولى تريم",
+        "autobarcode": true,
+        "size": "100 سم",
+        "lowstock": "3",
+        "price": 110
+    },
+    {
+        "name": "سرنجة ديابان",
+        "price": 35,
+        "barcode": "6290857210",
+        "lowstock": "3",
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "10 سم",
+        "quantity": 4,
+        "company": "فيوتشر جروب"
+    },
+    {
+        "size": "50 مل جرام",
+        "price": 95,
+        "lowstock": "500",
+        "autobarcode": true,
+        "quantity": 33,
+        "company": "زويتس",
+        "buyHistory": [
+            {
+                "date": "2022-11-11",
+                "distributorName": "فوزى كان فيت",
+                "name": "سينولوكس محقن",
+                "quantity": 12,
+                "total": 624,
+                "buyPrice": 52
+            },
+            {
+                "distributorName": "فوزى كان فيت",
+                "name": "سينولوكس محقن",
+                "quantity": 12,
+                "total": 552,
+                "date": "2022-09-30",
+                "buyPrice": 46
+            },
+            {
+                "total": 540,
+                "buyPrice": 45,
+                "quantity": 12,
+                "date": "2022-09-15",
+                "distributorName": "برايت فيت",
+                "name": "سينولوكس محقن"
+            },
+            {
+                "total": 540,
+                "distributorName": "دواء",
+                "quantity": 12,
+                "name": "سينولوكس محقن",
+                "buyPrice": 45,
+                "date": "2022-09-15"
+            }
+        ],
+        "barcode": "84182494",
+        "name": "سينولوكس محقن"
+    },
+    {
+        "barcode": "69854250",
+        "autobarcode": true,
+        "size": "لتر",
+        "company": "MEDMAC",
+        "name": "زنايدبرو",
+        "quantity": 0,
+        "lowstock": "1",
+        "price": 0
+    },
+    {
+        "buyHistory": [],
+        "company": "بدر فارما",
+        "name": "سيفوتاكس",
+        "barcode": "11361852",
+        "autobarcode": true,
+        "quantity": 0,
+        "lowstock": "2",
+        "size": "50 سم",
+        "price": 100
+    },
+    {
+        "quantity": 2,
+        "lowstock": "3",
+        "price": 215,
+        "name": "كومبى كيل",
+        "barcode": "84047489",
+        "company": "كيلا",
+        "buyHistory": [
+            {
+                "total": 414,
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 138,
+                "name": "كومبى كيل",
+                "quantity": 3,
+                "date": "2022-11-11"
+            },
+            {
+                "name": "كومبى كيل",
+                "total": 405,
+                "distributorName": "الكوثر",
+                "quantity": 3,
+                "buyPrice": 135,
+                "date": "2022-11-11"
+            },
+            {
+                "date": "2022-09-04",
+                "buyPrice": 130,
+                "distributorName": "الكوثر",
+                "quantity": 5,
+                "total": 650,
+                "name": "كومبى كيل"
+            },
+            {
+                "total": 780,
+                "distributorName": "دواء",
+                "name": "كومبى كيل",
+                "buyPrice": 130,
+                "date": "2022-09-04",
+                "quantity": 6
+            }
+        ],
+        "autobarcode": true,
+        "size": "50 سم"
+    },
+    {
+        "autobarcode": true,
+        "buyHistory": [],
+        "company": "رايت تريد",
+        "lowstock": "3",
+        "name": "تيمبو رايت",
+        "barcode": "14811195",
+        "price": 150,
+        "size": "500 جم",
+        "quantity": 8
+    },
+    {
+        "lowstock": "3",
+        "name": "فاشونينج 34%",
+        "autobarcode": true,
+        "buyHistory": [],
+        "price": 195,
+        "barcode": "93051086",
+        "company": "سيد",
+        "size": "100 سم",
+        "quantity": 0
+    },
+    {
+        "company": "-",
+        "quantity": 0,
+        "name": "بنى سيلين و ستربتو",
+        "size": "15 جم",
+        "price": 20,
+        "lowstock": "5",
+        "autobarcode": true,
+        "barcode": "06266622"
+    },
+    {
+        "autobarcode": true,
+        "quantity": 16,
+        "name": "بنتوماكس",
+        "company": "يونيون جروب",
+        "buyHistory": [],
+        "price": 24,
+        "lowstock": "2",
+        "size": "100جم",
+        "barcode": "11430449"
+    },
+    {
+        "name": "ابكسين",
+        "barcode": "93032334",
+        "lowstock": "1",
+        "quantity": 1,
+        "autobarcode": true,
+        "buyHistory": [],
+        "size": "50 سم",
+        "price": 80,
+        "company": "ايبيفيت"
+    },
+    {
+        "autobarcode": true,
+        "lowstock": "1",
+        "buyHistory": [
+            {
+                "quantity": 3,
+                "distributorName": "فالكون ايجيبت",
+                "total": 600,
+                "date": "2022-09-15",
+                "name": "جامارين",
+                "buyPrice": 200
+            }
+        ],
+        "quantity": 2,
+        "company": "فالكون ايجيبت",
+        "price": 240,
+        "barcode": "93042935",
+        "size": "لتر",
+        "name": "جامارين"
+    },
+    {
+        "lowstock": "5",
+        "barcode": "20006943",
+        "autobarcode": true,
+        "quantity": 5,
+        "price": 100,
+        "name": "سرنجة فايبر",
+        "company": "-",
+        "size": "20 سم"
+    },
+    {
+        "price": 2350,
+        "quantity": 0,
+        "size": "100 سم",
+        "lowstock": "1",
+        "barcode": "63021357",
+        "company": "MSD",
+        "autobarcode": true,
+        "name": "ميتاكام"
+    },
+    {
+        "company": "دور فيت",
+        "price": 105,
+        "name": "كالسيوم جلوكونيت",
+        "barcode": "7458011024608",
+        "quantity": 0,
+        "autobarcode": false,
+        "size": "500 سم",
+        "lowstock": "1"
+    },
+    {
+        "lowstock": "2",
+        "company": "افيكو",
+        "price": 35,
+        "quantity": 1,
+        "barcode": "53663522",
+        "name": "فابكو دايجس",
+        "autobarcode": true,
+        "size": "100جم"
+    },
+    {
+        "quantity": 3,
+        "lowstock": "5",
+        "size": "50 سم",
+        "barcode": "01997814",
+        "autobarcode": true,
+        "company": "ارابكوميد",
+        "name": "تولديتونيك",
+        "price": 55
+    },
+    {
+        "price": 65,
+        "size": "100 سم",
+        "company": "ادويا",
+        "barcode": "6223002970353",
+        "autobarcode": false,
+        "lowstock": "5",
+        "quantity": 2,
+        "name": "فيتيسلين 15 حقن"
+    },
+    {
+        "size": "100 سم",
+        "barcode": "93041135",
+        "name": "تيلوفيت 20%",
+        "company": "فارما سويد",
+        "lowstock": "3",
+        "buyHistory": [
+            {
+                "buyPrice": 95,
+                "distributorName": "الكوثر",
+                "quantity": 3,
+                "date": "2022-09-04",
+                "total": 285,
+                "name": "تيلوفيت 20%"
+            }
+        ],
+        "autobarcode": true,
+        "quantity": 6,
+        "price": 145
+    },
+    {
+        "size": "50 سم",
+        "price": 500,
+        "quantity": 0,
+        "company": "SONE",
+        "name": "بوفي جان 400",
+        "barcode": "47560674",
+        "autobarcode": true,
+        "lowstock": "1"
+    },
+    {
+        "company": "يونى فارما",
+        "quantity": 0,
+        "barcode": "6224001183539",
+        "price": 15,
+        "name": "يونيميسين ابلونج",
+        "autobarcode": false,
+        "lowstock": "5",
+        "size": "8 اقراص"
+    },
+    {
+        "size": "50 سم",
+        "barcode": "93033434",
+        "name": "افيميك سوبر",
+        "price": 500,
+        "quantity": 2,
+        "buyHistory": [],
+        "autobarcode": true,
+        "lowstock": "4",
+        "company": "افيكو"
+    },
+    {
+        "size": "لتر",
+        "quantity": 2,
+        "barcode": "23346164",
+        "company": "جوفيت",
+        "price": 96,
+        "lowstock": "5",
+        "autobarcode": true,
+        "name": "جوتريل 10%"
+    },
+    {
+        "name": "بروكال",
+        "lowstock": "5",
+        "price": 15,
+        "size": "100جم",
+        "company": "بان فيت",
+        "autobarcode": true,
+        "quantity": 18,
+        "barcode": "86871254"
+    },
+    {
+        "barcode": "65965846",
+        "lowstock": "2",
+        "size": "لتر",
+        "name": "البندازول",
+        "quantity": 0,
+        "price": 90,
+        "company": "فارما سويد",
+        "autobarcode": true
+    },
+    {
+        "buyHistory": [],
+        "company": "اكوا فارما",
+        "autobarcode": true,
+        "lowstock": "5",
+        "price": 5,
+        "name": "اوميجران 20 جم",
+        "barcode": "73529444",
+        "quantity": 20,
+        "size": "20 جم"
+    },
+    {
+        "name": "يود 5%",
+        "barcode": "69524782",
+        "size": "15 جم",
+        "lowstock": "1",
+        "autobarcode": true,
+        "price": 5.5,
+        "company": "اللوتس للكيماويات",
+        "quantity": 2
+    },
+    {
+        "lowstock": "5",
+        "company": "ساينس ميد",
+        "quantity": 2,
+        "name": "بيومكس",
+        "price": 20,
+        "size": "100 سم",
+        "barcode": "59798644",
+        "autobarcode": true
+    },
+    {
+        "company": "بى سى جروب",
+        "lowstock": "3",
+        "quantity": 0,
+        "price": 8,
+        "size": "10 سم",
+        "autobarcode": true,
+        "buyHistory": [],
+        "name": "تيت بوجيه",
+        "barcode": "03162907"
+    },
+    {
+        "lowstock": "5",
+        "quantity": 0,
+        "company": "سيفا سانتى",
+        "size": "لتر",
+        "barcode": "21240142",
+        "price": 1100,
+        "autobarcode": true,
+        "name": "دوفيستوم"
+    },
+    {
+        "price": 80,
+        "barcode": "96879085",
+        "quantity": 1,
+        "name": "فلوكلس",
+        "lowstock": "2",
+        "size": "50 سم",
+        "autobarcode": true,
+        "buyHistory": [],
+        "company": "بدر فارما"
+    },
+    {
+        "company": "ادويا",
+        "barcode": "6223002975860",
+        "autobarcode": false,
+        "quantity": 0,
+        "lowstock": "1",
+        "name": "موفاك",
+        "price": 175,
+        "size": "30 سم"
+    },
+    {
+        "price": 80,
+        "autobarcode": true,
+        "company": "MSD",
+        "barcode": "28886660",
+        "buyHistory": [
+            {
+                "name": "كوبكتان محقن",
+                "buyPrice": 52,
+                "quantity": 15,
+                "total": 780,
+                "date": "2022-10-04",
+                "distributorName": "الكوثر"
+            },
+            {
+                "distributorName": "برايت فيت",
+                "buyPrice": 54,
+                "name": "كوبكتان محقن",
+                "quantity": 15,
+                "date": "2022-09-15",
+                "total": 810
+            }
+        ],
+        "size": "8 جم",
+        "quantity": 25,
+        "lowstock": "4",
+        "name": "كوبكتان محقن"
+    },
+    {
+        "lowstock": "5",
+        "size": "1 جم",
+        "company": "فارما كيور",
+        "name": "سيفتى بريما",
+        "buyHistory": [],
+        "barcode": "48433558",
+        "quantity": 0,
+        "price": 57,
+        "autobarcode": true
+    },
+    {
+        "size": "50 سم",
+        "quantity": 0,
+        "lowstock": "3",
+        "autobarcode": true,
+        "company": "العبور",
+        "barcode": "468624640197",
+        "price": 65,
+        "buyHistory": [],
+        "name": "اوبيجنت 10%"
+    },
+    {
+        "quantity": 2,
+        "buyHistory": [
+            {
+                "name": "ديكتو ماكس",
+                "total": 590,
+                "distributorName": "الشركه الشرقيه",
+                "buyPrice": 590,
+                "date": "2022-11-11",
+                "quantity": 1
+            },
+            {
+                "total": 535,
+                "quantity": 1,
+                "distributorName": "دواء",
+                "name": "ديكتو ماكس",
+                "buyPrice": 535,
+                "date": "2022-10-13"
+            },
+            {
+                "date": "2022-09-18",
+                "distributorName": "فارما بيور",
+                "total": 535,
+                "quantity": 1,
+                "name": "ديكتو ماكس",
+                "buyPrice": 535
+            }
+        ],
+        "autobarcode": true,
+        "price": 1050,
+        "barcode": "82843424",
+        "lowstock": "2",
+        "company": "زويتس",
+        "name": "ديكتو ماكس",
+        "size": "50 سم"
+    },
+    {
+        "price": 0,
+        "barcode": "93049786",
+        "autobarcode": true,
+        "company": "زويتس",
+        "buyHistory": [],
+        "lowstock": "2",
+        "quantity": 2,
+        "size": "40 سم",
+        "name": "سينولوكس"
+    },
+    {
+        "quantity": 0,
+        "lowstock": "1",
+        "name": "انتوبلكس",
+        "size": "50 سم",
+        "barcode": "24664985",
+        "autobarcode": true,
+        "price": 185,
+        "company": "تورنيل"
+    },
+    {
+        "size": "50 سم",
+        "buyHistory": [],
+        "quantity": 1,
+        "name": "بارامكتين سوبر",
+        "autobarcode": true,
+        "lowstock": "5",
+        "company": "فارما سويد",
+        "barcode": "93037785",
+        "price": 145
+    },
+    {
+        "quantity": 40,
+        "lowstock": "5",
+        "barcode": "445614873904",
+        "price": 12,
+        "company": "كايرو فارم",
+        "name": "اموكسيسليين 20%",
+        "buyHistory": [
+            {
+                "buyPrice": 6.5,
+                "quantity": 20,
+                "total": 130,
+                "date": "2022-09-15",
+                "name": "اموكسيسليين 20%",
+                "distributorName": "فوزى كان فيت"
+            }
+        ],
+        "size": "20 جم",
+        "autobarcode": true
+    },
+    {
+        "size": "50 سم",
+        "price": 250,
+        "lowstock": "2",
+        "quantity": 1,
+        "autobarcode": true,
+        "barcode": "93409634",
+        "name": "بين اواى",
+        "company": "AMCO VET"
+    },
+    {
+        "size": "بودرة",
+        "company": "اتكو فارما",
+        "barcode": "6223004045196",
+        "price": 64,
+        "buyHistory": [
+            {
+                "distributorName": "فوزى كان فيت",
+                "total": 310,
+                "name": "ريسبيفور",
+                "quantity": 5,
+                "buyPrice": 62,
+                "date": "2022-09-30"
+            }
+        ],
+        "quantity": 2,
+        "name": "ريسبيفور",
+        "autobarcode": false,
+        "lowstock": "5"
+    },
+    {
+        "name": "فالكون بريمكس تسمين للمواشى",
+        "company": "فالكون ايجيبت",
+        "quantity": 1,
+        "lowstock": "1",
+        "size": "3 كيلو",
+        "barcode": "82611922",
+        "price": 135,
+        "autobarcode": true
+    },
+    {
+        "barcode": "93039435",
+        "quantity": 12,
+        "name": "بلوتريل",
+        "price": 40,
+        "size": "100 سم",
+        "autobarcode": true,
+        "company": "فارما سويد",
+        "lowstock": "5",
+        "buyHistory": []
+    },
+    {
+        "name": "الكوفان 6%",
+        "lowstock": "2",
+        "buyHistory": [],
+        "company": "ايفا فارما",
+        "barcode": "6224010680562",
+        "quantity": 5,
+        "autobarcode": false,
+        "price": 70,
+        "size": "50 سم"
+    },
+    {
+        "company": "امون",
+        "barcode": "74081874",
+        "name": "بانش",
+        "price": 18,
+        "autobarcode": true,
+        "lowstock": "5",
+        "size": "99 جم",
+        "quantity": 0,
+        "buyHistory": []
+    },
+    {
+        "lowstock": "1",
+        "price": 500,
+        "autobarcode": true,
+        "barcode": "93038685",
+        "buyHistory": [],
+        "quantity": 1,
+        "company": "MSD",
+        "size": "500 سم",
+        "name": "بانكيور"
+    },
+    {
+        "size": "100 سم",
+        "company": "ميديزين",
+        "barcode": "6222012401307",
+        "name": "ميد فينيكول",
+        "buyHistory": [],
+        "autobarcode": false,
+        "lowstock": "5",
+        "quantity": 35,
+        "price": 39
+    },
+    {
+        "price": 160,
+        "quantity": 0,
+        "name": "مالتي فيتامين",
+        "barcode": "31711448",
+        "lowstock": "1",
+        "autobarcode": true,
+        "size": "100 سم",
+        "company": "يونيفيت"
+    },
+    {
+        "company": "تيك فارما",
+        "price": 25,
+        "name": "نيو موكس 20%",
+        "autobarcode": true,
+        "size": "100جم",
+        "quantity": 4,
+        "barcode": "74420984",
+        "lowstock": "1"
+    },
+    {
+        "barcode": "93035784",
+        "lowstock": "2",
+        "buyHistory": [],
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 335,
+        "company": "تورنيل",
+        "quantity": 1,
+        "name": "انتوبلكس"
+    },
+    {
+        "name": "هستاكيور",
+        "size": "100 سم",
+        "autobarcode": true,
+        "buyHistory": [],
+        "lowstock": "2",
+        "quantity": 0,
+        "company": "فارما سويد",
+        "barcode": "93058987",
+        "price": 105
+    },
+    {
+        "lowstock": "5",
+        "barcode": "6221050020013",
+        "autobarcode": false,
+        "buyHistory": [],
+        "name": "انالجين",
+        "size": "100 سم",
+        "quantity": 3,
+        "company": "ممفيس",
+        "price": 29
+    },
+    {
+        "company": "ادويا",
+        "quantity": 0,
+        "price": 135,
+        "name": "اكوافين",
+        "size": "50 جم",
+        "autobarcode": true,
+        "lowstock": "1",
+        "barcode": "62624148"
+    },
+    {
+        "size": "99 جم",
+        "autobarcode": false,
+        "price": 89,
+        "quantity": 10,
+        "barcode": "087219123423",
+        "name": "سبكترا ماست",
+        "lowstock": "1",
+        "company": "زويتس"
+    },
+    {
+        "name": "فلوستاك 50%",
+        "quantity": 15,
+        "price": 60,
+        "company": "فارما سويد",
+        "size": "100 سم",
+        "autobarcode": true,
+        "barcode": "19365141",
+        "lowstock": "5"
+    },
+    {
+        "company": "ارابكوميد",
+        "quantity": 2,
+        "barcode": "93036234",
+        "buyHistory": [],
+        "name": "اوكسى 20% ط م",
+        "autobarcode": true,
+        "size": "30 سم",
+        "lowstock": "3",
+        "price": 46
+    },
+    {
+        "size": "50 سم",
+        "autobarcode": true,
+        "price": 205,
+        "name": "فام",
+        "barcode": "2060101897",
+        "buyHistory": [],
+        "company": "بيو فارما",
+        "lowstock": "1",
+        "quantity": 0
+    },
+    {
+        "buyHistory": [
+            {
+                "date": "2022-09-30",
+                "total": 756,
+                "name": "فلونيدين",
+                "quantity": 7,
+                "buyPrice": 108,
+                "distributorName": "دواء"
+            },
+            {
+                "quantity": 5,
+                "distributorName": "الكوثر",
+                "name": "فلونيدين",
+                "buyPrice": 115,
+                "total": 575,
+                "date": "2022-09-30"
+            },
+            {
+                "date": "2022-09-30",
+                "buyPrice": 110,
+                "quantity": 5,
+                "name": "فلونيدين",
+                "total": 550,
+                "distributorName": "فوزى كان فيت"
+            },
+            {
+                "quantity": 5,
+                "distributorName": "الكوثر",
+                "buyPrice": 115,
+                "date": "2022-09-04",
+                "total": 575,
+                "name": "فلونيدين"
+            }
+        ],
+        "size": "50 سم",
+        "company": "ارابكوميد",
+        "price": 158,
+        "autobarcode": false,
+        "lowstock": "3",
+        "name": "فلونيدين",
+        "barcode": "6223005438669",
+        "quantity": 22
+    },
+    {
+        "size": "100 سم",
+        "name": "اموكسى كيل 15%",
+        "barcode": "32684747",
+        "lowstock": "2",
+        "quantity": 0,
+        "buyHistory": [],
+        "price": 200,
+        "company": "كيلا",
+        "autobarcode": true
+    },
+    {
+        "name": "مالتى بليكس",
+        "lowstock": "5",
+        "quantity": 1,
+        "barcode": "50963560",
+        "size": "100 جم",
+        "price": 15,
+        "company": "بترا",
+        "autobarcode": true
+    },
+    {
+        "size": "100 سم",
+        "buyHistory": [
+            {
+                "total": 450,
+                "buyPrice": 90,
+                "name": "كولى بريم حقن",
+                "date": "2022-09-15",
+                "distributorName": "دواء",
+                "quantity": 5
+            },
+            {
+                "buyPrice": 90,
+                "date": "2022-09-15",
+                "quantity": 30,
+                "distributorName": "محمود المجموعه",
+                "name": "كولى بريم حقن",
+                "total": 2700
+            }
+        ],
+        "lowstock": "5",
+        "quantity": 0,
+        "price": 250,
+        "barcode": "93055036",
+        "company": "افيكو",
+        "name": "كولى بريم حقن",
+        "autobarcode": true
+    },
+    {
+        "name": "فيتامين ج",
+        "barcode": "276420157",
+        "lowstock": "2",
+        "buyHistory": [],
+        "size": "1 كج",
+        "quantity": 1,
+        "price": 100,
+        "autobarcode": true,
+        "company": "بان فيت"
+    },
+    {
+        "barcode": "6224000318192",
+        "lowstock": "5",
+        "name": "انالجين",
+        "autobarcode": false,
+        "size": "100 سم",
+        "price": 48,
+        "company": "أكما",
+        "quantity": 2,
+        "buyHistory": []
+    },
+    {
+        "autobarcode": true,
+        "company": "كيلا",
+        "size": "100 سم",
+        "buyHistory": [],
+        "price": 360,
+        "lowstock": "3",
+        "quantity": 2,
+        "name": "كومبى كيل",
+        "barcode": "85601498"
+    },
+    {
+        "name": "امتراز",
+        "barcode": "24788330",
+        "size": "250 مل",
+        "buyHistory": [],
+        "lowstock": "1",
+        "autobarcode": true,
+        "quantity": 2,
+        "company": "انيمل فيد",
+        "price": 100
+    },
+    {
+        "barcode": "93040235",
+        "size": "50 سم",
+        "price": 25,
+        "lowstock": "2",
+        "autobarcode": true,
+        "name": "بولت اف",
+        "quantity": 4,
+        "company": "بى سى جروب",
+        "buyHistory": []
+    },
+    {
+        "company": "باير",
+        "name": "سكوربان بلس",
+        "autobarcode": true,
+        "quantity": 1,
+        "barcode": "63553204",
+        "size": "لتر",
+        "price": 560,
+        "buyHistory": [],
+        "lowstock": "1"
+    },
+    {
+        "size": "100 جم",
+        "quantity": 1,
+        "price": 70,
+        "name": "ساكرولايت",
+        "autobarcode": true,
+        "lowstock": "5",
+        "buyHistory": [
+            {
+                "distributorName": "فوزى كان فيت",
+                "buyPrice": 2.95,
+                "name": "ساكرولايت",
+                "date": "2022-11-16",
+                "quantity": 300,
+                "total": 885
+            }
+        ],
+        "company": "يونى فيت",
+        "barcode": "91275528"
+    },
+    {
+        "company": "العربى",
+        "price": 0,
+        "buyHistory": [],
+        "size": "100 سم",
+        "quantity": 2,
+        "barcode": "31419042",
+        "lowstock": "1",
+        "name": "سيلماروكس",
+        "autobarcode": true
+    },
+    {
+        "name": "بيودياريستين",
+        "size": "20 جم",
+        "company": "فارما سويد",
+        "price": 26,
+        "lowstock": "2",
+        "buyHistory": [
+            {
+                "name": "بيودياريستين",
+                "distributorName": "الكوثر",
+                "total": 260,
+                "quantity": 20,
+                "date": "2022-11-11",
+                "buyPrice": 13
+            },
+            {
+                "quantity": 20,
+                "distributorName": "الكوثر",
+                "total": 240,
+                "buyPrice": 12,
+                "date": "2022-09-04",
+                "name": "بيودياريستين"
+            },
+            {
+                "date": "2022-09-04",
+                "distributorName": "دواء",
+                "quantity": 20,
+                "total": 230,
+                "buyPrice": 11.5,
+                "name": "بيودياريستين"
+            }
+        ],
+        "quantity": 18,
+        "autobarcode": true,
+        "barcode": "49367694"
+    },
+    {
+        "lowstock": "2",
+        "name": "اميدو كارب",
+        "buyHistory": [],
+        "size": "40 سم",
+        "price": 145,
+        "company": "ادويا",
+        "quantity": 0,
+        "autobarcode": false,
+        "barcode": "6223002975709"
+    },
+    {
+        "buyHistory": [],
+        "size": "100 جم",
+        "name": "اموكسيستين",
+        "price": 25,
+        "autobarcode": true,
+        "company": "جيو فيت",
+        "barcode": "25499494",
+        "lowstock": "2",
+        "quantity": 2
+    },
+    {
+        "autobarcode": false,
+        "price": 80,
+        "size": "لتر",
+        "name": "البندازول",
+        "lowstock": "5",
+        "company": "أكما",
+        "barcode": "6222036900060",
+        "quantity": 4
+    },
+    {
+        "autobarcode": true,
+        "quantity": 3,
+        "size": "100 سم",
+        "price": 80,
+        "company": "ارابكوميد",
+        "barcode": "85199437",
+        "lowstock": "2",
+        "name": "ديفدري جيكت"
+    },
+    {
+        "lowstock": "3",
+        "barcode": "93045085",
+        "price": 275,
+        "name": "دولوركسين",
+        "quantity": 3,
+        "autobarcode": true,
+        "buyHistory": [],
+        "company": "افيكو",
+        "size": "50 سم"
+    },
+    {
+        "name": "باترينيل",
+        "price": 50,
+        "buyHistory": [
+            {
+                "name": "باترينيل",
+                "distributorName": "الشركه الشرقيه",
+                "total": 190,
+                "buyPrice": 38,
+                "quantity": 5,
+                "date": "2022-11-11"
+            }
+        ],
+        "company": "ارابكوميد",
+        "autobarcode": true,
+        "barcode": "715156740179",
+        "size": "15 سم",
+        "lowstock": "5",
+        "quantity": 20
+    },
+    {
+        "autobarcode": true,
+        "quantity": 2,
+        "barcode": "97314044",
+        "size": "100 سم",
+        "price": 165,
+        "buyHistory": [],
+        "lowstock": "3",
+        "company": "العربى",
+        "name": "ماروفلام"
+    },
+    {
+        "quantity": 2,
+        "company": "SONE",
+        "price": 450,
+        "size": "50 سم",
+        "name": "بوفى فاست جرو",
+        "lowstock": "5",
+        "autobarcode": true,
+        "barcode": "94637567"
+    },
+    {
+        "price": 45,
+        "name": "ديكساميثازون صوديوم فوسفات",
+        "company": "ادويا",
+        "buyHistory": [
+            {
+                "total": 145,
+                "buyPrice": 29,
+                "quantity": 5,
+                "distributorName": "فارما بيور",
+                "name": "ديكساميثازون صوديوم فوسفات",
+                "date": "2022-09-15"
+            }
+        ],
+        "autobarcode": false,
+        "barcode": "6223002970827",
+        "size": "100 سم",
+        "lowstock": "500",
+        "quantity": 1
+    },
+    {
+        "company": "كيميت",
+        "lowstock": "5",
+        "quantity": 2,
+        "price": 130,
+        "barcode": "6251884000868",
+        "name": "اكتودات 60 اي سي",
+        "size": "250 سم",
+        "autobarcode": false
+    },
+    {
+        "barcode": "6223004045004",
+        "price": 110,
+        "size": "50 سم",
+        "name": "اتوفلوميكسين",
+        "company": "اتكو فارما",
+        "buyHistory": [],
+        "lowstock": "3",
+        "quantity": 0,
+        "autobarcode": false
+    },
+    {
+        "name": "سيفوديم",
+        "company": "كابيون فارما",
+        "lowstock": "10",
+        "price": 55,
+        "autobarcode": true,
+        "quantity": 46,
+        "size": "5.2 جم",
+        "buyHistory": [],
+        "barcode": "5014439655"
+    },
+    {
+        "price": 40,
+        "name": "ديكسافان",
+        "buyHistory": [],
+        "quantity": 0,
+        "company": "فارما سويد",
+        "lowstock": "2",
+        "size": "100 سم",
+        "barcode": "70973913",
+        "autobarcode": true
+    },
+    {
+        "quantity": 1,
+        "size": "100 سم",
+        "company": "سيفا سانتى",
+        "name": "ماربوكس",
+        "autobarcode": true,
+        "price": 1150,
+        "lowstock": "1",
+        "buyHistory": [],
+        "barcode": "99387468"
+    },
+    {
+        "price": 75,
+        "lowstock": "2",
+        "name": "البندازول",
+        "barcode": "56951457",
+        "quantity": 0,
+        "autobarcode": true,
+        "company": "أكما",
+        "size": "500 سم",
+        "buyHistory": []
+    },
+    {
+        "autobarcode": true,
+        "quantity": 1,
+        "name": "الفامكتين سوبر",
+        "company": "سما فيت",
+        "lowstock": "3",
+        "size": "50 سم",
+        "price": 80,
+        "buyHistory": [],
+        "barcode": "93033984"
+    },
+    {
+        "size": "50 سم",
+        "company": "ارابكوميد",
+        "quantity": 0,
+        "buyHistory": [],
+        "price": 100,
+        "barcode": "97182744",
+        "lowstock": "3",
+        "autobarcode": true,
+        "name": "ايفلون فورت"
+    },
+    {
+        "buyHistory": [
+            {
+                "buyPrice": 110,
+                "date": "2022-11-11",
+                "quantity": 2,
+                "name": "سلفا ديميدين",
+                "distributorName": "الشركه الشرقيه",
+                "total": 220
+            }
+        ],
+        "name": "سلفا ديميدين",
+        "autobarcode": true,
+        "lowstock": "2",
+        "quantity": 2,
+        "size": "500 جم",
+        "barcode": "68832276",
+        "company": "ممفيس",
+        "price": 110
+    },
+    {
+        "lowstock": "2",
+        "name": "بيكربونات صوديوم",
+        "price": 30,
+        "size": "1 كج",
+        "quantity": 0,
+        "barcode": "53637046",
+        "company": "كيميتا",
+        "autobarcode": true
+    },
+    {
+        "lowstock": "2",
+        "price": 250,
+        "autobarcode": true,
+        "size": "100 سم",
+        "company": "افيكو",
+        "quantity": 8,
+        "barcode": "93055086",
+        "buyHistory": [],
+        "name": "كولى بريم شراب"
+    },
+    {
+        "quantity": 15,
+        "company": "امون",
+        "autobarcode": true,
+        "barcode": "31787644",
+        "size": "25 جرام",
+        "name": "بانش",
+        "price": 4.5,
+        "lowstock": "2"
+    },
+    {
+        "company": "افاق",
+        "quantity": 0,
+        "size": "500 مل",
+        "lowstock": "1",
+        "name": "ايفراكس",
+        "price": 220,
+        "autobarcode": true,
+        "barcode": "90350724"
+    },
+    {
+        "quantity": 0,
+        "lowstock": "1",
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 150,
+        "barcode": "57355486",
+        "name": "مالتي فيتامين ",
+        "company": "افيكو"
+    },
+    {
+        "lowstock": "2",
+        "company": "امكوميد",
+        "buyHistory": [],
+        "size": "لتر",
+        "price": 155,
+        "autobarcode": true,
+        "barcode": "58306624",
+        "quantity": 6,
+        "name": "هيماتون جى"
+    },
+    {
+        "barcode": "39161774",
+        "price": 63,
+        "lowstock": "3",
+        "autobarcode": true,
+        "name": "سن معدن",
+        "size": "10 سم",
+        "company": "كروز",
+        "buyHistory": [],
+        "quantity": 1
+    },
+    {
+        "barcode": "91691543",
+        "price": 25,
+        "name": "اف تي مالتي سترونج",
+        "size": "100 جم",
+        "quantity": 5,
+        "company": "فيوتشار تايم",
+        "autobarcode": true,
+        "lowstock": "2"
+    },
+    {
+        "autobarcode": true,
+        "buyHistory": [],
+        "company": "ارابكوميد",
+        "lowstock": "2",
+        "price": 105,
+        "size": "100 سم",
+        "quantity": 0,
+        "barcode": "93045885",
+        "name": "ديفيدرى ميد"
+    },
+    {
+        "buyHistory": [],
+        "size": "50 جم",
+        "price": 14,
+        "lowstock": "2",
+        "company": "فيوتشار تايم",
+        "barcode": "94889460",
+        "name": "مينج ماست",
+        "autobarcode": true,
+        "quantity": 1
+    },
+    {
+        "size": "100 سم",
+        "barcode": "03470731",
+        "name": "سلفاديميدين",
+        "lowstock": "5",
+        "quantity": 3,
+        "price": 55,
+        "autobarcode": true,
+        "company": "النصر",
+        "buyHistory": []
+    },
+    {
+        "quantity": 3,
+        "price": 155,
+        "buyHistory": [],
+        "barcode": "84431578",
+        "name": "فلوروميد 30%",
+        "size": "50 سم",
+        "lowstock": "2",
+        "company": "ارابكوميد",
+        "autobarcode": true
+    },
+    {
+        "company": "فالكون ايجيبت",
+        "price": 135,
+        "autobarcode": true,
+        "barcode": "39306549",
+        "quantity": 0,
+        "size": "3 كيلو",
+        "lowstock": "1",
+        "name": "فالكون بريمكس حلاب للمواشى"
+    },
+    {
+        "name": "اوكسى تتراسيكلين 5%",
+        "buyHistory": [],
+        "barcode": "6224000318130",
+        "lowstock": "5",
+        "price": 39,
+        "size": "100 سم",
+        "company": "أكما",
+        "quantity": 8,
+        "autobarcode": false
+    },
+    {
+        "company": "بان فيت",
+        "buyHistory": [],
+        "name": "بان يست",
+        "autobarcode": true,
+        "barcode": "43091360",
+        "lowstock": "5",
+        "size": "100 جم",
+        "quantity": 3,
+        "price": 15
+    },
+    {
+        "company": "نوربروك",
+        "lowstock": "1",
+        "price": 190,
+        "quantity": 1,
+        "autobarcode": true,
+        "buyHistory": [],
+        "barcode": "93033844",
+        "name": "الامايسين",
+        "size": "100 سم"
+    },
+    {
+        "price": 90,
+        "name": "كال ما ديكس",
+        "buyHistory": [],
+        "company": "ارابكوميد",
+        "barcode": "32087700",
+        "size": "500 سم",
+        "lowstock": "2",
+        "quantity": 2,
+        "autobarcode": true
+    },
+    {
+        "name": "تيربلس مايسين 30",
+        "barcode": "123456789",
+        "price": 47,
+        "buyHistory": [],
+        "company": "المتحدة فيت",
+        "size": "30 سم",
+        "autobarcode": true,
+        "lowstock": "3",
+        "quantity": 0
+    },
+    {
+        "lowstock": "5",
+        "company": "سليم فارم",
+        "price": 21,
+        "size": "100 جم",
+        "buyHistory": [],
+        "barcode": "88023927",
+        "name": "سوبر ماش",
+        "autobarcode": true,
+        "quantity": 8
+    },
+    {
+        "name": "كبريتات الاتروبين 1%",
+        "quantity": 1,
+        "buyHistory": [
+            {
+                "quantity": 1,
+                "date": "2022-10-13",
+                "name": "كبريتات الاتروبين 1%",
+                "total": 45,
+                "buyPrice": 45,
+                "distributorName": "دواء"
+            }
+        ],
+        "barcode": "6221067020129",
+        "size": "100 سم",
+        "price": 50,
+        "autobarcode": false,
+        "company": "النصر",
+        "lowstock": "1"
+    },
+    {
+        "size": "100 سم",
+        "barcode": "93044885",
+        "autobarcode": true,
+        "company": "ارابكوميد",
+        "price": 185,
+        "quantity": 3,
+        "lowstock": "2",
+        "name": "دوفكس 25%",
+        "buyHistory": []
+    },
+    {
+        "size": "100 سم",
+        "autobarcode": true,
+        "price": 50,
+        "buyHistory": [
+            {
+                "name": "سلفاديميدين",
+                "quantity": 5,
+                "total": 150,
+                "distributorName": "دواء",
+                "buyPrice": 30,
+                "date": "2022-10-13"
+            }
+        ],
+        "company": "أكما",
+        "quantity": 3,
+        "lowstock": "5",
+        "name": "سلفاديميدين",
+        "barcode": "6222036900312"
+    },
+    {
+        "barcode": "51824248",
+        "quantity": 4,
+        "name": "سكور جارد",
+        "autobarcode": true,
+        "lowstock": "5",
+        "company": "جولف فيت فارما",
+        "price": 40,
+        "size": "100 مل"
+    },
+    {
+        "name": "كالماجوز",
+        "lowstock": "5",
+        "buyHistory": [],
+        "size": "500 سم",
+        "company": "النصر",
+        "quantity": 0,
+        "barcode": "6221067020440",
+        "price": 125,
+        "autobarcode": false
+    },
+    {
+        "barcode": "89805894",
+        "price": 60,
+        "lowstock": "5",
+        "name": "انالجين 50",
+        "autobarcode": true,
+        "size": "100 سم",
+        "company": "ارابكوميد",
+        "quantity": 24
+    },
+    {
+        "quantity": 2,
+        "lowstock": "2",
+        "buyHistory": [],
+        "size": "100 سم",
+        "autobarcode": true,
+        "name": "هيباتونيك",
+        "price": 120,
+        "company": "ارابكوميد",
+        "barcode": "93059037"
+    },
+    {
+        "company": "ارتميس ايجيبت",
+        "barcode": "55798042",
+        "quantity": 49,
+        "name": "اوكسيبرود",
+        "lowstock": "5",
+        "size": "8 اقراص",
+        "autobarcode": true,
+        "price": 13.75
+    },
+    {
+        "price": 48,
+        "lowstock": "5",
+        "name": "ديكلوسول",
+        "barcode": "93046235",
+        "autobarcode": true,
+        "quantity": 0,
+        "size": "100 سم",
+        "buyHistory": [
+            {
+                "date": "2022-11-16",
+                "quantity": 5,
+                "total": 200,
+                "buyPrice": 40,
+                "distributorName": "الشركه الشرقيه",
+                "name": "ديكلوسول"
+            },
+            {
+                "name": "ديكلوسول",
+                "date": "2022-09-18",
+                "buyPrice": 39,
+                "total": 195,
+                "distributorName": "دواء",
+                "quantity": 5
+            }
+        ],
+        "company": "فارما سويد"
+    },
+    {
+        "price": 46.5,
+        "lowstock": "5",
+        "size": "100 سم",
+        "name": "ترايمك",
+        "barcode": "75811003",
+        "autobarcode": true,
+        "company": "فارما سويد",
+        "quantity": 10
+    },
+    {
+        "autobarcode": true,
+        "size": "100 سم",
+        "company": "بان فيت",
+        "price": 50,
+        "barcode": "83466984",
+        "quantity": 1,
+        "name": "بان سول",
+        "lowstock": "2"
+    },
+    {
+        "barcode": "93035834",
+        "size": "20 سم",
+        "lowstock": "2",
+        "name": "انتوبلكس",
+        "quantity": 4,
+        "price": 65,
+        "company": "تورنيل",
+        "autobarcode": true,
+        "buyHistory": [
+            {
+                "quantity": 3,
+                "total": 150,
+                "distributorName": "الكوثر",
+                "name": "انتوبلكس",
+                "date": "2022-09-30",
+                "buyPrice": 50
+            }
+        ]
+    },
+    {
+        "size": "100 سم",
+        "price": 31,
+        "autobarcode": true,
+        "quantity": 0,
+        "company": "فيت واي",
+        "lowstock": "2",
+        "name": "باور ستوب",
+        "barcode": "35125214"
+    }
+]

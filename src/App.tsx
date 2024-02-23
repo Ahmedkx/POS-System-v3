@@ -12,6 +12,7 @@ import EditProduct from "./Pages/Products/EditProduct.tsx";
 import Settings from "./Pages/Settings/Settings.tsx";
 import FetchData from "./Components/FetchData/FetchData.tsx";
 import Receipt from "./Pages/Receipt/Receipt.tsx";
+import { useProductsStore } from "./Store.js";
 
 function App() {
     return (

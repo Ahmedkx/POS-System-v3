@@ -6,13 +6,16 @@ import Cell from "./Cell";
 import PrintModal from "./PrintModal";
 import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
+import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
 
 export default function Rows({ product }: any) {
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
 
+    console.log(product);
+
     return (
-        <>
+        <div>
             <AddModal opened={addModal} setOpened={setAddModal} product={product} />
             <PrintModal opened={printModal} setOpened={setPrintModal} barcode={product.barcode} />
 
@@ -27,6 +30,7 @@ export default function Rows({ product }: any) {
                 <Cell>{product.company}</Cell>
                 <Cell>{product.price}</Cell>
                 <Cell>{product.sellPrice1}</Cell>
+                {/* <Cell>{useCalculateSellPrice(product.price)}</Cell> */}
                 <Cell>{product.quantity}</Cell>
                 <Flex gap={5} justify={"center"} align={"center"}>
                     <ActionIcon
@@ -63,6 +67,6 @@ export default function Rows({ product }: any) {
                     </Link>
                 </Flex>
             </SimpleGrid>
-        </>
+        </div>
     );
 }

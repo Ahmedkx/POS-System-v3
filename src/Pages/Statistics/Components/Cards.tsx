@@ -74,7 +74,7 @@ export default function Cards() {
                     <Card
                         logo={card.logo}
                         title={card.title}
-                        number={card.number}
+                        number={0}
                         // badge={card.badge}
                     />
                 </Grid.Col>

@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useProductsStore } from "../../Store";
 import { useSettingsStore } from "../../Store";
 import { db } from "../../Firebase-config";
-import { collection, doc, getDoc, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, limit } from "firebase/firestore";
+import data from "../../data.json";
 
 export default function FetchData() {
     const { updateProducts } = useProductsStore();
@@ -20,6 +21,7 @@ export default function FetchData() {
             });
             updateProducts(docs);
         });
+        // updateProducts(data);
     }, []);
 
     useEffect(() => {

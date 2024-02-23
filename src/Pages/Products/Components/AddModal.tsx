@@ -6,6 +6,7 @@ import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarc
 import { useSettingsStore } from "../../../Store";
 import { doc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../../../Firebase-config";
+import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
 
 interface Props {
     opened: boolean;
@@ -34,12 +35,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
 
     useEffect(() => {
         form.setValues({
-            sellPrice:
-                Math.ceil(
-                    (+form.getInputProps("newPrice").value +
-                        +form.getInputProps("newPrice").value * (profit1 / 100)) /
-                        5
-                ) * 5,
+            sellPrice: useCalculateSellPrice(form.getInputProps("newPrice").value),
         });
     }, [form.getInputProps("newPrice").value]);
 
@@ -110,6 +106,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     hideControls
                     my={10}
                     withAsterisk
+                    max={999999}
                     leftSection={<IconCurrencyDollar />}
                     {...form.getInputProps("newPrice")}
                 />

@@ -20,6 +20,14 @@ export default function Navbar() {
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(location.pathname);
 
+    const handleKeyDown = (event) => {
+        // Check if the key pressed is 'Enter'
+        if (event.key === "Enter") {
+            // Prevent the default action to avoid triggering the button click
+            event.preventDefault();
+        }
+    };
+
     const items = links.map((link) => (
         <Link
             key={link.label}
@@ -29,6 +37,7 @@ export default function Navbar() {
             onClick={() => {
                 setActive(link.link);
             }}
+            onKeyDown={handleKeyDown}
         >
             {link.label}
         </Link>

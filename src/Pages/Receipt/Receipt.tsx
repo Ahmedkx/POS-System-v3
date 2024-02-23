@@ -1,20 +1,32 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Flex, Text, SimpleGrid, ActionIcon, Select, Modal } from "@mantine/core";
 import { IconMinus, IconPlus, IconX } from "@tabler/icons-react";
 import Cell from "../Products/Components/Cell";
 import { useProductsStore } from "../../Store";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useForceUpdate } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { addDoc, collection, doc, getDoc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../../Firebase-config";
+import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
 
 export default function Receipt() {
+    const forceUpdate = useForceUpdate();
+
     const navigate = useNavigate();
+    const location = useLocation();
     const [opened, { open, close }] = useDisclosure(false);
     const [loading, setLoading] = useState(false);
     const products = useProductsStore((state) => state.products);
     const [receipt, setReceipt] = useState([]);
+
+    useEffect(() => {
+        if (location.state?.barcode) {
+            addProductScan(location.state?.barcode);
+        }
+    }, []);
+
+    useBarcodeScanner((scannedBarcode) => addProductScan(scannedBarcode));
 
     const totalProfit = receipt.reduce(
         (sum, product) => sum + (product.sellPrice1 - product.price) * product.quantity,
@@ -46,6 +58,19 @@ export default function Receipt() {
             receipt[objIndex].quantity++;
         }
         form.reset();
+    }
+
+    function addProductScan(value: number) {
+        const product = products.find((p) => p.barcode == value);
+        if (product != undefined) {
+            const objIndex = receipt.findIndex((obj) => obj.barcode == value);
+            if (objIndex == -1) {
+                setReceipt((p) => [...p, { ...product, quantity: 1 }]);
+            } else {
+                receipt[objIndex].quantity++;
+            }
+        }
+        forceUpdate();
     }
 
     // function editQuantity(productId, quantity) {
