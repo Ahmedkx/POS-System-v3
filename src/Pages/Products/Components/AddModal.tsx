@@ -4,7 +4,7 @@ import { isNotEmpty, useForm } from "@mantine/form";
 import { Icon123, IconCurrencyDollar, IconDeviceFloppy, IconUser } from "@tabler/icons-react";
 import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
 import { useSettingsStore } from "../../../Store";
-import { doc, increment, updateDoc } from "firebase/firestore";
+import { doc, increment, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../Firebase-config";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
 
@@ -44,6 +44,8 @@ export default function AddModal({ opened, setOpened, product }: Props) {
             quantity: increment(values.quantity),
             price: +values.newPrice,
             sellPrice1: +values.sellPrice,
+            lastUpdated: serverTimestamp()
+
         });
     }
 

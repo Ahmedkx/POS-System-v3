@@ -7,12 +7,13 @@ import PrintModal from "./PrintModal";
 import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
+import useFormattedDate from "../../../Hooks/useFormattedDate";
 
 export default function Rows({ product }: any) {
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
 
-    console.log(product);
+    // console.log(product);
 
     return (
         <div>
@@ -20,7 +21,7 @@ export default function Rows({ product }: any) {
             <PrintModal opened={printModal} setOpened={setPrintModal} barcode={product.barcode} />
 
             <SimpleGrid
-                cols={7}
+                cols={8}
                 style={{ borderBottom: "1px solid #e0e0e0" }}
                 pb={rem(10)}
                 pt={rem(10)}
@@ -32,6 +33,7 @@ export default function Rows({ product }: any) {
                 <Cell>{product.sellPrice1}</Cell>
                 {/* <Cell>{useCalculateSellPrice(product.price)}</Cell> */}
                 <Cell>{product.quantity}</Cell>
+                <Cell>{useFormattedDate(product.lastUpdated?.seconds) }</Cell>
                 <Flex gap={5} justify={"center"} align={"center"}>
                     <ActionIcon
                         variant="default"

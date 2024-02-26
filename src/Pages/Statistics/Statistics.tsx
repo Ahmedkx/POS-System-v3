@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Flex, Grid, Paper, Select, Title } from "@mantine/core";
 import AreaChartGraph from "./Components/AreaChartGraph";
 import Cards from "./Components/Cards";
 import classes from "./Statistics.module.css";
+import { useLoginStore } from "../../Store";
+import { useNavigate } from "react-router-dom";
 
 export default function Statistics() {
+    const navigate = useNavigate();
     const [graphSelect, setGraphSelect] = useState("أرباح");
+    const permission = useLoginStore((state) => state.permission);
+
+    useEffect(() => {
+        if (permission == "guest") {
+            navigate("/");
+            console.log("run");
+        }
+    }, []);
 
     return (
         <Grid pt="lg">
@@ -15,7 +26,7 @@ export default function Statistics() {
 
             <Cards />
 
-            <Grid.Col span={12}>
+            {/* <Grid.Col span={12}>
                 <Paper radius="lg" p="xl">
                     <Flex gap={10}>
                         <Title order={2} mb="md">
@@ -34,7 +45,7 @@ export default function Statistics() {
                         <AreaChartGraph />
                     </Box>
                 </Paper>
-            </Grid.Col>
+            </Grid.Col> */}
         </Grid>
     );
 }

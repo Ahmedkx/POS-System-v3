@@ -92,8 +92,8 @@ export default function EditProduct() {
             lowStock: +values.lowStock,
             autoBarcode: values.autoBarcode,
             barcode: +values.barcode,
-            price: +values.price,
-            sellPrice1: +values.sellPrice1,
+            // price: +values.price,
+            // sellPrice1: +values.sellPrice1,
             quantity: +values.quantity,
         });
         setLoading(true);

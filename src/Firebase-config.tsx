@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import {
+    getFirestore,
+    persistentLocalCache,
+    persistentMultipleTabManager,
+    initializeFirestore,
+    memoryLocalCache,
+    disableNetwork,
+} from "firebase/firestore";
 import Products from "./data.json";
 import useCalculateSellPrice from "./Hooks/useCalculateSellPrice";
 
@@ -16,7 +23,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+// export const db = getFirestore(app);
+export const db = initializeFirestore(app, {
+    localCache: persistentLocalCache(
+        /*settings*/ { tabManager: persistentMultipleTabManager() }
+    ),
+});
+
+// await disableNetwork(db);
 
 // const querySnapshot = await getDocs(collection(db, "Products"));
 // querySnapshot.forEach((doc) => {

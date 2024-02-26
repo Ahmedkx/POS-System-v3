@@ -8,9 +8,9 @@ export default function Layout() {
             <Navbar />
 
             <Box bg="#f3f4f6">
-                <Container size="xl" pb="lg" mih="calc(100vh - 65px)">
+                <Box size="xl" pb="lg" mih="calc(100vh - 65px)">
                     <Outlet />
-                </Container>
+                </Box>
             </Box>
         </>
     );

@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Grid } from "@mantine/core";
-import { collection, getAggregateFromServer, query, sum, where } from "firebase/firestore";
+import {
+    collection,
+    getAggregateFromServer,
+    query,
+    sum,
+    where,
+} from "firebase/firestore";
 import { db } from "../../../Firebase-config";
 
 import Trend from "../../../Images/Trend.json";
@@ -15,7 +21,9 @@ export default function Cards() {
     const [todaySoldProducts, setTodaySoldProducts] = useState(0);
 
     const today = new Date();
-    const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    const dateString = `${today.getDate()}/${
+        today.getMonth() + 1
+    }/${today.getFullYear()}`;
 
     useEffect(() => {
         async function getData() {
@@ -74,7 +82,7 @@ export default function Cards() {
                     <Card
                         logo={card.logo}
                         title={card.title}
-                        number={0}
+                        number={card.number}
                         // badge={card.badge}
                     />
                 </Grid.Col>

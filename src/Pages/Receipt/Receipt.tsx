@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Flex, Text, SimpleGrid, ActionIcon, Select, Modal } from "@mantine/core";
+import {
+    Button,
+    Flex,
+    Text,
+    SimpleGrid,
+    ActionIcon,
+    Select,
+    Modal,
+} from "@mantine/core";
 import { IconMinus, IconPlus, IconX } from "@tabler/icons-react";
 import Cell from "../Products/Components/Cell";
 import { useProductsStore } from "../../Store";
 import { useDisclosure, useForceUpdate } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { addDoc, collection, doc, getDoc, increment, updateDoc } from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    doc,
+    getDoc,
+    increment,
+    updateDoc,
+} from "firebase/firestore";
 import { db } from "../../Firebase-config";
 import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
 
@@ -19,7 +34,6 @@ export default function Receipt() {
     const [loading, setLoading] = useState(false);
     const products = useProductsStore((state) => state.products);
     const [receipt, setReceipt] = useState([]);
-
     useEffect(() => {
         if (location.state?.barcode) {
             addProductScan(location.state?.barcode);
@@ -29,14 +43,18 @@ export default function Receipt() {
     useBarcodeScanner((scannedBarcode) => addProductScan(scannedBarcode));
 
     const totalProfit = receipt.reduce(
-        (sum, product) => sum + (product.sellPrice1 - product.price) * product.quantity,
+        (sum, product) =>
+            sum + (product.sellPrice1 - product.price) * product.quantity,
         0
     );
     const totalPrice = receipt.reduce(
         (sum, product) => sum + product.sellPrice1 * product.quantity,
         0
     );
-    const totalQuantity = receipt.reduce((sum, product) => sum + product.quantity, 0);
+    const totalQuantity = receipt.reduce(
+        (sum, product) => sum + product.quantity,
+        0
+    );
 
     const form = useForm({
         initialValues: {
@@ -73,15 +91,6 @@ export default function Receipt() {
         forceUpdate();
     }
 
-    // function editQuantity(productId, quantity) {
-    //     const objIndex = receipt.findIndex((obj) => obj.id == productId);
-    //     if (receipt[objIndex].quantity >= 1) {
-    //         receipt[objIndex].quantity = receipt[objIndex].quantity + quantity;
-    //     } else {
-    //         deleteProduct(productId);
-    //     }
-    // }
-
     function editQuantity(productId, quantity) {
         const objIndex = receipt.findIndex((obj) => obj.id === productId);
         const updatedReceipt = [...receipt];
@@ -101,7 +110,9 @@ export default function Receipt() {
     }
 
     const today = new Date();
-    const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    const dateString = `${today.getDate()}/${
+        today.getMonth() + 1
+    }/${today.getFullYear()}`;
 
     async function saveRecipt() {
         setLoading(true);
@@ -116,7 +127,10 @@ export default function Receipt() {
             const productRef = doc(db, "Products", product.id);
             const productDoc = await getDoc(productRef);
             const currentQuantity = productDoc.data().quantity;
-            const updatedQuantity = Math.max(0, currentQuantity - product.quantity);
+            const updatedQuantity = Math.max(
+                0,
+                currentQuantity - product.quantity
+            );
             updateDoc(productRef, {
                 quantity: updatedQuantity,
             });
@@ -131,7 +145,10 @@ export default function Receipt() {
                 <form onSubmit={form.onSubmit((values) => addProduct(values))}>
                     <Select
                         data={products.map((product) => {
-                            return { label: product.name, value: `${product.id}` };
+                            return {
+                                label: product.name,
+                                value: `${product.id}`,
+                            };
                         })}
                         label="اضافة منتج"
                         placeholder="اختر المنتج"
@@ -139,25 +156,34 @@ export default function Receipt() {
                         {...form.getInputProps("productId")}
                     />
                     <Flex justify="center">
-                        <Button leftSection={<IconPlus />} type="submit" mt="md">
+                        <Button
+                            leftSection={<IconPlus />}
+                            type="submit"
+                            mt="md"
+                        >
                             اضافة
                         </Button>
                     </Flex>
                 </form>
             </Modal>
             <Flex pt="lg" direction="column">
-                <Text size="xl" ta="center" fw="bold" mb="md">
+                {/* <Text size="xl" ta="center" fw="bold" mb="md">
                     فاتورة
-                </Text>
-                <Button
+                </Text> */}
+                {/* <Button
                     style={{ width: "fit-content" }}
                     mb="md"
                     leftSection={<IconPlus />}
                     onClick={open}
                 >
                     اضافة منتج
-                </Button>
-                <SimpleGrid cols={6} mb={5} pb={10} style={{ borderBottom: "1px solid #e0e0e0" }}>
+                </Button> */}
+                <SimpleGrid
+                    cols={6}
+                    mb={5}
+                    pb={10}
+                    style={{ borderBottom: "1px solid #e0e0e0" }}
+                >
                     <Cell>الاسم</Cell>
                     <Cell>العبوة</Cell>
                     <Cell>الشركة</Cell>
@@ -179,7 +205,10 @@ export default function Receipt() {
                         <Cell>{product.sellPrice1}</Cell>
                         <Cell>
                             <Flex justify="center" align="center">
-                                <ActionIcon radius="xl" onClick={() => editQuantity(product.id, 1)}>
+                                <ActionIcon
+                                    radius="xl"
+                                    onClick={() => editQuantity(product.id, 1)}
+                                >
                                     <IconPlus />
                                 </ActionIcon>
                                 <Text component="span" mx={10} fw="bold">
@@ -205,7 +234,12 @@ export default function Receipt() {
                         </Cell>
                     </SimpleGrid>
                 ))}
-                <SimpleGrid cols={1} pb={10} pt={10} style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <SimpleGrid
+                    cols={1}
+                    pb={10}
+                    pt={10}
+                    style={{ borderBottom: "1px solid #e0e0e0" }}
+                >
                     <Cell>الاجمالى : {totalPrice} جنيه</Cell>
                 </SimpleGrid>
                 <Button

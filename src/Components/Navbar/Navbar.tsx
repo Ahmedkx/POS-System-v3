@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Container, Group, Burger, Box, Avatar, Flex, Menu, Button, rem } from "@mantine/core";
+import {
+    Container,
+    Group,
+    Burger,
+    Box,
+    Avatar,
+    Flex,
+    Menu,
+    Button,
+    rem,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
@@ -48,7 +58,14 @@ export default function Navbar() {
             <Container size="xl">
                 <Flex justify="space-between" align="center" h="64px">
                     <Flex gap="15px">
-                        <Logo width="40px" fill="white" />
+                        <Link
+                            to="/"
+                            onClick={() => {
+                                setActive("");
+                            }}
+                        >
+                            <Logo width="40px" fill="white" />
+                        </Link>
                         <Group gap={5} visibleFrom="xs">
                             {items}
                         </Group>
@@ -65,7 +82,11 @@ export default function Navbar() {
                         />
                         <Menu>
                             <Menu.Target>
-                                <Avatar style={{ cursor: "pointer" }} radius="xl" color="white" />
+                                <Avatar
+                                    style={{ cursor: "pointer" }}
+                                    radius="xl"
+                                    color="white"
+                                />
                             </Menu.Target>
                             <Menu.Dropdown>
                                 <Menu.Item

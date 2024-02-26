@@ -7,6 +7,13 @@ export const useProductsStore = create((set) => ({
     },
 }));
 
+export const useLoginStore = create((set) => ({
+    permission: "guest",
+    updatePermission: (permission: string) => {
+        set({ permission: permission });
+    },
+}));
+
 export const useSettingsStore = create((set) => ({
     profit1: null,
     updateProfit: (profit: number) => {
