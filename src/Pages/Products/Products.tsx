@@ -12,22 +12,18 @@ import {
     Center,
 } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
-import {
-    IconPlus,
-    IconSearch,
-    IconPencil,
-    IconPrinter,
-} from "@tabler/icons-react";
+import { IconPlus, IconSearch, IconPencil, IconPrinter } from "@tabler/icons-react";
 import Cell from "./Components/Cell";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 // import docs from "../../data.json";
 import Row from "./Components/Row";
-import { useProductsStore } from "../../Store";
+import { useLoginStore, useProductsStore } from "../../Store";
 
 export default function Products() {
     const docs = useProductsStore((state) => state.products);
+    const user = useLoginStore((state) => state.user);
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
     const [searchText, setSearchText] = useDebouncedState("", 100);
@@ -67,9 +63,11 @@ export default function Products() {
                 }}
             >
                 <Flex justify="space-between" gap={25}>
-                    <Link to="/products/add">
-                        <Button leftSection={<IconPlus />}>اضافة منتج</Button>
-                    </Link>
+                    {user == "admin" && (
+                        <Link to="/products/add">
+                            <Button leftSection={<IconPlus />}>اضافة منتج</Button>
+                        </Link>
+                    )}
                     <TextInput
                         placeholder="البحث"
                         mb="md"
@@ -78,21 +76,16 @@ export default function Products() {
                         style={{ flex: 1 }}
                     />
                 </Flex>
-                <SimpleGrid
-                    cols={8}
-                    mb={5}
-                    pb={10}
-                    style={{ borderBottom: "1px solid #e0e0e0" }}
-                >
+                <SimpleGrid cols={8} mb={5} pb={10} style={{ borderBottom: "1px solid #e0e0e0" }}>
                     {/* Header cells */}
                     <Cell>الاسم</Cell>
                     <Cell>العبوة</Cell>
                     <Cell>الشركة</Cell>
-                    <Cell>السعر</Cell>
+                    {user == "admin" && <Cell>السعر</Cell>}
                     <Cell>سعر البيع</Cell>
-                    <Cell>الكمية</Cell>
-                    <Cell>اخر تعديل للسعر</Cell>
-                    <Cell>تعديل</Cell>
+                    {user == "admin" && <Cell>الكمية</Cell>}
+                    {user == "admin" && <Cell>اخر تعديل للسعر</Cell>}
+                    {user == "admin" && <Cell>تعديل</Cell>}
                 </SimpleGrid>
             </Box>
 

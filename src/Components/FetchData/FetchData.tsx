@@ -2,15 +2,7 @@ import { useEffect } from "react";
 import { useProductsStore } from "../../Store";
 import { useSettingsStore } from "../../Store";
 import { db } from "../../Firebase-config";
-import {
-    collection,
-    doc,
-    getDoc,
-    onSnapshot,
-    orderBy,
-    query,
-    limit,
-} from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, limit } from "firebase/firestore";
 import data from "../../data.json";
 
 export default function FetchData() {
@@ -21,11 +13,7 @@ export default function FetchData() {
     const { updateProductSizes } = useSettingsStore();
 
     useEffect(() => {
-        const q = query(
-            collection(db, "Products"),
-            orderBy("name")
-            // , limit(50)
-        );
+        const q = query(collection(db, "Products"), orderBy("name"), limit(10));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const docs = [];
             querySnapshot.forEach((doc) => {

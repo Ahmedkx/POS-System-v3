@@ -44,8 +44,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
             quantity: increment(values.quantity),
             price: +values.newPrice,
             sellPrice1: +values.sellPrice,
-            lastUpdated: serverTimestamp()
-
+            lastUpdated: serverTimestamp(),
         });
     }
 
@@ -88,6 +87,12 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     withAsterisk
                     leftSection={<Icon123 />}
                     {...form.getInputProps("quantity")}
+                />
+                <MonthPickerInput
+                    label="Pick date"
+                    placeholder="Pick date"
+                    value={value}
+                    onChange={setValue}
                 />
                 <NumberInput
                     label="السعر القديم"

@@ -8,8 +8,10 @@ import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
 import useFormattedDate from "../../../Hooks/useFormattedDate";
+import { useLoginStore } from "../../../Store";
 
 export default function Rows({ product }: any) {
+    const user = useLoginStore((state) => state.user);
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
 
@@ -29,45 +31,54 @@ export default function Rows({ product }: any) {
                 <Cell>{product.name}</Cell>
                 <Cell>{product.size}</Cell>
                 <Cell>{product.company}</Cell>
-                <Cell>{product.price}</Cell>
+                {user == "admin" && <Cell>{product.price}</Cell>}
                 <Cell>{product.sellPrice1}</Cell>
-                {/* <Cell>{useCalculateSellPrice(product.price)}</Cell> */}
-                <Cell>{product.quantity}</Cell>
-                <Cell>{useFormattedDate(product.lastUpdated?.seconds) }</Cell>
-                <Flex gap={5} justify={"center"} align={"center"}>
-                    <ActionIcon
-                        variant="default"
-                        size="xl"
-                        radius="xl"
-                        aria-label="Settings"
-                        onClick={() => setAddModal(true)}
-                    >
-                        <Tooltip label="اضافة" offset={10} withArrow>
-                            <IconPlus style={{ width: "70%", height: "70%" }} stroke={1.5} />
-                        </Tooltip>
-                    </ActionIcon>
-
-                    <ActionIcon
-                        variant="default"
-                        size="xl"
-                        radius="xl"
-                        aria-label="Settings"
-                        onClick={() => setPrintModal(true)}
-                        disabled={!product.autoBarcode}
-                    >
-                        <Tooltip label="طباعة الباركود" offset={10} withArrow>
-                            <IconPrinter style={{ width: "70%", height: "70%" }} stroke={1.5} />
-                        </Tooltip>
-                    </ActionIcon>
-
-                    <Link to={`/products/edit/${product.id}`}>
-                        <ActionIcon variant="default" size="xl" radius="xl" aria-label="Settings">
-                            <Tooltip label="تعديل" offset={10} withArrow>
-                                <IconPencil style={{ width: "70%", height: "70%" }} stroke={1.5} />
+                {user == "admin" && <Cell>{product.quantity}</Cell>}
+                {user == "admin" && <Cell>{useFormattedDate(product.lastUpdated?.seconds)}</Cell>}
+                {user == "admin" && (
+                    <Flex gap={5} justify={"center"} align={"center"}>
+                        <ActionIcon
+                            variant="default"
+                            size="xl"
+                            radius="xl"
+                            aria-label="Settings"
+                            onClick={() => setAddModal(true)}
+                        >
+                            <Tooltip label="اضافة" offset={10} withArrow>
+                                <IconPlus style={{ width: "70%", height: "70%" }} stroke={1.5} />
                             </Tooltip>
                         </ActionIcon>
-                    </Link>
-                </Flex>
+
+                        <ActionIcon
+                            variant="default"
+                            size="xl"
+                            radius="xl"
+                            aria-label="Settings"
+                            onClick={() => setPrintModal(true)}
+                            disabled={!product.autoBarcode}
+                        >
+                            <Tooltip label="طباعة الباركود" offset={10} withArrow>
+                                <IconPrinter style={{ width: "70%", height: "70%" }} stroke={1.5} />
+                            </Tooltip>
+                        </ActionIcon>
+
+                        <Link to={`/products/edit/${product.id}`}>
+                            <ActionIcon
+                                variant="default"
+                                size="xl"
+                                radius="xl"
+                                aria-label="Settings"
+                            >
+                                <Tooltip label="تعديل" offset={10} withArrow>
+                                    <IconPencil
+                                        style={{ width: "70%", height: "70%" }}
+                                        stroke={1.5}
+                                    />
+                                </Tooltip>
+                            </ActionIcon>
+                        </Link>
+                    </Flex>
+                )}
             </SimpleGrid>
         </div>
     );

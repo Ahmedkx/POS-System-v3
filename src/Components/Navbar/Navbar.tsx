@@ -17,14 +17,10 @@ import classes from "./Navbar.module.css";
 import Logo from "../../Images/Logo";
 import { IconLogout, IconSettings } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-
-const links = [
-    { link: "/", label: "الرئيسية" },
-    { link: "/statistics", label: "الاحصائيات" },
-    { link: "/products", label: "الأدوية" },
-];
+import { useLoginStore } from "../../Store";
 
 export default function Navbar() {
+    const user = useLoginStore((state) => state.user);
     const navigate = useNavigate();
     const location = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
@@ -38,20 +34,22 @@ export default function Navbar() {
         }
     };
 
-    const items = links.map((link) => (
-        <Link
-            key={link.label}
-            to={link.link}
-            className={classes.link}
-            data-active={active === link.link || undefined}
-            onClick={() => {
-                setActive(link.link);
-            }}
-            onKeyDown={handleKeyDown}
-        >
-            {link.label}
-        </Link>
-    ));
+    function Item({ link, label }) {
+        return (
+            <Link
+                key={label}
+                to={link}
+                className={classes.link}
+                data-active={active === link || undefined}
+                onClick={() => {
+                    setActive(link);
+                }}
+                onKeyDown={handleKeyDown}
+            >
+                {label}
+            </Link>
+        );
+    }
 
     return (
         <Box component="header" className={classes.header}>
@@ -67,7 +65,11 @@ export default function Navbar() {
                             <Logo width="40px" fill="white" />
                         </Link>
                         <Group gap={5} visibleFrom="xs">
-                            {items}
+                            <Item link={"/"} label="الرئيسية" />
+                            {user == "admin" && (
+                                <Item link={"/statistics"} label="الاحصائيات" />
+                            )}
+                            <Item link={"/products"} label="الأدوية" />
                         </Group>
                     </Flex>
 
@@ -89,19 +91,21 @@ export default function Navbar() {
                                 />
                             </Menu.Target>
                             <Menu.Dropdown>
-                                <Menu.Item
-                                    leftSection={
-                                        <IconSettings
-                                            style={{
-                                                width: rem(14),
-                                                height: rem(14),
-                                            }}
-                                        />
-                                    }
-                                    onClick={() => navigate("/settings")}
-                                >
-                                    الاعدادات
-                                </Menu.Item>
+                                {user == "admin" && (
+                                    <Menu.Item
+                                        leftSection={
+                                            <IconSettings
+                                                style={{
+                                                    width: rem(14),
+                                                    height: rem(14),
+                                                }}
+                                            />
+                                        }
+                                        onClick={() => navigate("/settings")}
+                                    >
+                                        الاعدادات
+                                    </Menu.Item>
+                                )}
                                 <Menu.Item
                                     color="red"
                                     leftSection={

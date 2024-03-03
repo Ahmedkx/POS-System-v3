@@ -8,9 +8,9 @@ export const useProductsStore = create((set) => ({
 }));
 
 export const useLoginStore = create((set) => ({
-    permission: "guest",
-    updatePermission: (permission: string) => {
-        set({ permission: permission });
+    user: "admin",
+    updateUser: (user: string) => {
+        set({ user: user });
     },
 }));
 

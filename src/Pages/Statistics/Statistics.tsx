@@ -9,12 +9,11 @@ import { useNavigate } from "react-router-dom";
 export default function Statistics() {
     const navigate = useNavigate();
     const [graphSelect, setGraphSelect] = useState("أرباح");
-    const permission = useLoginStore((state) => state.permission);
+    const user = useLoginStore((state) => state.user);
 
     useEffect(() => {
-        if (permission == "guest") {
+        if (user == "cashier") {
             navigate("/");
-            console.log("run");
         }
     }, []);
 
@@ -24,7 +23,7 @@ export default function Statistics() {
                 <Title order={2}>الاحصائيات</Title>
             </Grid.Col> */}
 
-            <Cards />
+            {user != "cashier" && <Cards />}
 
             {/* <Grid.Col span={12}>
                 <Paper radius="lg" p="xl">

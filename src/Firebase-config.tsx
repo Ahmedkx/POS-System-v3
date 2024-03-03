@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDocs } from "firebase/firestore";
 import {
     getFirestore,
     persistentLocalCache,
@@ -10,6 +9,7 @@ import {
 } from "firebase/firestore";
 import Products from "./data.json";
 import useCalculateSellPrice from "./Hooks/useCalculateSellPrice";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -25,10 +25,12 @@ const app = initializeApp(firebaseConfig);
 
 // export const db = getFirestore(app);
 export const db = initializeFirestore(app, {
-    localCache: persistentLocalCache(
-        /*settings*/ { tabManager: persistentMultipleTabManager() }
-    ),
+    localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
 });
+
+export const auth = getAuth();
+
+// fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g
 
 // await disableNetwork(db);
 
