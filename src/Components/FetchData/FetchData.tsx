@@ -13,7 +13,7 @@ export default function FetchData() {
     const { updateProductSizes } = useSettingsStore();
 
     useEffect(() => {
-        const q = query(collection(db, "Products"), orderBy("name"), limit(10));
+        const q = query(collection(db, "Products"), orderBy("name"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const docs = [];
             querySnapshot.forEach((doc) => {

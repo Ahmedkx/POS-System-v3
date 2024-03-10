@@ -1,16 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-    Container,
-    Group,
-    Burger,
-    Box,
-    Avatar,
-    Flex,
-    Menu,
-    Button,
-    rem,
-} from "@mantine/core";
+import { Container, Group, Burger, Box, Avatar, Flex, Menu, Button, rem } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
@@ -20,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginStore } from "../../Store";
 
 export default function Navbar() {
-    const user = useLoginStore((state) => state.user);
+    const isAdmin = useLoginStore((state) => state.admin);
     const navigate = useNavigate();
     const location = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
@@ -66,10 +56,9 @@ export default function Navbar() {
                         </Link>
                         <Group gap={5} visibleFrom="xs">
                             <Item link={"/"} label="الرئيسية" />
-                            {user == "admin" && (
-                                <Item link={"/statistics"} label="الاحصائيات" />
-                            )}
+                            {isAdmin && <Item link={"/statistics"} label="الاحصائيات" />}
                             <Item link={"/products"} label="الأدوية" />
+                            <Item link={"/expirydates"} label="تاريخ الصلاحية" />
                         </Group>
                     </Flex>
 
@@ -84,14 +73,10 @@ export default function Navbar() {
                         />
                         <Menu>
                             <Menu.Target>
-                                <Avatar
-                                    style={{ cursor: "pointer" }}
-                                    radius="xl"
-                                    color="white"
-                                />
+                                <Avatar style={{ cursor: "pointer" }} radius="xl" color="white" />
                             </Menu.Target>
                             <Menu.Dropdown>
-                                {user == "admin" && (
+                                {isAdmin && (
                                     <Menu.Item
                                         leftSection={
                                             <IconSettings

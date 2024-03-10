@@ -1,38 +1,62 @@
 import { initializeApp } from "firebase/app";
 import {
-    getFirestore,
     persistentLocalCache,
     persistentMultipleTabManager,
     initializeFirestore,
-    memoryLocalCache,
-    disableNetwork,
+    addDoc,
+    collection,
+    getDocs,
+    getFirestore,
 } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Products from "./data.json";
 import useCalculateSellPrice from "./Hooks/useCalculateSellPrice";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Live
 const firebaseConfig = {
-    apiKey: "AIzaSyC6JRTK49p6OJnVqp9b7_1ZVyNq3c5zdtE",
-    authDomain: "prices2-test.firebaseapp.com",
-    projectId: "prices2-test",
-    storageBucket: "prices2-test.appspot.com",
-    messagingSenderId: "630106354685",
-    appId: "1:630106354685:web:d259d32b09d6243ce41f94",
+    apiKey: "AIzaSyD7gKF47uzz4PWbWKBtUu-BC_vzY-pNjGk",
+    authDomain: "prices-v2.firebaseapp.com",
+    projectId: "prices-v2",
+    storageBucket: "prices-v2.appspot.com",
+    messagingSenderId: "684344931390",
+    appId: "1:684344931390:web:0080ec02a2064bdfef8d6f",
 };
+
+// Testing
+// const firebaseConfig = {
+//     apiKey: "AIzaSyC6JRTK49p6OJnVqp9b7_1ZVyNq3c5zdtE",
+//     authDomain: "prices2-test.firebaseapp.com",
+//     projectId: "prices2-test",
+//     storageBucket: "prices2-test.appspot.com",
+//     messagingSenderId: "630106354685",
+//     appId: "1:630106354685:web:d259d32b09d6243ce41f94",
+// };
 
 const app = initializeApp(firebaseConfig);
 
-// export const db = getFirestore(app);
-export const db = initializeFirestore(app, {
-    localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
-});
+export const db = getFirestore(app);
+// export const db = initializeFirestore(app, {
+//     localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+// });
 
 export const auth = getAuth();
 
-// fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g
+// signInWithEmailAndPassword(
+//     auth,
+//     "test",
+//     "fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g"
+// )
+//     .then((userCredential) => {
+//         // Signed in
+//         const user = userCredential.user;
+//         // ...
+//     })
+//     .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//     });
 
-// await disableNetwork(db);
+// fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g
 
 // const querySnapshot = await getDocs(collection(db, "Products"));
 // querySnapshot.forEach((doc) => {
@@ -46,11 +70,11 @@ export const auth = getAuth();
 //             company: Products[i].company,
 //             price: Products[i].price,
 //             sellPrice1: useCalculateSellPrice(Products[i].price),
-//             quantity: Products[i].quantity,
+//             quantity: 0,
 //             size: Products[i].size,
 //             autoBarcode: Products[i].autobarcode,
 //             barcode: Products[i].barcode,
-//             lowStock: Products[i].lowstock,
+//             lowStock: false,
 //         });
 //     }
 //     console.log("Finished");
@@ -72,7 +96,7 @@ export const auth = getAuth();
 // const appOld = initializeApp(firebaseConfigOld);
 // export const db = getFirestore(appOld);
 
-// const querySnapshot = await getDocs(collection(db, "Settings"));
+// const querySnapshot = await getDocs(collection(db, "Products"));
 // const data = [];
 // querySnapshot.forEach((doc) => {
 //     data.push(doc.data());

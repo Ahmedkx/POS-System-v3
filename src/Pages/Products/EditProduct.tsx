@@ -38,7 +38,7 @@ export default function EditProduct() {
             name: "",
             company: "",
             size: "",
-            lowStock: "",
+            lowStock: false,
             autoBarcode: false,
             barcode: 0,
             price: 0,
@@ -145,7 +145,7 @@ export default function EditProduct() {
                         hideControls
                         allowNegative={false}
                         leftSection={<Icon123 />}
-                        max={1}
+                        max={99999}
                         {...form.getInputProps("price")}
                     />
                     <NumberInput
@@ -166,7 +166,7 @@ export default function EditProduct() {
                         leftSection={<Icon123 />}
                         {...form.getInputProps("quantity")}
                     />
-                    <NumberInput
+                    {/* <NumberInput
                         label="النواقص"
                         placeholder="ادخل كمية النواقص"
                         withAsterisk
@@ -175,6 +175,12 @@ export default function EditProduct() {
                         allowDecimal={false}
                         leftSection={<Icon123 />}
                         {...form.getInputProps("lowStock")}
+                    /> */}
+                    <Checkbox
+                        label="النواقص"
+                        {...form.getInputProps("lowStock", {
+                            type: "checkbox",
+                        })}
                     />
                     <Checkbox
                         label="باركود تلقائى"

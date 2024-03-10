@@ -11,7 +11,7 @@ import useFormattedDate from "../../../Hooks/useFormattedDate";
 import { useLoginStore } from "../../../Store";
 
 export default function Rows({ product }: any) {
-    const user = useLoginStore((state) => state.user);
+    const isAdmin = useLoginStore((state) => state.admin);
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
 
@@ -31,11 +31,11 @@ export default function Rows({ product }: any) {
                 <Cell>{product.name}</Cell>
                 <Cell>{product.size}</Cell>
                 <Cell>{product.company}</Cell>
-                {user == "admin" && <Cell>{product.price}</Cell>}
+                {isAdmin && <Cell>{product.price}</Cell>}
                 <Cell>{product.sellPrice1}</Cell>
-                {user == "admin" && <Cell>{product.quantity}</Cell>}
-                {user == "admin" && <Cell>{useFormattedDate(product.lastUpdated?.seconds)}</Cell>}
-                {user == "admin" && (
+                {isAdmin && <Cell>{product.quantity}</Cell>}
+                {isAdmin && <Cell>{useFormattedDate(product.lastUpdated?.seconds)}</Cell>}
+                {isAdmin && (
                     <Flex gap={5} justify={"center"} align={"center"}>
                         <ActionIcon
                             variant="default"

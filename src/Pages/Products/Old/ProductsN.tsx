@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import {
     Box,
@@ -10,6 +10,8 @@ import {
     Tooltip,
     Loader,
     Center,
+    Table,
+    ScrollArea,
 } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
 import { IconPlus, IconSearch, IconPencil, IconPrinter } from "@tabler/icons-react";
@@ -21,6 +23,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import Row from "./Components/Row";
 import { useLoginStore, useProductsStore } from "../../Store";
 import { MonthPicker } from "@mantine/dates";
+import useFormattedDate from "../../Hooks/useFormattedDate";
 
 export default function Products() {
     const docs = useProductsStore((state) => state.products);
@@ -52,6 +55,8 @@ export default function Products() {
         handleSearch(searchText);
     }, [searchText, docs]);
 
+    const outter = forwardRef((props, ref) => <Table.Tbody ref={ref} {...props}></Table.Tbody>);
+
     return (
         <>
             <Box
@@ -59,7 +64,7 @@ export default function Products() {
                     position: "sticky",
                     top: "65px",
                     background: "#f3f4f6",
-                    paddingTop: 25, // using px directly, consider using a consistent unit like rem if needed
+                    paddingTop: 25,
                     zIndex: 1,
                 }}
             >
@@ -77,42 +82,48 @@ export default function Products() {
                         style={{ flex: 1 }}
                     />
                 </Flex>
-                <SimpleGrid cols={8} mb={5} pb={10} style={{ borderBottom: "1px solid #e0e0e0" }}>
-                    {/* Header cells */}
-                    <Cell>الاسم</Cell>
-                    <Cell>العبوة</Cell>
-                    <Cell>الشركة</Cell>
-                    {isAdmin && <Cell>السعر</Cell>}
-                    <Cell>سعر البيع</Cell>
-                    {isAdmin && <Cell>الكمية</Cell>}
-                    {isAdmin && <Cell>اخر تعديل للسعر</Cell>}
-                    {isAdmin && <Cell>تعديل</Cell>}
-                </SimpleGrid>
             </Box>
-
-            {loading ? (
-                <Center mt="lg">
-                    <Loader />
-                </Center>
-            ) : (
+            <Table stickyHeader stickyHeaderOffset={140}>
+                <Table.Thead>
+                    <Table.Tr>
+                        <Table.Th>الاسم</Table.Th>
+                        <Table.Th>العبوة</Table.Th>
+                        <Table.Th>الشركة</Table.Th>
+                        <Table.Th>السعر</Table.Th>
+                        <Table.Th>سعر البيع</Table.Th>
+                        <Table.Th>الكمية</Table.Th>
+                        <Table.Th>اخر تعديل للسعر</Table.Th>
+                        <Table.Th>تعديل</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                {/* <Table.Tbody fw="bold"> */}
                 <List
-                    height={640}
+                    height={1920}
                     itemCount={products.length}
                     itemSize={100}
-                    width={"100%"}
+                    width={1080}
                     style={{
                         direction: "rtl",
                     }}
+                    outerElementType={outter}
                 >
                     {({ index, style }) => (
-                        <div style={style}>
-                            {/* You might need to adjust this part to properly render each product */}
-                            <Row product={products[index]}></Row>
-                            {/* Add other product details */}
-                        </div>
+                        <Table.Tr key={products[index].name} style={style}>
+                            <Table.Td>{products[index]?.name}</Table.Td>
+                            <Table.Td>{products[index]?.size}</Table.Td>
+                            <Table.Td>{products[index]?.company}</Table.Td>
+                            <Table.Td>{products[index]?.price}</Table.Td>
+                            <Table.Td>{products[index]?.sellPrice1}</Table.Td>
+                            <Table.Td>{products[index]?.quantity}</Table.Td>
+                            <Table.Td>
+                                {useFormattedDate(products[index].lastUpdated?.seconds)}
+                            </Table.Td>
+                            <Table.Td>{products[index]?.quantity}</Table.Td>
+                        </Table.Tr>
                     )}
                 </List>
-            )}
+                {/* </Table.Tbody> */}
+            </Table>
         </>
     );
 }

@@ -1,12 +1,27 @@
-import { useEffect } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Button, Flex, Modal, NumberInput, Select } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { Icon123, IconCurrencyDollar, IconDeviceFloppy, IconUser } from "@tabler/icons-react";
+import {
+    Icon123,
+    IconCurrencyDollar,
+    IconDeviceFloppy,
+    IconUser,
+    IconCalendar,
+} from "@tabler/icons-react";
 import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
 import { useSettingsStore } from "../../../Store";
-import { doc, increment, updateDoc, serverTimestamp } from "firebase/firestore";
+import {
+    doc,
+    increment,
+    updateDoc,
+    serverTimestamp,
+    addDoc,
+    collection,
+    setDoc,
+} from "firebase/firestore";
 import { db } from "../../../Firebase-config";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
+import { MonthPicker, MonthPickerInput } from "@mantine/dates";
 
 interface Props {
     opened: boolean;
@@ -15,6 +30,19 @@ interface Props {
 }
 
 export default function AddModal({ opened, setOpened, product }: Props) {
+    const [timeStamp, setTimeStamp] = useState<number>(0);
+    const [date, setDate] = useState<string>("");
+
+    const handleMonthChange = (timestampString: any) => {
+        const timestamp = Math.floor(timestampString.getTime() / 1000);
+        setTimeStamp(timestamp);
+
+        const date = new Date(timestampString); // Convert timestamp string to JavaScript Date object
+        const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Get month and pad with zero if needed
+        const year = date.getFullYear().toString().slice(-2);
+        setDate(month + year);
+    };
+
     const profit1 = useSettingsStore((state) => state.profit1);
     const distributorsNames = useSettingsStore((state) => state.distributorsNames);
     const form = useForm({
@@ -46,6 +74,17 @@ export default function AddModal({ opened, setOpened, product }: Props) {
             sellPrice1: +values.sellPrice,
             lastUpdated: serverTimestamp(),
         });
+
+        const docRef = doc(db, "Quantities", `${product.barcode}:${date}`);
+        await setDoc(
+            docRef,
+            {
+                expiryDate: timeStamp,
+                quantity: increment(values.quantity),
+                name: `${product.name} ${product.size} ${product.company}`,
+            },
+            { merge: true }
+        );
     }
 
     return (
@@ -89,10 +128,12 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     {...form.getInputProps("quantity")}
                 />
                 <MonthPickerInput
-                    label="Pick date"
-                    placeholder="Pick date"
-                    value={value}
-                    onChange={setValue}
+                    leftSection={<IconCalendar />}
+                    leftSectionPointerEvents="none"
+                    // value={month}
+                    onChange={handleMonthChange}
+                    label="تاريخ انتهاء الصلاحية"
+                    placeholder="اختر التاريخ"
                 />
                 <NumberInput
                     label="السعر القديم"

@@ -8,9 +8,10 @@ export const useProductsStore = create((set) => ({
 }));
 
 export const useLoginStore = create((set) => ({
-    user: "admin",
-    updateUser: (user: string) => {
-        set({ user: user });
+    user: true,
+    admin: true,
+    toggleUser: () => {
+        set({ user: false, admin: true });
     },
 }));
 

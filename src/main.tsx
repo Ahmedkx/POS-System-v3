@@ -1,8 +1,10 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/dates/styles.css";
+import "@mantine/charts/styles.css";
 import { DirectionProvider, MantineProvider, rem, Loader } from "@mantine/core";
 import { CustomLoader } from "./Components/CustomLoader/CustomLoader.tsx";
 import { Notifications } from "@mantine/notifications";

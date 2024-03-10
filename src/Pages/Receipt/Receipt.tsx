@@ -6,7 +6,18 @@ import Cell from "../Products/Components/Cell";
 import { useProductsStore } from "../../Store";
 import { useDisclosure, useForceUpdate } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { addDoc, collection, doc, getDoc, increment, updateDoc } from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    where,
+    updateDoc,
+    query,
+    runTransaction,
+    serverTimestamp,
+} from "firebase/firestore";
 import { db } from "../../Firebase-config";
 import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
 
@@ -59,10 +70,11 @@ export default function Receipt() {
         form.reset();
     }
 
-    function addProductScan(value: number) {
-        const product = products.find((p) => p.barcode == value);
+    async function addProductScan(value: string) {
+        const product = products.find((p) => p.barcode == value.split(":")[0]);
+        product.barcodeWithDate = value;
         if (product != undefined) {
-            const objIndex = receipt.findIndex((obj) => obj.barcode == value);
+            const objIndex = receipt.findIndex((obj) => obj.barcode == value.split(":")[0]);
             if (objIndex == -1) {
                 setReceipt((p) => [...p, { ...product, quantity: 1 }]);
             } else {
@@ -71,6 +83,8 @@ export default function Receipt() {
         }
         forceUpdate();
     }
+
+    console.log(receipt);
 
     function editQuantity(productId, quantity) {
         const objIndex = receipt.findIndex((obj) => obj.id === productId);
@@ -90,13 +104,13 @@ export default function Receipt() {
         setReceipt(newReceipt);
     }
 
-    const today = new Date();
-    const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    // const today = new Date();
+    // const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
 
     async function saveRecipt() {
         setLoading(true);
         await addDoc(collection(db, "Sales"), {
-            timeStamp: dateString,
+            timeStamp: serverTimestamp(),
             totalPrice,
             totalProfit,
             totalQuantity,
@@ -110,10 +124,49 @@ export default function Receipt() {
             updateDoc(productRef, {
                 quantity: updatedQuantity,
             });
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const docRef = doc(db, "Quantities", product.barcodeWithDate);
+                    const quantityDoc = await transaction.get(docRef);
+                    if (!quantityDoc.exists()) {
+                        throw "Document does not exist!";
+                    }
+                    if (quantityDoc.data().quantity < product.quantity) {
+                        transaction.delete(docRef);
+                    } else {
+                        const newQuantity = quantityDoc.data().quantity - product.quantity;
+                        transaction.update(docRef, { quantity: newQuantity });
+                    }
+                });
+            } catch (e) {
+                console.log("Transaction failed: ", e);
+            }
         });
         setLoading(false);
         navigate("/");
     }
+
+    // async function saveRecipt() {
+    //     setLoading(true);
+    //     await addDoc(collection(db, "Sales"), {
+    //         timeStamp: dateString,
+    //         totalPrice,
+    //         totalProfit,
+    //         totalQuantity,
+    //         products: receipt,
+    //     });
+    //     receipt.map(async (product) => {
+    //         const productRef = doc(db, "Products", product.id);
+    //         const productDoc = await getDoc(productRef);
+    //         const currentQuantity = productDoc.data().quantity;
+    //         const updatedQuantity = Math.max(0, currentQuantity - product.quantity);
+    //         updateDoc(productRef, {
+    //             quantity: updatedQuantity,
+    //         });
+    //     });
+    //     setLoading(false);
+    //     navigate("/");
+    // }
 
     return (
         <>
@@ -211,6 +264,7 @@ export default function Receipt() {
                 >
                     حفظ
                 </Button>
+                <Button onClick={() => addProductScan("6223004045004")}>++</Button>
             </Flex>
         </>
     );

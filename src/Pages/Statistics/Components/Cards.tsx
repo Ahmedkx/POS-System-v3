@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Grid } from "@mantine/core";
-import {
-    collection,
-    getAggregateFromServer,
-    query,
-    sum,
-    where,
-} from "firebase/firestore";
+import { collection, getAggregateFromServer, query, sum, where } from "firebase/firestore";
 import { db } from "../../../Firebase-config";
 
 import Trend from "../../../Images/Trend.json";
@@ -20,15 +14,25 @@ export default function Cards() {
     const [todayProfit, setTodayProfit] = useState(0);
     const [todaySoldProducts, setTodaySoldProducts] = useState(0);
 
-    const today = new Date();
-    const dateString = `${today.getDate()}/${
-        today.getMonth() + 1
-    }/${today.getFullYear()}`;
+    // const today = new Date();
+    // const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+
+    const getTodayLocalRange = () => {
+        const now = new Date();
+        // Start of the day
+        const start = new Date(now.setHours(0, 0, 0, 0));
+        // End of the day
+        const end = new Date(now.setHours(23, 59, 59, 999));
+
+        return { start, end };
+    };
+    const { start, end } = getTodayLocalRange();
 
     useEffect(() => {
         async function getData() {
             const coll = collection(db, "Sales");
-            const q = query(coll, where("timeStamp", "==", dateString));
+            // const q = query(coll, where("timeStamp", "==", dateString));
+            const q = query(coll, where("timeStamp", ">=", start), where("timeStamp", "<=", end));
             const snapshot = await getAggregateFromServer(q, {
                 todaySales: sum("totalPrice"),
                 todayProfit: sum("totalProfit"),
@@ -41,20 +45,20 @@ export default function Cards() {
         getData();
     });
 
-    const capital = useProductsStore((e: any) =>
-        e.products.reduce(
-            (sum: number, product: { price: number; quantity: number }) =>
-                sum + product.price * product.quantity,
-            0
-        )
-    );
+    // const capital = useProductsStore((e: any) =>
+    //     e.products.reduce(
+    //         (sum: number, product: { price: number; quantity: number }) =>
+    //             sum + product.price * product.quantity,
+    //         0
+    //     )
+    // );
 
     const cards = [
-        {
-            logo: Money,
-            title: "رأس المال",
-            number: capital,
-        },
+        // {
+        //     logo: Money,
+        //     title: "رأس المال",
+        //     number: capital,
+        // },
         {
             logo: Trend,
             title: "مبيعات اليوم",

@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useLoginStore } from "../../Store.tsx";
 
 export default function Login() {
-    const toggleUser = useLoginStore((state) => state.toggleUser);
+    const updateUser = useLoginStore((state) => state.updateUser);
     const [loading, setloading] = useState(false);
     const navigate = useNavigate();
 
@@ -26,14 +26,11 @@ export default function Login() {
         },
     });
 
-    async function login(values) {
-        console.log(values);
-        if (values.email === "1" && values.password === "123") {
-            setloading(true);
-            toggleUser();
-            navigate("/");
-            setloading(false);
-        }
+    async function login() {
+        setloading(true);
+        updateUser("admin");
+        navigate("/");
+        setloading(false);
     }
 
     return (
@@ -43,7 +40,7 @@ export default function Login() {
                 تسجيل الدخول
             </Text>
             <Paper shadow="lg" p={48} style={{ maxWidth: "480px", width: "100%" }}>
-                <form onSubmit={form.onSubmit((values) => login(values))}>
+                <form onSubmit={form.onSubmit(() => login("/"))}>
                     <TextInput
                         label="اسم المستخدم"
                         withAsterisk
