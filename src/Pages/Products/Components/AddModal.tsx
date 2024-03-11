@@ -32,7 +32,6 @@ interface Props {
 export default function AddModal({ opened, setOpened, product }: Props) {
     const [timeStamp, setTimeStamp] = useState<number>(0);
     const [date, setDate] = useState<string>("");
-
     const handleMonthChange = (timestampString: any) => {
         const timestamp = Math.floor(timestampString.getTime() / 1000);
         setTimeStamp(timestamp);
@@ -44,7 +43,9 @@ export default function AddModal({ opened, setOpened, product }: Props) {
     };
 
     const profit1 = useSettingsStore((state) => state.profit1);
-    const distributorsNames = useSettingsStore((state) => state.distributorsNames);
+    const distributorsNames = useSettingsStore(
+        (state) => state.distributorsNames
+    );
     const form = useForm({
         initialValues: {
             distributorName: "",
@@ -55,15 +56,20 @@ export default function AddModal({ opened, setOpened, product }: Props) {
 
         validate: {
             distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
-            quantity: (value) => (+value < 0 ? "يجب ادخال رقم اكبر من 0" : null),
-            newPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
-            sellPrice: (value) => (+value < 1 ? "يجب ادخال رقم اكبر من 0" : null),
+            quantity: (value) =>
+                +value < 0 ? "يجب ادخال رقم اكبر من 0" : null,
+            newPrice: (value) =>
+                +value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
+            sellPrice: (value) =>
+                +value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
         },
     });
 
     useEffect(() => {
         form.setValues({
-            sellPrice: useCalculateSellPrice(form.getInputProps("newPrice").value),
+            sellPrice: useCalculateSellPrice(
+                form.getInputProps("newPrice").value
+            ),
         });
     }, [form.getInputProps("newPrice").value]);
 
@@ -172,8 +178,10 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                 <Flex justify="center" gap={10}>
                     {product.autoBarcode && (
                         <PrintBarcodeButton
-                            barcode={product.barcode}
-                            numberOfCopies={form.getInputProps("quantity").value}
+                            barcode={`${product.barcode}:${date}`}
+                            numberOfCopies={
+                                form.getInputProps("quantity").value
+                            }
                             isValid={form.isValid()}
                         >
                             حفظ و طباعة
