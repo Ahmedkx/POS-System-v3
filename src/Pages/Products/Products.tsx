@@ -12,7 +12,12 @@ import {
     Center,
 } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
-import { IconPlus, IconSearch, IconPencil, IconPrinter } from "@tabler/icons-react";
+import {
+    IconPlus,
+    IconSearch,
+    IconPencil,
+    IconPrinter,
+} from "@tabler/icons-react";
 import Cell from "./Components/Cell";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -66,7 +71,9 @@ export default function Products() {
                 <Flex justify="space-between" gap={25}>
                     {isAdmin && (
                         <Link to="/products/add">
-                            <Button leftSection={<IconPlus />}>اضافة منتج</Button>
+                            <Button leftSection={<IconPlus />}>
+                                اضافة منتج
+                            </Button>
                         </Link>
                     )}
                     <TextInput
@@ -77,7 +84,12 @@ export default function Products() {
                         style={{ flex: 1 }}
                     />
                 </Flex>
-                <SimpleGrid cols={8} mb={5} pb={10} style={{ borderBottom: "1px solid #e0e0e0" }}>
+                <SimpleGrid
+                    cols={8}
+                    mb={5}
+                    pb={10}
+                    style={{ borderBottom: "1px solid #e0e0e0" }}
+                >
                     {/* Header cells */}
                     <Cell>الاسم</Cell>
                     <Cell>العبوة</Cell>

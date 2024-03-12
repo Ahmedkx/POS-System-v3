@@ -41,27 +41,12 @@ export const db = getFirestore(app);
 
 export const auth = getAuth();
 
-// signInWithEmailAndPassword(
-//     auth,
-//     "test",
-//     "fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g"
-// )
-//     .then((userCredential) => {
-//         // Signed in
-//         const user = userCredential.user;
-//         // ...
-//     })
-//     .catch((error) => {
-//         const errorCode = error.code;
-//         const errorMessage = error.message;
-//     });
-
-// fhGQw4^wFVJ7YR@w3yXJxyfmzRfg!9$592bU9Ka7&^$JTMhdx*TaKDb5JZ^g
-
 // const querySnapshot = await getDocs(collection(db, "Products"));
+// const docs = [];
 // querySnapshot.forEach((doc) => {
-//     console.log(doc.data());
+//     docs.push(doc.data());
 // });
+// console.log(docs);
 
 // async function addData() {
 //     for (let i = 0; i < Products.length; i++) {

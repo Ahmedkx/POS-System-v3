@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, limit, orderBy, query, where } from "firebase/firestore";
+import {
+    collection,
+    getDocs,
+    limit,
+    orderBy,
+    query,
+    where,
+} from "firebase/firestore";
 import { db } from "../../Firebase-config";
 import { Container, ScrollArea, Table } from "@mantine/core";
 
@@ -8,7 +15,11 @@ export default function ExpiryDates() {
 
     useEffect(() => {
         async function getData() {
-            const q = query(collection(db, "Quantities"), orderBy("expiryDate"), limit(50));
+            const q = query(
+                collection(db, "Quantities"),
+                orderBy("expiryDate"),
+                limit(50)
+            );
 
             const querySnapshot = await getDocs(q);
             const data = [];
@@ -34,26 +45,26 @@ export default function ExpiryDates() {
         <Table.Tr key={product?.name}>
             <Table.Td>{product?.name}</Table.Td>
             <Table.Td>{product?.quantity}</Table.Td>
-            <Table.Td>{convertUnixTimestampToMMYY(product?.expiryDate)}</Table.Td>
+            <Table.Td>
+                {convertUnixTimestampToMMYY(product?.expiryDate)}
+            </Table.Td>
         </Table.Tr>
     ));
 
     return (
-        <Container>
-            <ScrollArea w="100%">
-                <Table highlightOnHover stickyHeader={true}>
-                    <Table.Thead>
-                        <Table.Tr fz="xl" fw="bold">
-                            <Table.Th>الاسم</Table.Th>
-                            <Table.Th>الكمية</Table.Th>
-                            <Table.Th>التاريخ</Table.Th>
-                        </Table.Tr>
-                    </Table.Thead>
-                    <Table.Tbody fz="xl" fw="bold">
-                        {rows}
-                    </Table.Tbody>
-                </Table>
-            </ScrollArea>
-        </Container>
+        <ScrollArea w="100%">
+            <Table highlightOnHover stickyHeader={true}>
+                <Table.Thead>
+                    <Table.Tr fz="xl" fw="bold">
+                        <Table.Th>الاسم</Table.Th>
+                        <Table.Th>الكمية</Table.Th>
+                        <Table.Th>التاريخ</Table.Th>
+                    </Table.Tr>
+                </Table.Thead>
+                <Table.Tbody fz="xl" fw="bold">
+                    {rows}
+                </Table.Tbody>
+            </Table>
+        </ScrollArea>
     );
 }

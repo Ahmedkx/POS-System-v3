@@ -1,6 +1,6 @@
 import "./App.css";
 import "./Store.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./Layouts/Layout.tsx";
 import Login from "./Pages/Login/Login.tsx";
@@ -12,14 +12,13 @@ import EditProduct from "./Pages/Products/EditProduct.tsx";
 import Settings from "./Pages/Settings/Settings.tsx";
 import FetchData from "./Components/FetchData/FetchData.tsx";
 import Receipt from "./Pages/Receipt/Receipt.tsx";
-import { useProductsStore } from "./Store.js";
 import ExpiryDates from "./Pages/ExpiryDates/ExpiryDates.tsx";
 
-function App() {
+export default function App() {
     return (
         <>
             <FetchData />
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route element={<Layout />}>
@@ -29,31 +28,14 @@ function App() {
                         <Route path="/statistics" element={<Statistics />} />
                         <Route path="/products/add" element={<AddProduct />} />
                         <Route path="/expirydates" element={<ExpiryDates />} />
-                        <Route path="/products/edit/:id" element={<EditProduct />} />
+                        <Route
+                            path="/products/edit/:id"
+                            element={<EditProduct />}
+                        />
                         <Route path="/settings" element={<Settings />} />
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </>
     );
-}
-
-export default App;
-
-{
-    /* <BrowserRouter>
-<Routes>
-    <Route path="/login" element={<Login />} />
-    <Route element={<Layout />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/products">
-            <Route index element={<Products />} />
-            <Route path="add" element={<AddProduct />} />
-            <Route path="edit/:id" element={<EditProduct />} />
-        </Route>
-        <Route path="/settings" element={<Settings />} />
-    </Route>
-</Routes>
-</BrowserRouter> */
 }

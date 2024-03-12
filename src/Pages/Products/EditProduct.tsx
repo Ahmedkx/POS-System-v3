@@ -24,6 +24,7 @@ import {
 import { db } from "../../Firebase-config";
 import { useSettingsStore } from "../../Store";
 import useCalculateSellPrice from "../../Hooks/useCalculateSellPrice";
+import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
 
 export default function EditProduct() {
     const profit1 = useSettingsStore((state: any) => state.profit1);
@@ -59,9 +60,12 @@ export default function EditProduct() {
     });
 
     useEffect(() => {
-        if (form.getInputProps("autoBarcode").value && !form.getInputProps("barcode").value) {
+        if (
+            form.getInputProps("autoBarcode").value &&
+            !form.getInputProps("barcode").value
+        ) {
             form.setValues({
-                barcode: Math.floor(10000000 + Math.random() * 90000000),
+                barcode: useGenerateBarcode(),
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -80,7 +84,9 @@ export default function EditProduct() {
 
     useEffect(() => {
         form.setValues({
-            sellPrice1: useCalculateSellPrice(form.getInputProps("price").value),
+            sellPrice1: useCalculateSellPrice(
+                form.getInputProps("price").value
+            ),
         });
     }, [form.getInputProps("price").value]);
 
@@ -124,7 +130,9 @@ export default function EditProduct() {
                         label="اسم الشركة"
                         placeholder="اختر اسم الشركة"
                         withAsterisk
-                        data={companyNames.map((obj: { name: any }) => obj.name)}
+                        data={companyNames.map(
+                            (obj: { name: any }) => obj.name
+                        )}
                         leftSection={<IconBuildingFactory2 />}
                         searchable
                         {...form.getInputProps("company")}
@@ -133,7 +141,9 @@ export default function EditProduct() {
                         label="العبوة"
                         placeholder="اختيار حجم العبوة"
                         withAsterisk
-                        data={productSizes.map((obj: { name: any }) => obj.name)}
+                        data={productSizes.map(
+                            (obj: { name: any }) => obj.name
+                        )}
                         leftSection={<IconBottle />}
                         searchable
                         {...form.getInputProps("size")}

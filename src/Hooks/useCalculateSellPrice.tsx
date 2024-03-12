@@ -9,7 +9,8 @@ const useCalculateSellPrice = (number: number) => {
         // Update percentage for next iteration, not below 10%
         percentage = Math.max(10, percentage - 1);
     }
-    return number + totalAdjustment;
+    let sellPrice = Math.ceil((number + totalAdjustment) / 5) * 5;
+    return sellPrice;
 };
 
 export default useCalculateSellPrice;

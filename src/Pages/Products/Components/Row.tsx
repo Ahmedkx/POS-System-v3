@@ -6,7 +6,6 @@ import Cell from "./Cell";
 import PrintModal from "./PrintModal";
 import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
-import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
 import useFormattedDate from "../../../Hooks/useFormattedDate";
 import { useLoginStore } from "../../../Store";
 

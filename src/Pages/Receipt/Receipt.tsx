@@ -152,7 +152,7 @@ export default function Receipt() {
                     if (!quantityDoc.exists()) {
                         throw "Document does not exist!";
                     }
-                    if (quantityDoc.data().quantity < product.quantity) {
+                    if (quantityDoc.data().quantity <= product.quantity) {
                         transaction.delete(docRef);
                     } else {
                         const newQuantity =
@@ -221,14 +221,14 @@ export default function Receipt() {
                 {/* <Text size="xl" ta="center" fw="bold" mb="md">
                     فاتورة
                 </Text> */}
-                <Button
+                {/* <Button
                     style={{ width: "fit-content" }}
                     mb="md"
                     leftSection={<IconPlus />}
                     onClick={open}
                 >
                     اضافة منتج
-                </Button>
+                </Button> */}
                 <SimpleGrid
                     cols={6}
                     mb={5}
@@ -256,21 +256,21 @@ export default function Receipt() {
                         <Cell>{product.sellPrice1}</Cell>
                         <Cell>
                             <Flex justify="center" align="center">
-                                <ActionIcon
+                                {/* <ActionIcon
                                     radius="xl"
                                     onClick={() => editQuantity(product.id, 1)}
                                 >
                                     <IconPlus />
-                                </ActionIcon>
+                                </ActionIcon> */}
                                 <Text component="span" mx={10} fw="bold">
                                     {product.quantity}
                                 </Text>
-                                <ActionIcon
+                                {/* <ActionIcon
                                     radius="xl"
                                     onClick={() => editQuantity(product.id, -1)}
                                 >
                                     <IconMinus />
-                                </ActionIcon>
+                                </ActionIcon> */}
                             </Flex>
                         </Cell>
                         <Cell>
@@ -295,16 +295,13 @@ export default function Receipt() {
                 </SimpleGrid>
                 <Button
                     mt="md"
-                    w="100px"
-                    mx="auto"
+                    // mx="auto"
+                    size="100"
                     loading={loading}
                     disabled={receipt.length == 0}
                     onClick={saveRecipt}
                 >
                     حفظ
-                </Button>
-                <Button onClick={() => addProductScan("6223004045004")}>
-                    ++
                 </Button>
             </Flex>
         </>
