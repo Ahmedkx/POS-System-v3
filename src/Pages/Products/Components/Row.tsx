@@ -18,8 +18,16 @@ export default function Rows({ product }: any) {
 
     return (
         <div>
-            <AddModal opened={addModal} setOpened={setAddModal} product={product} />
-            <PrintModal opened={printModal} setOpened={setPrintModal} barcode={product.barcode} />
+            <AddModal
+                opened={addModal}
+                setOpened={setAddModal}
+                product={product}
+            />
+            <PrintModal
+                opened={printModal}
+                setOpened={setPrintModal}
+                barcode={product.barcode}
+            />
 
             <SimpleGrid
                 cols={8}
@@ -33,7 +41,11 @@ export default function Rows({ product }: any) {
                 {isAdmin && <Cell>{product.price}</Cell>}
                 <Cell>{product.sellPrice1}</Cell>
                 {isAdmin && <Cell>{product.quantity}</Cell>}
-                {isAdmin && <Cell>{useFormattedDate(product.lastUpdated?.seconds)}</Cell>}
+                {isAdmin && (
+                    <Cell>
+                        {useFormattedDate(product.lastUpdated?.seconds)}
+                    </Cell>
+                )}
                 {isAdmin && (
                     <Flex gap={5} justify={"center"} align={"center"}>
                         <ActionIcon
@@ -44,7 +56,10 @@ export default function Rows({ product }: any) {
                             onClick={() => setAddModal(true)}
                         >
                             <Tooltip label="اضافة" offset={10} withArrow>
-                                <IconPlus style={{ width: "70%", height: "70%" }} stroke={1.5} />
+                                <IconPlus
+                                    style={{ width: "70%", height: "70%" }}
+                                    stroke={1.5}
+                                />
                             </Tooltip>
                         </ActionIcon>
 
@@ -54,10 +69,16 @@ export default function Rows({ product }: any) {
                             radius="xl"
                             aria-label="Settings"
                             onClick={() => setPrintModal(true)}
-                            disabled={!product.autoBarcode}
                         >
-                            <Tooltip label="طباعة الباركود" offset={10} withArrow>
-                                <IconPrinter style={{ width: "70%", height: "70%" }} stroke={1.5} />
+                            <Tooltip
+                                label="طباعة الباركود"
+                                offset={10}
+                                withArrow
+                            >
+                                <IconPrinter
+                                    style={{ width: "70%", height: "70%" }}
+                                    stroke={1.5}
+                                />
                             </Tooltip>
                         </ActionIcon>
 

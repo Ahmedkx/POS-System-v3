@@ -11,7 +11,12 @@ interface Props {
     children: React.ReactNode;
 }
 
-export default function PrintBarcodeButton({ barcode, numberOfCopies, isValid, children }: Props) {
+export default function PrintBarcodeButton({
+    barcode,
+    numberOfCopies,
+    isValid,
+    children,
+}: Props) {
     const barcodeRef = useRef<HTMLInputElement>(null);
     const handlePrint = useReactToPrint({
         content: () => barcodeRef.current,
@@ -21,9 +26,16 @@ export default function PrintBarcodeButton({ barcode, numberOfCopies, isValid, c
         <>
             <div style={{ display: "none" }}>
                 <div ref={barcodeRef}>
-                    {Array.from({ length: Math.ceil(numberOfCopies / 2) }, (_, i) => (
-                        <Barcode key={i} value={barcode.toString()} />
-                    ))}
+                    {Array.from(
+                        { length: Math.ceil(numberOfCopies / 2) },
+                        (_, i) => (
+                            <Barcode
+                                key={i}
+                                value={barcode.toString()}
+                                options={{ height: 110 }}
+                            />
+                        )
+                    )}
                 </div>
             </div>
             <Box>

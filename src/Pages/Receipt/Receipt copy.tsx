@@ -9,17 +9,20 @@ import {
     Select,
     Modal,
 } from "@mantine/core";
-import { IconPlus, IconX } from "@tabler/icons-react";
+import { IconMinus, IconPlus, IconX } from "@tabler/icons-react";
 import Cell from "../Products/Components/Cell";
 import { useProductsStore } from "../../Store";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useForceUpdate } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
 import {
     addDoc,
     collection,
     doc,
     getDoc,
+    getDocs,
+    where,
     updateDoc,
+    query,
     runTransaction,
     serverTimestamp,
 } from "firebase/firestore";
@@ -27,6 +30,8 @@ import { db } from "../../Firebase-config";
 import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
 
 export default function Receipt() {
+    const forceUpdate = useForceUpdate();
+
     const navigate = useNavigate();
     const location = useLocation();
     const [opened, { open, close }] = useDisclosure(false);
@@ -72,12 +77,7 @@ export default function Receipt() {
         if (objIndex == -1) {
             setReceipt((p) => [...p, { ...product, quantity: 1 }]);
         } else {
-            const updatedReceipt = [...receipt];
-            updatedReceipt[objIndex] = {
-                ...updatedReceipt[objIndex],
-                quantity: updatedReceipt[objIndex].quantity + 1,
-            };
-            setReceipt(updatedReceipt);
+            receipt[objIndex].quantity++;
         }
         form.reset();
     }
@@ -90,18 +90,15 @@ export default function Receipt() {
                 (obj) => obj.barcode == value.split(":")[0]
             );
             if (objIndex == -1) {
-                setReceipt([...receipt, { ...product, quantity: 1 }]);
+                setReceipt((p) => [...p, { ...product, quantity: 1 }]);
             } else {
-                // receipt[objIndex].quantity++;
-                const updatedReceipt = [...receipt];
-                updatedReceipt[objIndex] = {
-                    ...updatedReceipt[objIndex],
-                    quantity: updatedReceipt[objIndex].quantity + 1,
-                };
-                setReceipt(updatedReceipt);
+                receipt[objIndex].quantity++;
             }
         }
+        forceUpdate();
     }
+
+    console.log(receipt);
 
     function editQuantity(productId, quantity) {
         const objIndex = receipt.findIndex((obj) => obj.id === productId);
@@ -120,6 +117,9 @@ export default function Receipt() {
         newReceipt.splice(objIndex, 1);
         setReceipt(newReceipt);
     }
+
+    // const today = new Date();
+    // const dateString = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
 
     async function saveRecipt() {
         setLoading(true);
@@ -167,6 +167,28 @@ export default function Receipt() {
         setLoading(false);
         navigate("/");
     }
+
+    // async function saveRecipt() {
+    //     setLoading(true);
+    //     await addDoc(collection(db, "Sales"), {
+    //         timeStamp: dateString,
+    //         totalPrice,
+    //         totalProfit,
+    //         totalQuantity,
+    //         products: receipt,
+    //     });
+    //     receipt.map(async (product) => {
+    //         const productRef = doc(db, "Products", product.id);
+    //         const productDoc = await getDoc(productRef);
+    //         const currentQuantity = productDoc.data().quantity;
+    //         const updatedQuantity = Math.max(0, currentQuantity - product.quantity);
+    //         updateDoc(productRef, {
+    //             quantity: updatedQuantity,
+    //         });
+    //     });
+    //     setLoading(false);
+    //     navigate("/");
+    // }
 
     return (
         <>
@@ -280,14 +302,6 @@ export default function Receipt() {
                     onClick={saveRecipt}
                 >
                     حفظ
-                </Button>
-                <Button
-                    mt="md"
-                    // mx="auto"
-                    size="100"
-                    onClick={() => addProductScan("9452")}
-                >
-                    ++
                 </Button>
             </Flex>
         </>

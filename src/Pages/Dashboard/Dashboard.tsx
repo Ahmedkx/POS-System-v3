@@ -1,8 +1,7 @@
-import { Center, Text, Button, Image } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import { Center, Text, Button, Image } from "@mantine/core";
 import barcodeScan from "../../Images/barcodepng.parspng.com-6.png";
 import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
-import { auth } from "../../Firebase-config";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -10,6 +9,7 @@ export default function Dashboard() {
     useBarcodeScanner((scannedBarcode) =>
         navigate("/receipt", { state: { barcode: scannedBarcode } })
     );
+
 
     return (
         <Center pt="xl" style={{ flexDirection: "column" }}>

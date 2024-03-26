@@ -52,9 +52,6 @@ export default function Statistics() {
         },
     ];
 
-    const test = "H";
-    console.log("🚀 ~ Statistics ~ test:", test);
-
     return (
         <Grid pt="lg" w="100%">
             {/* <Grid.Col span={12}>

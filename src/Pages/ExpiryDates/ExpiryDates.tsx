@@ -39,10 +39,8 @@ export default function ExpiryDates() {
         return `${yy}/${mm}`;
     }
 
-    console.log(products);
-
-    const rows = products.map((product) => (
-        <Table.Tr key={product?.name}>
+    const rows = products.map((product, i) => (
+        <Table.Tr key={i}>
             <Table.Td>{product?.name}</Table.Td>
             <Table.Td>{product?.quantity}</Table.Td>
             <Table.Td>

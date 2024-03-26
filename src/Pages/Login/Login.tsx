@@ -1,5 +1,12 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Text, TextInput, PasswordInput, Stack, Button, Paper } from "@mantine/core";
+import {
+    Text,
+    TextInput,
+    PasswordInput,
+    Stack,
+    Button,
+    Paper,
+} from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 
 import { useForm, isNotEmpty } from "@mantine/form";
@@ -27,7 +34,6 @@ export default function Login() {
     });
 
     async function login(values) {
-        console.log(values);
         if (values.email === "1" && values.password === "123") {
             setloading(true);
             toggleUser();
@@ -42,7 +48,11 @@ export default function Login() {
             <Text size="24px" fw="bold" ta="center" mb={20}>
                 تسجيل الدخول
             </Text>
-            <Paper shadow="lg" p={48} style={{ maxWidth: "480px", width: "100%" }}>
+            <Paper
+                shadow="lg"
+                p={48}
+                style={{ maxWidth: "480px", width: "100%" }}
+            >
                 <form onSubmit={form.onSubmit((values) => login(values))}>
                     <TextInput
                         label="اسم المستخدم"
@@ -57,7 +67,13 @@ export default function Login() {
                         {...form.getInputProps("password")}
                         mt={30}
                     />
-                    <Button type="submit" variant="filled" mt={30} w="100%" loading={loading}>
+                    <Button
+                        type="submit"
+                        variant="filled"
+                        mt={30}
+                        w="100%"
+                        loading={loading}
+                    >
                         تسجيل الدخول
                     </Button>
                 </form>

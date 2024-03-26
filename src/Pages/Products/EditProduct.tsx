@@ -10,6 +10,8 @@ import {
     Text,
     TextInput,
     NumberInput,
+    ActionIcon,
+    Tooltip,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import {
@@ -19,6 +21,7 @@ import {
     IconBottle,
     IconBuildingFactory2,
     IconDeviceFloppy,
+    IconRefresh,
     IconTrash,
 } from "@tabler/icons-react";
 import { db } from "../../Firebase-config";
@@ -27,6 +30,8 @@ import useCalculateSellPrice from "../../Hooks/useCalculateSellPrice";
 import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
 
 export default function EditProduct() {
+    const [barcode, generateNewBarcode, isBarcodeLoading] =
+        useGenerateBarcode();
     const profit1 = useSettingsStore((state: any) => state.profit1);
     const companyNames = useSettingsStore((state: any) => state.companyNames);
     const productSizes = useSettingsStore((state: any) => state.productSizes);
@@ -40,7 +45,6 @@ export default function EditProduct() {
             company: "",
             size: "",
             lowStock: false,
-            autoBarcode: false,
             barcode: 0,
             price: 0,
             sellPrice1: 0,
@@ -51,25 +55,12 @@ export default function EditProduct() {
             name: isNotEmpty("يجب ادخال اسم المنتج"),
             company: isNotEmpty("يجب اخيار اسم الشركة"),
             size: isNotEmpty("يجب اخيار حجم العبوة"),
-            lowStock: isNotEmpty("يجب ادخال كمية النواقص"),
             barcode: isNotEmpty("يجب ادخال الباركود"),
             price: isNotEmpty("يجب ادخال السعر"),
             sellPrice1: isNotEmpty("يجب ادخال سعر البيع"),
             quantity: isNotEmpty("يجب ادخال الكمية"),
         },
     });
-
-    useEffect(() => {
-        if (
-            form.getInputProps("autoBarcode").value &&
-            !form.getInputProps("barcode").value
-        ) {
-            form.setValues({
-                barcode: useGenerateBarcode(),
-            });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [form.getInputProps("autoBarcode").value]);
 
     useEffect(() => {
         onSnapshot(doc(db, "Products", params.id), (doc) => {
@@ -96,10 +87,9 @@ export default function EditProduct() {
             company: values.company,
             size: values.size,
             lowStock: +values.lowStock,
-            autoBarcode: values.autoBarcode,
             barcode: +values.barcode,
-            // price: +values.price,
-            // sellPrice1: +values.sellPrice1,
+            price: +values.price,
+            sellPrice1: +values.sellPrice1,
             quantity: +values.quantity,
         });
         setLoading(true);
@@ -124,6 +114,7 @@ export default function EditProduct() {
                         placeholder="ادخل اسم المنتج"
                         withAsterisk
                         leftSection={<IconAbc />}
+                        disabled={loading}
                         {...form.getInputProps("name")}
                     />
                     <Select
@@ -135,6 +126,7 @@ export default function EditProduct() {
                         )}
                         leftSection={<IconBuildingFactory2 />}
                         searchable
+                        disabled={loading}
                         {...form.getInputProps("company")}
                     />
                     <Select
@@ -146,6 +138,7 @@ export default function EditProduct() {
                         )}
                         leftSection={<IconBottle />}
                         searchable
+                        disabled={loading}
                         {...form.getInputProps("size")}
                     />
                     <NumberInput
@@ -156,6 +149,7 @@ export default function EditProduct() {
                         allowNegative={false}
                         leftSection={<Icon123 />}
                         max={99999}
+                        disabled={loading}
                         {...form.getInputProps("price")}
                     />
                     <NumberInput
@@ -165,6 +159,7 @@ export default function EditProduct() {
                         hideControls
                         allowNegative={false}
                         leftSection={<Icon123 />}
+                        disabled={loading}
                         {...form.getInputProps("sellPrice1")}
                     />
                     <NumberInput
@@ -174,6 +169,7 @@ export default function EditProduct() {
                         hideControls
                         allowNegative={false}
                         leftSection={<Icon123 />}
+                        disabled={loading}
                         {...form.getInputProps("quantity")}
                     />
                     {/* <NumberInput
@@ -191,26 +187,40 @@ export default function EditProduct() {
                         {...form.getInputProps("lowStock", {
                             type: "checkbox",
                         })}
+                        disabled={loading}
                     />
-                    <Checkbox
-                        label="باركود تلقائى"
-                        {...form.getInputProps("autoBarcode", {
-                            type: "checkbox",
-                        })}
-                    />
-                    <NumberInput
-                        label="الباركود"
-                        placeholder="ادخل الباركود"
-                        withAsterisk
-                        allowDecimal={false}
-                        allowNegative={false}
-                        clampBehavior={"strict"}
-                        hideControls
-                        data-autofocus
-                        disabled={form.getInputProps("autoBarcode").value}
-                        leftSection={<IconBarcode />}
-                        {...form.getInputProps("barcode")}
-                    />
+                    <Flex align="flex-end" gap={5}>
+                        <NumberInput
+                            label="الباركود"
+                            placeholder="ادخل الباركود"
+                            withAsterisk
+                            allowDecimal={false}
+                            allowNegative={false}
+                            clampBehavior={"strict"}
+                            hideControls
+                            data-autofocus
+                            leftSection={<IconBarcode />}
+                            disabled={loading}
+                            {...form.getInputProps("barcode")}
+                        />
+                        <Tooltip label="انشاء باركود جديد">
+                            <ActionIcon
+                                variant="filled"
+                                size="input-sm"
+                                aria-label="Settings"
+                                loading={isBarcodeLoading || loading}
+                                onClick={() => {
+                                    generateNewBarcode();
+                                    form.setFieldValue("barcode", barcode);
+                                }}
+                            >
+                                <IconRefresh
+                                    style={{ width: "70%", height: "70%" }}
+                                    stroke={1.5}
+                                />
+                            </ActionIcon>
+                        </Tooltip>
+                    </Flex>
                     <Button
                         variant="filled"
                         type="submit"

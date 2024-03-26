@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     Select,
     Button,
     Center,
-    Checkbox,
     Flex,
     Text,
     TextInput,
     NumberInput,
+    Tooltip,
+    ActionIcon,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import {
@@ -17,21 +18,23 @@ import {
     IconBarcode,
     IconBottle,
     IconBuildingFactory2,
+    IconRefresh,
 } from "@tabler/icons-react";
 import { db } from "../../Firebase-config";
 import { addDoc, collection } from "firebase/firestore";
 import { useSettingsStore } from "../../Store";
+import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
 
 interface FormValues {
     name: string;
     companyName: string;
     size: string;
-    lowStock: number;
-    autoBarcode: boolean;
     barcode: number | null;
 }
 
 export default function AddProduct() {
+    const [barcode, generateNewBarcode, isBarcodeLoading] =
+        useGenerateBarcode();
     const companyNames = useSettingsStore((state: any) => state.companyNames);
     const productSizes = useSettingsStore((state: any) => state.productSizes);
     const navigate = useNavigate();
@@ -42,8 +45,6 @@ export default function AddProduct() {
             name: "",
             companyName: "",
             size: "",
-            lowStock: 0,
-            autoBarcode: false,
             barcode: null,
         },
 
@@ -51,23 +52,9 @@ export default function AddProduct() {
             name: isNotEmpty("يجب ادخال اسم المنتج"),
             companyName: isNotEmpty("يجب اخيار اسم الشركة"),
             size: isNotEmpty("يجب اخيار حجم العبوة"),
-            lowStock: isNotEmpty("يجب ادخال كمية النواقص"),
             barcode: isNotEmpty("يجب ادخال الباركود"),
         },
     });
-
-    useEffect(() => {
-        if (form.getInputProps("autoBarcode").value) {
-            form.setValues({
-                barcode: Math.floor(10000000 + Math.random() * 90000000),
-            });
-        } else {
-            form.setValues({
-                barcode: null,
-            });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [form.getInputProps("autoBarcode").value]);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -78,9 +65,7 @@ export default function AddProduct() {
             sellPrice1: 0,
             quantity: 0,
             size: values.size,
-            autoBarcode: values.autoBarcode,
             barcode: +values.barcode,
-            lowStock: +values.lowStock,
         });
         setLoading(false);
         navigate("/products");
@@ -93,13 +78,6 @@ export default function AddProduct() {
                     <Text size="32px" fw="bold" ta="center">
                         اضافة منتج
                     </Text>
-                    {/* <NumberInput
-                        label="الاسم"
-                        placeholder="ادخل اسم المنتج"
-                        withAsterisk
-                        leftSection={<IconAbc />}
-                        {...form.getInputProps("name")}
-                    /> */}
                     <TextInput
                         label="الاسم"
                         placeholder="ادخل اسم المنتج"
@@ -125,35 +103,38 @@ export default function AddProduct() {
                         searchable
                         {...form.getInputProps("size")}
                     />
-                    <NumberInput
-                        label="النواقص"
-                        placeholder="ادخل كمية النواقص"
-                        withAsterisk
-                        hideControls
-                        allowNegative={false}
-                        allowDecimal={false}
-                        leftSection={<Icon123 />}
-                        {...form.getInputProps("lowStock")}
-                    />
-                    <Checkbox
-                        label="باركود تلقائى"
-                        {...form.getInputProps("autoBarcode", {
-                            type: "checkbox",
-                        })}
-                    />
-                    <NumberInput
-                        label="الباركود"
-                        placeholder="ادخل الباركود"
-                        withAsterisk
-                        allowDecimal={false}
-                        allowNegative={false}
-                        clampBehavior={"strict"}
-                        hideControls
-                        data-autofocus
-                        disabled={form.getInputProps("autoBarcode").value}
-                        leftSection={<IconBarcode />}
-                        {...form.getInputProps("barcode")}
-                    />
+                    <Flex align="flex-end" gap={5}>
+                        <NumberInput
+                            label="الباركود"
+                            placeholder="ادخل الباركود"
+                            withAsterisk
+                            allowDecimal={false}
+                            allowNegative={false}
+                            clampBehavior={"strict"}
+                            hideControls
+                            data-autofocus
+                            leftSection={<IconBarcode />}
+                            disabled={isBarcodeLoading}
+                            {...form.getInputProps("barcode")}
+                        />
+                        <Tooltip label="انشاء باركود جديد">
+                            <ActionIcon
+                                variant="filled"
+                                size="input-sm"
+                                aria-label="Settings"
+                                loading={isBarcodeLoading}
+                                onClick={() => {
+                                    generateNewBarcode();
+                                    form.setFieldValue("barcode", barcode);
+                                }}
+                            >
+                                <IconRefresh
+                                    style={{ width: "70%", height: "70%" }}
+                                    stroke={1.5}
+                                />
+                            </ActionIcon>
+                        </Tooltip>
+                    </Flex>
                     <Button variant="filled" type="submit" loading={loading}>
                         اضافة
                     </Button>

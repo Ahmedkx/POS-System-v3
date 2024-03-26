@@ -45,7 +45,7 @@ export default function Products() {
                     item.name.includes(searchText) ||
                     item.company.includes(searchText) ||
                     item.size.includes(searchText) ||
-                    item.barcode.toString().includes(searchText)
+                    item.barcode.toString().includes(searchText.split(":")[0])
             );
             setProducts(filteredProducts);
             setLoading(false);
