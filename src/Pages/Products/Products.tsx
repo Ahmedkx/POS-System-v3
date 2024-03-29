@@ -1,31 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
     Box,
     Button,
-    Flex,
-    TextInput,
-    SimpleGrid,
-    ActionIcon,
-    Tooltip,
-    Loader,
     Center,
+    Flex,
+    Loader,
+    SimpleGrid,
+    TextInput,
 } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
-import {
-    IconPlus,
-    IconSearch,
-    IconPencil,
-    IconPrinter,
-} from "@tabler/icons-react";
-import Cell from "./Components/Cell";
+import { IconPlus } from "@tabler/icons-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
+import Cell from "./Components/Cell";
 
 // import docs from "../../data.json";
-import Row from "./Components/Row";
 import { useLoginStore, useProductsStore } from "../../Store";
-import { MonthPicker } from "@mantine/dates";
+import Row from "./Components/Row";
 
 export default function Products() {
     const docs = useProductsStore((state) => state.products);

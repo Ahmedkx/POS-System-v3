@@ -9,7 +9,7 @@ export const useProductsStore = create((set) => ({
 
 export const useLoginStore = create((set) => ({
     user: true,
-    admin: true,
+    admin: false,
     toggleUser: () => {
         set({ user: false, admin: true });
     },

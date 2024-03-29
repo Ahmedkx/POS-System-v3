@@ -17,8 +17,8 @@ export default function ExpiryDates() {
         async function getData() {
             const q = query(
                 collection(db, "Quantities"),
-                orderBy("expiryDate"),
-                limit(50)
+                orderBy("expiryDate")
+                // limit(50)
             );
 
             const querySnapshot = await getDocs(q);

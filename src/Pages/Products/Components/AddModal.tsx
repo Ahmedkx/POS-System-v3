@@ -30,8 +30,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../Firebase-config";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
-import { MonthPickerInput } from "@mantine/dates";
+import { DatesProvider, MonthPickerInput } from "@mantine/dates";
 import useGenerateBarcode from "../../../Hooks/useGenerateBarcode";
+import "dayjs/locale/ar";
 
 interface Props {
     opened: boolean;
@@ -65,7 +66,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
         },
 
         validate: {
-            distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
+            // distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
             quantity: (value) =>
                 +value < 0 ? "يجب ادخال رقم اكبر من 0" : null,
             newPrice: (value) =>
@@ -133,13 +134,6 @@ export default function AddModal({ opened, setOpened, product }: Props) {
         });
     }
 
-    const fun = () => {
-        const test = +form.getInputProps("barcode").value;
-        return test.length;
-    };
-
-    console.log(fun());
-
     return (
         <Modal
             opened={opened}
@@ -182,16 +176,22 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     leftSection={<Icon123 />}
                     {...form.getInputProps("quantity")}
                 />
-                <MonthPickerInput
-                    leftSection={<IconCalendar />}
-                    leftSectionPointerEvents="none"
-                    label="تاريخ انتهاء الصلاحية"
-                    placeholder="اختر التاريخ"
-                    withAsterisk
-                    clearable
-                    valueFormat="YYYY/MM"
-                    {...form.getInputProps("expiarydate")}
-                />
+                <DatesProvider
+                    settings={{
+                        locale: "ar",
+                    }}
+                >
+                    <MonthPickerInput
+                        leftSection={<IconCalendar />}
+                        leftSectionPointerEvents="none"
+                        label="تاريخ انتهاء الصلاحية"
+                        placeholder="اختر التاريخ"
+                        withAsterisk
+                        clearable
+                        valueFormat="YYYY/MM"
+                        {...form.getInputProps("expiarydate")}
+                    />
+                </DatesProvider>
 
                 <NumberInput
                     label="السعر القديم"
@@ -247,7 +247,10 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                             size="input-sm"
                             aria-label="Settings"
                             loading={isBarcodeLoading}
-                            disabled={form.getInputProps("expiarydate").value}
+                            disabled={
+                                form.getInputProps("barcode").value.toString()
+                                    .length == 4
+                            }
                             onClick={() => {
                                 generateNewBarcode();
                                 form.setFieldValue("barcode", barcode);

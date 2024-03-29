@@ -13,13 +13,13 @@ export default function Dashboard() {
 
     return (
         <Center pt="xl" style={{ flexDirection: "column" }}>
-            {/* <Button onClick={() => navigate("/receipt")}>انشاء فاتورة</Button>
+            <Button onClick={() => navigate("/receipt")}>انشاء فاتورة</Button>
             <Text fw="bold" mt="xl">
                 أو
             </Text>
             <Text size="xl" fw="bold" ta="center" mt="xl">
                 اقرأ الباركود لانشاء فاتورة جديدة
-            </Text> */}
+            </Text>
             <Image src={barcodeScan} w="100%" maw="400px" alt="Scanner" />
         </Center>
     );

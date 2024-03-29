@@ -1,94 +1,194 @@
-import { useEffect, useState } from "react";
-import { Box, Flex, Grid, Paper, Select, Title } from "@mantine/core";
-import AreaChartGraph from "./Components/AreaChartGraph";
-import Cards from "./Components/Cards";
-import classes from "./Statistics.module.css";
+import cx from "clsx";
+import {
+    Group,
+    Paper,
+    ScrollArea,
+    SimpleGrid,
+    Table,
+    Text,
+} from "@mantine/core";
+import {
+    IconUserPlus,
+    IconReceipt2,
+    IconPackages,
+    IconCoin,
+    IconArrowUpRight,
+    IconArrowDownRight,
+} from "@tabler/icons-react";
+import classes from "./StatsGrid.module.css";
+import {
+    collection,
+    query,
+    where,
+    getAggregateFromServer,
+    sum,
+    getDocs,
+    onSnapshot,
+} from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { db } from "../../Firebase-config";
 import { useLoginStore } from "../../Store";
-import { useNavigate } from "react-router-dom";
-// import { AreaChart } from "recharts";
-import { AreaChart } from "@mantine/charts";
+
+const icons = {
+    user: IconUserPlus,
+    receipt: IconReceipt2,
+    coin: IconCoin,
+    package: IconPackages,
+};
 
 export default function Statistics() {
-    const navigate = useNavigate();
-    const [graphSelect, setGraphSelect] = useState("أرباح");
-    const admin = useLoginStore((state) => state.admin);
+    const isAdmin = useLoginStore((state) => state.admin);
 
-    useEffect(() => {
-        if (!admin) {
-            navigate("/");
-        }
-    }, []);
+    const [docs, setDocs] = useState([]);
+    const [todaySales, setTodaySales] = useState(0);
+    const [todayProfit, setTodayProfit] = useState(0);
+    const [todaySoldProducts, setTodaySoldProducts] = useState(0);
+    const [scrolled, setScrolled] = useState(false);
+
+    const getTodayLocalRange = () => {
+        const now = new Date();
+        // Start of the day
+        const start = new Date(now.setHours(0, 0, 0, 0));
+        // End of the day
+        const end = new Date(now.setHours(23, 59, 59, 999));
+
+        return { start, end };
+    };
+    const { start, end } = getTodayLocalRange();
 
     const data = [
         {
-            date: "Mar 22",
-            Apples: 2890,
-            Oranges: 2338,
-            Tomatoes: 2452,
+            title: "مبيعات اليوم",
+            icon: "receipt",
+            value: todaySales + " جنيه",
+            diff: 34,
         },
         {
-            date: "Mar 23",
-            Apples: 2756,
-            Oranges: 2103,
-            Tomatoes: 2402,
+            title: "أرباح اليوم",
+            icon: "coin",
+            value: todayProfit + " جنيه",
+            diff: -13,
         },
         {
-            date: "Mar 24",
-            Apples: 3322,
-            Oranges: 986,
-            Tomatoes: 1821,
+            title: "المنتجات المباعة",
+            icon: "package",
+            value: todaySoldProducts,
+            diff: 18,
         },
-        {
-            date: "Mar 25",
-            Apples: 3470,
-            Oranges: 2108,
-            Tomatoes: 2809,
-        },
-        {
-            date: "Mar 26",
-            Apples: 3129,
-            Oranges: 1726,
-            Tomatoes: 2290,
-        },
-    ];
+    ] as const;
+
+    useEffect(() => {
+        async function getData() {
+            const coll = collection(db, "Sales");
+            const q = query(
+                coll,
+                where("timeStamp", ">=", start),
+                where("timeStamp", "<=", end)
+            );
+            const querySnapshot = await getDocs(q);
+
+            let documents = []; // Array to hold your documents
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                documents.push(data);
+            });
+            setDocs(documents);
+
+            const snapshot = await getAggregateFromServer(q, {
+                todaySales: sum("totalPrice"),
+                todayProfit: sum("totalProfit"),
+                todaySoldProducts: sum("totalQuantity"),
+            });
+            setTodaySales(snapshot.data().todaySales);
+            setTodayProfit(snapshot.data().todayProfit);
+            setTodaySoldProducts(snapshot.data().todaySoldProducts);
+        }
+        getData();
+    }, []);
+
+    const stats = data.map((stat) => {
+        const Icon = icons[stat.icon];
+        const DiffIcon = stat.diff > 0 ? IconArrowUpRight : IconArrowDownRight;
+
+        return (
+            <Paper withBorder p="md" radius="md" key={stat.title}>
+                <Group>
+                    <Icon className={classes.icon} size="2.4rem" stroke={1.5} />
+                    <Text size="xl" c="dimmed" className={classes.title}>
+                        {stat.title}
+                    </Text>
+                </Group>
+
+                <Group align="flex-end" gap="xs" mt="sm" mr="sm">
+                    <Text className={classes.value} fw="bold" size="xl">
+                        {stat.value}
+                    </Text>
+                    {/* <Text
+                        c={stat.diff > 0 ? "teal" : "red"}
+                        fz="sm"
+                        fw={500}
+                        className={classes.diff}
+                    >
+                        <span>{stat.diff}%</span>
+                        <DiffIcon size="1rem" stroke={1.5} />
+                    </Text> */}
+                </Group>
+
+                {/* <Text fz="xs" c="dimmed" mt={7}>
+                    Compared to previous month
+                </Text> */}
+            </Paper>
+        );
+    });
+
+    const rows = docs.map((transaction, index) => {
+        return transaction?.products?.map((product, productIndex) => (
+            <Table.Tr key={`${index}-${productIndex}`}>
+                <Table.Td>{`${product.name} ${product.size}`}</Table.Td>
+                <Table.Td>{product.company}</Table.Td>
+                <Table.Td>{product.quantity}</Table.Td>
+                <Table.Td>{product.sellPrice1}</Table.Td>
+                <Table.Td>{product.sellPrice1 * product.quantity}</Table.Td>
+            </Table.Tr>
+        ));
+    });
+
+    if (!isAdmin) {
+        return null;
+    }
 
     return (
-        <Grid pt="lg" w="100%">
-            {/* <Grid.Col span={12}>
-                <Title order={2}>الاحصائيات</Title>
-            </Grid.Col> */}
-
-            {admin && <Cards />}
-
-            {/* <AreaChart
-                h={300}
-                data={data}
-                dataKey="date"
-                withGradient={false}
-                yAxisProps={{ domain: [0, 100] }}
-                series={[{ name: "Apples", color: "indigo.6" }]}
-            /> */}
-
-            {/* <Grid.Col span={12}>
-                <Paper radius="lg" p="xl">
-                    <Flex gap={10}>
-                        <Title order={2} mb="md">
-                            تقرير
-                        </Title>
-                        <Select
-                            classNames={{ dropdown: classes.dropdown }}
-                            w="120"
-                            radius="xl"
-                            value={graphSelect}
-                            data={["أرباح", "مبيعات"]}
-                            onChange={(e: any) => setGraphSelect(e)}
-                        />
-                    </Flex>
-                    <Box style={{ width: "100%", height: "500px" }}>
-                        <AreaChartGraph />
-                    </Box>
-                </Paper>
-            </Grid.Col> */}
-        </Grid>
+        <div className={classes.root}>
+            <Text size="xl" fw="bold" mb="lg">
+                الاحصائيات
+            </Text>
+            <SimpleGrid cols={{ base: 1, xs: 2, md: 3 }}>{stats}</SimpleGrid>
+            <Text size="xl" fw="bold" my="lg">
+                مبيعات اليوم
+            </Text>
+            <ScrollArea
+                h="400"
+                mt="lg"
+                onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
+                type="always"
+            >
+                <Table miw={700} striped highlightOnHover withColumnBorders>
+                    <Table.Thead
+                        className={cx(classes.header, {
+                            [classes.scrolled]: scrolled,
+                        })}
+                    >
+                        <Table.Tr>
+                            <Table.Th>الاسم</Table.Th>
+                            <Table.Th>الشركة</Table.Th>
+                            <Table.Th>الكمية</Table.Th>
+                            <Table.Th>سعر البيع</Table.Th>
+                            <Table.Th>الاجمالى</Table.Th>
+                        </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>{rows}</Table.Tbody>
+                </Table>
+            </ScrollArea>
+        </div>
     );
 }

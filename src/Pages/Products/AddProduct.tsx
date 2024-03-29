@@ -1,35 +1,36 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
-    Select,
+    ActionIcon,
     Button,
     Center,
+    Checkbox,
     Flex,
+    NumberInput,
+    Select,
     Text,
     TextInput,
-    NumberInput,
     Tooltip,
-    ActionIcon,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import {
-    Icon123,
     IconAbc,
     IconBarcode,
     IconBottle,
     IconBuildingFactory2,
     IconRefresh,
 } from "@tabler/icons-react";
-import { db } from "../../Firebase-config";
 import { addDoc, collection } from "firebase/firestore";
-import { useSettingsStore } from "../../Store";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { db } from "../../Firebase-config";
 import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
+import { useSettingsStore } from "../../Store";
 
 interface FormValues {
     name: string;
     companyName: string;
     size: string;
     barcode: number | null;
+    saveExpiryDates: boolean;
 }
 
 export default function AddProduct() {
@@ -46,6 +47,7 @@ export default function AddProduct() {
             companyName: "",
             size: "",
             barcode: null,
+            saveExpiryDates: true,
         },
 
         validate: {
@@ -66,6 +68,7 @@ export default function AddProduct() {
             quantity: 0,
             size: values.size,
             barcode: +values.barcode,
+            saveExpiaryDates: values.saveExpiryDates,
         });
         setLoading(false);
         navigate("/products");
@@ -102,6 +105,12 @@ export default function AddProduct() {
                         leftSection={<IconBottle />}
                         searchable
                         {...form.getInputProps("size")}
+                    />
+                    <Checkbox
+                        label="حفظ تاريخ الصلاحية"
+                        {...form.getInputProps("saveExpiryDates", {
+                            type: "checkbox",
+                        })}
                     />
                     <Flex align="flex-end" gap={5}>
                         <NumberInput

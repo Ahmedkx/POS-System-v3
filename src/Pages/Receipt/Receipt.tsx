@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
     Button,
@@ -41,6 +41,8 @@ export default function Receipt() {
 
     useBarcodeScanner((scannedBarcode) => addProductScan(scannedBarcode));
 
+    console.log(receipt);
+
     const totalProfit = receipt.reduce(
         (sum, product) =>
             sum + (product.sellPrice1 - product.price) * product.quantity,
@@ -82,24 +84,53 @@ export default function Receipt() {
         form.reset();
     }
 
+    // async function addProductScan(value: string) {
+    //     const product = products.find((p) => p.barcode == value.split(":")[0]);
+    //     product.barcodeWithDate = value;
+    //     if (product != undefined) {
+    //         const objIndex = receipt.findIndex(
+    //             (obj) => obj.barcode == value.split(":")[0]
+    //         );
+    //         if (objIndex == -1) {
+    //             setReceipt([...receipt, { ...product, quantity: 1 }]);
+    //         } else {
+    //             // receipt[objIndex].quantity++;
+    //             const updatedReceipt = [...receipt];
+    //             updatedReceipt[objIndex] = {
+    //                 ...updatedReceipt[objIndex],
+    //                 quantity: updatedReceipt[objIndex].quantity + 1,
+    //             };
+    //             setReceipt(updatedReceipt);
+    //         }
+    //     }
+    // }
+
     async function addProductScan(value: string) {
-        const product = products.find((p) => p.barcode == value.split(":")[0]);
-        product.barcodeWithDate = value;
-        if (product != undefined) {
-            const objIndex = receipt.findIndex(
-                (obj) => obj.barcode == value.split(":")[0]
-            );
-            if (objIndex == -1) {
+        const scannedBarcode = value.split(":")[0];
+        const scannedBarcodeWithDate = value;
+
+        const existingProductIndex = receipt.findIndex(
+            (obj) => obj.barcodeWithDate === scannedBarcodeWithDate
+        );
+
+        if (existingProductIndex === -1) {
+            // Product doesn't exist in receipt, create a new object for it
+            const product = products.find((p) => p.barcode == scannedBarcode);
+            if (product !== undefined) {
+                product.barcodeWithDate = scannedBarcodeWithDate;
                 setReceipt([...receipt, { ...product, quantity: 1 }]);
             } else {
-                // receipt[objIndex].quantity++;
-                const updatedReceipt = [...receipt];
-                updatedReceipt[objIndex] = {
-                    ...updatedReceipt[objIndex],
-                    quantity: updatedReceipt[objIndex].quantity + 1,
-                };
-                setReceipt(updatedReceipt);
+                // Product not found in products array
+                console.log("Product not found with barcode:", scannedBarcode);
             }
+        } else {
+            // Product already exists in receipt, increase quantity
+            const updatedReceipt = [...receipt];
+            updatedReceipt[existingProductIndex] = {
+                ...updatedReceipt[existingProductIndex],
+                quantity: updatedReceipt[existingProductIndex].quantity + 1,
+            };
+            setReceipt(updatedReceipt);
         }
     }
 
@@ -199,16 +230,16 @@ export default function Receipt() {
                 {/* <Text size="xl" ta="center" fw="bold" mb="md">
                     فاتورة
                 </Text> */}
-                {/* <Button
+                <Button
                     style={{ width: "fit-content" }}
                     mb="md"
                     leftSection={<IconPlus />}
                     onClick={open}
                 >
                     اضافة منتج
-                </Button> */}
+                </Button>
                 <SimpleGrid
-                    cols={6}
+                    cols={7}
                     mb={5}
                     pb={10}
                     style={{ borderBottom: "1px solid #e0e0e0" }}
@@ -218,12 +249,13 @@ export default function Receipt() {
                     <Cell>الشركة</Cell>
                     <Cell>سعر البيع</Cell>
                     <Cell>الكمية</Cell>
+                    <Cell>تاريخ الصلاحية</Cell>
                     <Cell>حذف</Cell>
                 </SimpleGrid>
                 {receipt.map((product) => (
                     <SimpleGrid
-                        key={product.id}
-                        cols={6}
+                        key={product.barcodeWithDate}
+                        cols={7}
                         pb={10}
                         pt={10}
                         style={{ borderBottom: "1px solid #e0e0e0" }}
@@ -237,7 +269,7 @@ export default function Receipt() {
                                 {/* <ActionIcon
                                     radius="xl"
                                     onClick={() => editQuantity(product.id, 1)}
-                                >
+                                    >
                                     <IconPlus />
                                 </ActionIcon> */}
                                 <Text component="span" mx={10} fw="bold">
@@ -246,11 +278,12 @@ export default function Receipt() {
                                 {/* <ActionIcon
                                     radius="xl"
                                     onClick={() => editQuantity(product.id, -1)}
-                                >
+                                    >
                                     <IconMinus />
                                 </ActionIcon> */}
                             </Flex>
                         </Cell>
+                        <Cell>{product.barcodeWithDate?.split(":")[1]}</Cell>
                         <Cell>
                             <ActionIcon
                                 variant="filled"
@@ -280,14 +313,6 @@ export default function Receipt() {
                     onClick={saveRecipt}
                 >
                     حفظ
-                </Button>
-                <Button
-                    mt="md"
-                    // mx="auto"
-                    size="100"
-                    onClick={() => addProductScan("9452")}
-                >
-                    ++
                 </Button>
             </Flex>
         </>
