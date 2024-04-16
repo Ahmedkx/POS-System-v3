@@ -8,7 +8,7 @@ import {
     TextInput,
 } from "@mantine/core";
 import { useDebouncedState } from "@mantine/hooks";
-import { IconPlus } from "@tabler/icons-react";
+import { IconPlus, IconSearch } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
@@ -55,7 +55,7 @@ export default function Products() {
                     position: "sticky",
                     top: "65px",
                     background: "#f3f4f6",
-                    paddingTop: 25, // using px directly, consider using a consistent unit like rem if needed
+                    paddingTop: 25,
                     zIndex: 1,
                 }}
             >
@@ -70,7 +70,7 @@ export default function Products() {
                     <TextInput
                         placeholder="البحث"
                         mb="md"
-                        // icon={<IconSearch />}
+                        leftSection={<IconSearch />}
                         onChange={(e) => setSearchText(e.target.value)}
                         style={{ flex: 1 }}
                     />
@@ -81,14 +81,13 @@ export default function Products() {
                     pb={10}
                     style={{ borderBottom: "1px solid #e0e0e0" }}
                 >
-                    {/* Header cells */}
                     <Cell>الاسم</Cell>
                     <Cell>العبوة</Cell>
                     <Cell>الشركة</Cell>
                     {isAdmin && <Cell>السعر</Cell>}
                     <Cell>سعر البيع</Cell>
                     {isAdmin && <Cell>الكمية</Cell>}
-                    {isAdmin && <Cell>اخر تعديل للسعر</Cell>}
+                    <Cell>اخر تعديل للسعر</Cell>
                     {isAdmin && <Cell>تعديل</Cell>}
                 </SimpleGrid>
             </Box>

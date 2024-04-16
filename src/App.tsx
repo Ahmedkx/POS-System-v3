@@ -14,7 +14,20 @@ import FetchData from "./Components/FetchData/FetchData.tsx";
 import Receipt from "./Pages/Receipt/Receipt.tsx";
 import ExpiryDates from "./Pages/ExpiryDates/ExpiryDates.tsx";
 
+import { useIdle } from "@mantine/hooks";
+import { useLoginStore } from "./Store.js";
+import { useEffect } from "react";
+
 export default function App() {
+    // const idle = useIdle(60000);
+    // const signOut = useLoginStore((state) => state.signOut);
+
+    // useEffect(() => {
+    //     if (idle) {
+    //         signOut();
+    //     }
+    // }, [idle]);
+
     return (
         <>
             <FetchData />

@@ -1,20 +1,36 @@
-import { useState } from "react";
 import { ActionIcon, Flex, SimpleGrid, Tooltip, rem } from "@mantine/core";
-import { IconPencil, IconPlus, IconPrinter } from "@tabler/icons-react";
+import {
+    IconPencil,
+    IconPlus,
+    IconPrinter,
+    IconCoinPound,
+} from "@tabler/icons-react";
+import { useState } from "react";
 
-import Cell from "./Cell";
-import PrintModal from "./PrintModal";
-import AddModal from "./AddModal";
 import { Link } from "react-router-dom";
-import useFormattedDate from "../../../Hooks/useFormattedDate";
 import { useLoginStore } from "../../../Store";
+import AddModal from "./AddModal";
+import Cell from "./Cell";
+import ChangePriceModal from "./ChnagePriceModal";
+import PrintModal from "./PrintModal";
 
 export default function Rows({ product }: any) {
     const isAdmin = useLoginStore((state) => state.admin);
     const [printModal, setPrintModal] = useState(false);
     const [addModal, setAddModal] = useState(false);
+    const [changePriceModal, setChangePriceModal] = useState(false);
 
-    // console.log(product);
+    function daysAgo(unixTimestamp) {
+        const date = new Date(unixTimestamp * 1000);
+        const now = new Date();
+        const difference = now - date;
+        const daysAgo = difference / (1000 * 60 * 60 * 24);
+        const numberOfDays = Math.floor(daysAgo);
+
+        if (numberOfDays || numberOfDays == 0) {
+            return `منذ ${numberOfDays} يوم`;
+        }
+    }
 
     return (
         <div>
@@ -27,6 +43,11 @@ export default function Rows({ product }: any) {
                 opened={printModal}
                 setOpened={setPrintModal}
                 barcode={product.barcode}
+            />
+            <ChangePriceModal
+                opened={changePriceModal}
+                setOpened={setChangePriceModal}
+                id={product.id}
             />
 
             <SimpleGrid
@@ -41,13 +62,24 @@ export default function Rows({ product }: any) {
                 {isAdmin && <Cell>{product.price}</Cell>}
                 <Cell>{product.sellPrice1}</Cell>
                 {isAdmin && <Cell>{product.quantity}</Cell>}
-                {isAdmin && (
-                    <Cell>
-                        {useFormattedDate(product.lastUpdated?.seconds)}
-                    </Cell>
-                )}
+                <Cell>{daysAgo(product?.lastUpdated?.seconds)}</Cell>
                 {isAdmin && (
                     <Flex gap={5} justify={"center"} align={"center"}>
+                        <ActionIcon
+                            variant="default"
+                            size="xl"
+                            radius="xl"
+                            aria-label="Settings"
+                            onClick={() => setChangePriceModal(true)}
+                        >
+                            <Tooltip label="تعديل السعر" offset={10} withArrow>
+                                <IconCoinPound
+                                    style={{ width: "70%", height: "70%" }}
+                                    stroke={1.5}
+                                />
+                            </Tooltip>
+                        </ActionIcon>
+
                         <ActionIcon
                             variant="default"
                             size="xl"

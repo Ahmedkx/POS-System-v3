@@ -50,7 +50,6 @@ export default function CompanyNames() {
     }
 
     async function handleDelete(company) {
-        console.log(company);
         await updateDoc(doc(db, "Settings", "companyNames"), {
             data: arrayRemove(company),
         });

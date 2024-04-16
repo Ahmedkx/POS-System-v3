@@ -1,16 +1,12 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import {
-    persistentLocalCache,
-    persistentMultipleTabManager,
-    initializeFirestore,
-    addDoc,
     collection,
+    doc,
     getDocs,
     getFirestore,
+    updateDoc,
 } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import Products from "./data.json";
-import useCalculateSellPrice from "./Hooks/useCalculateSellPrice";
 
 // Live
 // const firebaseConfig = {
@@ -41,49 +37,20 @@ export const db = getFirestore(app);
 
 export const auth = getAuth();
 
-// const querySnapshot = await getDocs(collection(db, "Products"));
-// const docs = [];
-// querySnapshot.forEach((doc) => {
-//     docs.push(doc.data());
-// });
-// console.log(docs);
+const addSaveExpiryDatesField = async () => {
+    const productsCollectionRef = collection(db, "Products");
+    try {
+        const querySnapshot = await getDocs(productsCollectionRef);
+        querySnapshot.forEach(async (document) => {
+            const docRef = doc(db, "Products", document.id);
+            await updateDoc(docRef, {
+                saveExpiryDates: true,
+            });
+        });
+        console.log("All documents updated successfully");
+    } catch (error) {
+        console.error("Error updating documents: ", error);
+    }
+};
 
-// async function addData() {
-//     for (let i = 0; i < Products.length; i++) {
-//         await addDoc(collection(db, "Products"), {
-//             name: Products[i].name,
-//             company: Products[i].company,
-//             price: Products[i].price,
-//             sellPrice1: useCalculateSellPrice(Products[i].price),
-//             quantity: 0,
-//             size: Products[i].size,
-//             autoBarcode: Products[i].autobarcode,
-//             barcode: Products[i].barcode,
-//             lowStock: false,
-//         });
-//     }
-//     console.log("Finished");
-// }
-// addData();
-
-// ===========================================================================
-
-// const firebaseConfigOld = {
-//     apiKey: "AIzaSyBEq5mha3tfRaEuhVXYNIkohrq88YctifY",
-//     authDomain: "prices-acf7b.firebaseapp.com",
-//     projectId: "prices-acf7b",
-//     storageBucket: "prices-acf7b.appspot.com",
-//     messagingSenderId: "228237292585",
-//     appId: "1:228237292585:web:cc0b18acca5c4890f91838",
-// };
-
-// // Initialize Firebase
-// const appOld = initializeApp(firebaseConfigOld);
-// export const db = getFirestore(appOld);
-
-// const querySnapshot = await getDocs(collection(db, "Products"));
-// const data = [];
-// querySnapshot.forEach((doc) => {
-//     data.push(doc.data());
-// });
-// console.log(data);
+// addSaveExpiryDatesField();

@@ -68,7 +68,7 @@ export default function AddProduct() {
             quantity: 0,
             size: values.size,
             barcode: +values.barcode,
-            saveExpiaryDates: values.saveExpiryDates,
+            saveExpiryDates: values.saveExpiryDates,
         });
         setLoading(false);
         navigate("/products");

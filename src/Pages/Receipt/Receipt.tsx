@@ -1,30 +1,30 @@
-import { useEffect, useId, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import {
+    ActionIcon,
     Button,
     Flex,
-    Text,
-    SimpleGrid,
-    ActionIcon,
-    Select,
     Modal,
+    Select,
+    SimpleGrid,
+    Text,
 } from "@mantine/core";
-import { IconPlus, IconX } from "@tabler/icons-react";
-import Cell from "../Products/Components/Cell";
-import { useProductsStore } from "../../Store";
-import { useDisclosure } from "@mantine/hooks";
 import { isNotEmpty, useForm } from "@mantine/form";
+import { useDisclosure } from "@mantine/hooks";
+import { IconPlus, IconX } from "@tabler/icons-react";
 import {
     addDoc,
     collection,
     doc,
     getDoc,
-    updateDoc,
     runTransaction,
     serverTimestamp,
+    updateDoc,
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { db } from "../../Firebase-config";
 import useBarcodeScanner from "../../Hooks/useBarcodeScanner";
+import { useProductsStore } from "../../Store";
+import Cell from "../Products/Components/Cell";
 
 export default function Receipt() {
     const navigate = useNavigate();
@@ -40,8 +40,6 @@ export default function Receipt() {
     }, []);
 
     useBarcodeScanner((scannedBarcode) => addProductScan(scannedBarcode));
-
-    console.log(receipt);
 
     const totalProfit = receipt.reduce(
         (sum, product) =>
@@ -83,27 +81,6 @@ export default function Receipt() {
         }
         form.reset();
     }
-
-    // async function addProductScan(value: string) {
-    //     const product = products.find((p) => p.barcode == value.split(":")[0]);
-    //     product.barcodeWithDate = value;
-    //     if (product != undefined) {
-    //         const objIndex = receipt.findIndex(
-    //             (obj) => obj.barcode == value.split(":")[0]
-    //         );
-    //         if (objIndex == -1) {
-    //             setReceipt([...receipt, { ...product, quantity: 1 }]);
-    //         } else {
-    //             // receipt[objIndex].quantity++;
-    //             const updatedReceipt = [...receipt];
-    //             updatedReceipt[objIndex] = {
-    //                 ...updatedReceipt[objIndex],
-    //                 quantity: updatedReceipt[objIndex].quantity + 1,
-    //             };
-    //             setReceipt(updatedReceipt);
-    //         }
-    //     }
-    // }
 
     async function addProductScan(value: string) {
         const scannedBarcode = value.split(":")[0];
@@ -172,27 +149,31 @@ export default function Receipt() {
             updateDoc(productRef, {
                 quantity: updatedQuantity,
             });
-            try {
-                await runTransaction(db, async (transaction) => {
-                    const docRef = doc(
-                        db,
-                        "Quantities",
-                        product.barcodeWithDate
-                    );
-                    const quantityDoc = await transaction.get(docRef);
-                    if (!quantityDoc.exists()) {
-                        throw "Document does not exist!";
-                    }
-                    if (quantityDoc.data().quantity <= product.quantity) {
-                        transaction.delete(docRef);
-                    } else {
-                        const newQuantity =
-                            quantityDoc.data().quantity - product.quantity;
-                        transaction.update(docRef, { quantity: newQuantity });
-                    }
-                });
-            } catch (e) {
-                console.log("Transaction failed: ", e);
+            if (product.barcodeWithDate) {
+                try {
+                    await runTransaction(db, async (transaction) => {
+                        const docRef = doc(
+                            db,
+                            "Quantities",
+                            product.barcodeWithDate
+                        );
+                        const quantityDoc = await transaction.get(docRef);
+                        if (!quantityDoc.exists()) {
+                            throw "Document does not exist!";
+                        }
+                        if (quantityDoc.data().quantity <= product.quantity) {
+                            transaction.delete(docRef);
+                        } else {
+                            const newQuantity =
+                                quantityDoc.data().quantity - product.quantity;
+                            transaction.update(docRef, {
+                                quantity: newQuantity,
+                            });
+                        }
+                    });
+                } catch (e) {
+                    console.log("Transaction failed: ", e);
+                }
             }
         });
         setLoading(false);
@@ -307,12 +288,20 @@ export default function Receipt() {
                 <Button
                     mt="md"
                     // mx="auto"
-                    size="100"
+                    // size="100"
                     loading={loading}
                     disabled={receipt.length == 0}
                     onClick={saveRecipt}
                 >
                     حفظ
+                </Button>
+                <Button
+                    mt="md"
+                    // mx="auto"
+                    // size="100"
+                    onClick={() => addProductScan("1514:0324")}
+                >
+                    Scan
                 </Button>
             </Flex>
         </>

@@ -1,35 +1,60 @@
-import { useEffect, useState } from "react";
+import { ActionIcon, ScrollArea, Table, Flex } from "@mantine/core";
+import { IconMinus, IconPlus, IconX } from "@tabler/icons-react";
 import {
     collection,
-    getDocs,
-    limit,
+    doc,
+    increment,
+    onSnapshot,
     orderBy,
     query,
-    where,
+    updateDoc,
+    deleteDoc,
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { db } from "../../Firebase-config";
-import { Container, ScrollArea, Table } from "@mantine/core";
+import { useLoginStore } from "../../Store";
 
 export default function ExpiryDates() {
+    const isAdmin = useLoginStore((state) => state.admin);
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        async function getData() {
-            const q = query(
-                collection(db, "Quantities"),
-                orderBy("expiryDate")
-                // limit(50)
-            );
+    // useEffect(() => {
+    //     async function getData() {
+    //         const q = query(
+    //             collection(db, "Quantities"),
+    //             orderBy("expiryDate")
+    //             // limit(50)
+    //         );
 
-            const querySnapshot = await getDocs(q);
+    //         const querySnapshot = await getDocs(q);
+    //         const data = [];
+    //         querySnapshot.forEach((doc) => {
+    //             data.push({ docId: doc.id, ...doc.data() });
+    //         });
+    //         setProducts(data);
+    //     }
+    //     getData();
+    // }, []);
+
+    useEffect(() => {
+        const q = query(
+            collection(db, "Quantities"),
+            orderBy("expiryDate")
+            // limit(50)
+        );
+
+        // The onSnapshot method returns an unsubscribe function that can be called to stop listening for updates
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
-                data.push(doc.data());
+                data.push({ docId: doc.id, ...doc.data() });
             });
             setProducts(data);
-        }
-        getData();
-    }, []);
+        });
+
+        // Cleanup function to unsubscribe from the listener when the component unmounts
+        return () => unsubscribe();
+    }, []); // Empty dependency array means this effect runs once on mount
 
     function convertUnixTimestampToMMYY(unixTimestamp) {
         const date = new Date(unixTimestamp * 1000); // Convert Unix timestamp to milliseconds
@@ -39,6 +64,19 @@ export default function ExpiryDates() {
         return `${yy}/${mm}`;
     }
 
+    console.log(products);
+
+    async function editQuantity(id, amount) {
+        const docRef = doc(db, "Quantities", id);
+        await updateDoc(docRef, {
+            quantity: increment(amount),
+        });
+    }
+
+    async function deleteDocById(id) {
+        await deleteDoc(doc(db, "Quantities", id));
+    }
+
     const rows = products.map((product, i) => (
         <Table.Tr key={i}>
             <Table.Td>{product?.name}</Table.Td>
@@ -46,17 +84,50 @@ export default function ExpiryDates() {
             <Table.Td>
                 {convertUnixTimestampToMMYY(product?.expiryDate)}
             </Table.Td>
+            <Table.Td>
+                {isAdmin && (
+                    <Flex gap="md">
+                        <ActionIcon
+                            radius="xl"
+                            onClick={() => editQuantity(product.docId, 1)}
+                        >
+                            <IconPlus />
+                        </ActionIcon>
+                        <ActionIcon
+                            radius="xl"
+                            onClick={() => editQuantity(product.docId, -1)}
+                        >
+                            <IconMinus />
+                        </ActionIcon>
+                        <ActionIcon
+                            variant="filled"
+                            color="red"
+                            radius="xl"
+                            onClick={() => deleteDocById(product.docId)}
+                        >
+                            <IconX />
+                        </ActionIcon>
+                    </Flex>
+                )}
+            </Table.Td>
         </Table.Tr>
     ));
 
     return (
         <ScrollArea w="100%">
-            <Table highlightOnHover stickyHeader={true}>
+            <Table
+                highlightOnHover
+                highlightOnHoverColor="lightgray"
+                withTableBorder
+                withColumnBorders
+                stickyHeader
+            >
                 <Table.Thead>
                     <Table.Tr fz="xl" fw="bold">
                         <Table.Th>الاسم</Table.Th>
                         <Table.Th>الكمية</Table.Th>
                         <Table.Th>التاريخ</Table.Th>
+                        <Table.Th>تعديل</Table.Th>
                     </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody fz="xl" fw="bold">

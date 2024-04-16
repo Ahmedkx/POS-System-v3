@@ -34,7 +34,7 @@ export default function Login() {
     });
 
     async function login(values) {
-        if (values.email === "1" && values.password === "123") {
+        if (values.email === "1" && values.password === "159357") {
             setloading(true);
             toggleUser();
             navigate("/");

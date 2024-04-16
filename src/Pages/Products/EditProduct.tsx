@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import {
-    Select,
+    ActionIcon,
     Button,
     Center,
     Checkbox,
     Flex,
+    NumberInput,
+    Select,
     Text,
     TextInput,
-    NumberInput,
-    ActionIcon,
     Tooltip,
 } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
@@ -24,10 +21,13 @@ import {
     IconRefresh,
     IconTrash,
 } from "@tabler/icons-react";
+import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../Firebase-config";
-import { useSettingsStore } from "../../Store";
 import useCalculateSellPrice from "../../Hooks/useCalculateSellPrice";
 import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
+import { useSettingsStore } from "../../Store";
 
 export default function EditProduct() {
     const [barcode, generateNewBarcode, isBarcodeLoading] =
@@ -44,11 +44,11 @@ export default function EditProduct() {
             name: "",
             company: "",
             size: "",
-            lowStock: false,
             barcode: 0,
             price: 0,
             sellPrice1: 0,
             quantity: 0,
+            saveExpiryDates: false,
         },
 
         validate: {
@@ -86,11 +86,11 @@ export default function EditProduct() {
             name: values.name,
             company: values.company,
             size: values.size,
-            lowStock: +values.lowStock,
             barcode: +values.barcode,
             price: +values.price,
             sellPrice1: +values.sellPrice1,
             quantity: +values.quantity,
+            saveExpiryDates: values.saveExpiryDates,
         });
         setLoading(true);
         navigate("/products");
@@ -172,19 +172,9 @@ export default function EditProduct() {
                         disabled={loading}
                         {...form.getInputProps("quantity")}
                     />
-                    {/* <NumberInput
-                        label="النواقص"
-                        placeholder="ادخل كمية النواقص"
-                        withAsterisk
-                        hideControls
-                        allowNegative={false}
-                        allowDecimal={false}
-                        leftSection={<Icon123 />}
-                        {...form.getInputProps("lowStock")}
-                    /> */}
                     <Checkbox
-                        label="النواقص"
-                        {...form.getInputProps("lowStock", {
+                        label="حفظ تاريخ الصلاحية"
+                        {...form.getInputProps("saveExpiryDates", {
                             type: "checkbox",
                         })}
                         disabled={loading}

@@ -1,46 +1,47 @@
-import { useEffect, useState } from "react";
 import {
+    ActionIcon,
     Button,
     Flex,
     Modal,
     NumberInput,
     Select,
     Tooltip,
-    ActionIcon,
 } from "@mantine/core";
+import { DatesProvider, MonthPickerInput } from "@mantine/dates";
 import { isNotEmpty, useForm } from "@mantine/form";
 import {
     Icon123,
+    IconBarcode,
+    IconCalendar,
     IconCurrencyDollar,
     IconDeviceFloppy,
-    IconUser,
-    IconCalendar,
-    IconBarcode,
     IconRefresh,
+    IconUser,
 } from "@tabler/icons-react";
-import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
-import { useSettingsStore } from "../../../Store";
+import "dayjs/locale/ar";
 import {
     doc,
     increment,
-    updateDoc,
     serverTimestamp,
     setDoc,
-    onSnapshot,
+    updateDoc,
 } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import PrintBarcodeButton from "../../../Components/PrintBarcodeButton/PrintBarcodeButton";
 import { db } from "../../../Firebase-config";
 import useCalculateSellPrice from "../../../Hooks/useCalculateSellPrice";
-import { DatesProvider, MonthPickerInput } from "@mantine/dates";
 import useGenerateBarcode from "../../../Hooks/useGenerateBarcode";
-import "dayjs/locale/ar";
+import { useSettingsStore } from "../../../Store";
 
 interface Props {
     opened: boolean;
     setOpened: any;
-    product: object;
+    product: any;
 }
 
 export default function AddModal({ opened, setOpened, product }: Props) {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [barcode, generateNewBarcode, isBarcodeLoading] =
         useGenerateBarcode();
@@ -59,8 +60,8 @@ export default function AddModal({ opened, setOpened, product }: Props) {
         initialValues: {
             distributorName: "",
             quantity: 0,
-            newPrice: 0,
-            sellPrice: 0,
+            newPrice: product.price,
+            sellPrice: product.sellPrice1,
             expiarydate: null,
             barcode: +product.barcode,
         },
@@ -68,12 +69,14 @@ export default function AddModal({ opened, setOpened, product }: Props) {
         validate: {
             // distributorName: isNotEmpty("يجب اختيار اسم الموزع"),
             quantity: (value) =>
-                +value < 0 ? "يجب ادخال رقم اكبر من 0" : null,
+                +value < 1 ? "يجب ادخال رقم اكبر من صفر" : null,
             newPrice: (value) =>
-                +value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
+                +value < 1 ? "يجب ادخال رقم اكبر من صفر" : null,
             sellPrice: (value) =>
-                +value < 1 ? "يجب ادخال رقم اكبر من 0" : null,
-            expiarydate: isNotEmpty("يجب اختيار تاريخ انتهاء الصلاحية"),
+                +value < 1 ? "يجب ادخال رقم اكبر من صفر" : null,
+            expiarydate:
+                product.saveExpiryDates &&
+                isNotEmpty("يجب اختيار تاريخ انتهاء الصلاحية"),
             barcode: isNotEmpty("ادخل باركود"),
         },
 
@@ -87,48 +90,49 @@ export default function AddModal({ opened, setOpened, product }: Props) {
     });
 
     useEffect(() => {
-        form.setValues({
-            sellPrice: useCalculateSellPrice(
-                form.getInputProps("newPrice").value
-            ),
-        });
+        if (opened) {
+            form.setValues({
+                sellPrice: useCalculateSellPrice(
+                    form.getInputProps("newPrice").value
+                ),
+            });
+        }
     }, [form.getInputProps("newPrice").value]);
 
-    useEffect(() => {
-        onSnapshot(doc(db, "Products", product.id), (doc) => {
-            if (doc.data()) {
-                // form.setValues(doc.data());
-                setLoading(false);
-            } else {
-                navigate("/products");
-            }
-        });
-    }, []);
-
     async function handleSubmit(values: any) {
-        await updateDoc(doc(db, "Products", product.id), {
+        const updateData = {
             quantity: increment(values.quantity),
             price: +values.newPrice,
             sellPrice1: +values.sellPrice,
-            lastUpdated: serverTimestamp(),
-        });
-        const docRef = doc(
-            db,
-            "Quantities",
-            `${form.getInputProps("barcode").value}:${getMMYY(
-                form.getInputProps("expiarydate").value
-            )}`
-        );
-        await setDoc(
-            docRef,
-            {
-                expiryDate: form.getTransformedValues().expiarydate,
-                quantity: increment(values.quantity),
-                name: `${product.name} ${product.size} ${product.company}`,
-                id: product.id,
-            },
-            { merge: true }
-        );
+        };
+        if (
+            product.price != form.getInputProps("newPrice").value ||
+            product.sellPrice1 != form.getInputProps("sellPrice").value
+        ) {
+            updateData.lastUpdated = serverTimestamp();
+        }
+        await updateDoc(doc(db, "Products", product.id), updateData);
+
+        if (product.saveExpiryDates) {
+            const docRef = doc(
+                db,
+                "Quantities",
+                `${form.getInputProps("barcode").value}:${getMMYY(
+                    form.getInputProps("expiarydate").value
+                )}`
+            );
+            await setDoc(
+                docRef,
+                {
+                    expiryDate: form.getTransformedValues().expiarydate,
+                    quantity: increment(values.quantity),
+                    name: `${product.name} ${product.size} ${product.company}`,
+                    id: product.id,
+                },
+                { merge: true }
+            );
+        }
+
         await updateDoc(doc(db, "Products", product.id), {
             barcode: form.getInputProps("barcode").value,
         });
@@ -148,7 +152,7 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                 onSubmit={form.onSubmit((values) => {
                     handleSubmit(values);
                     setOpened(false);
-                    form.reset();
+                    // form.reset();
                 })}
             >
                 <Select
@@ -176,22 +180,24 @@ export default function AddModal({ opened, setOpened, product }: Props) {
                     leftSection={<Icon123 />}
                     {...form.getInputProps("quantity")}
                 />
-                <DatesProvider
-                    settings={{
-                        locale: "ar",
-                    }}
-                >
-                    <MonthPickerInput
-                        leftSection={<IconCalendar />}
-                        leftSectionPointerEvents="none"
-                        label="تاريخ انتهاء الصلاحية"
-                        placeholder="اختر التاريخ"
-                        withAsterisk
-                        clearable
-                        valueFormat="YYYY/MM"
-                        {...form.getInputProps("expiarydate")}
-                    />
-                </DatesProvider>
+                {product.saveExpiryDates && (
+                    <DatesProvider
+                        settings={{
+                            locale: "ar",
+                        }}
+                    >
+                        <MonthPickerInput
+                            leftSection={<IconCalendar />}
+                            leftSectionPointerEvents="none"
+                            label="تاريخ انتهاء الصلاحية"
+                            placeholder="اختر التاريخ"
+                            withAsterisk
+                            clearable
+                            valueFormat="YYYY/MM"
+                            {...form.getInputProps("expiarydate")}
+                        />
+                    </DatesProvider>
+                )}
 
                 <NumberInput
                     label="السعر القديم"
