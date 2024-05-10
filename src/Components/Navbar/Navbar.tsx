@@ -1,12 +1,21 @@
+import {
+    Avatar,
+    Box,
+    Burger,
+    Container,
+    Flex,
+    Group,
+    Menu,
+    rem,
+} from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Container, Group, Burger, Box, Avatar, Flex, Menu, Button, rem } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
-import Logo from "../../Images/Logo";
 import { IconLogout, IconSettings } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../Images/Logo";
 import { useLoginStore } from "../../Store";
 
 export default function Navbar() {
@@ -56,9 +65,16 @@ export default function Navbar() {
                         </Link>
                         <Group gap={5} visibleFrom="xs">
                             <Item link={"/"} label="الرئيسية" />
-                            {isAdmin && <Item link={"/statistics"} label="الاحصائيات" />}
+                            {isAdmin && (
+                                <Item link={"/statistics"} label="الاحصائيات" />
+                            )}
                             <Item link={"/products"} label="الأدوية" />
-                            <Item link={"/expirydates"} label="تاريخ الصلاحية" />
+                            <Item
+                                link={"/expirydates"}
+                                label="تاريخ الصلاحية"
+                            />
+                            <Item link={"/test"} label="حجز" />
+                            {/* <Item link={"/customers"} label="العملاء" /> */}
                         </Group>
                     </Flex>
 
@@ -73,7 +89,11 @@ export default function Navbar() {
                         />
                         <Menu>
                             <Menu.Target>
-                                <Avatar style={{ cursor: "pointer" }} radius="xl" color="white" />
+                                <Avatar
+                                    style={{ cursor: "pointer" }}
+                                    radius="xl"
+                                    color="white"
+                                />
                             </Menu.Target>
                             <Menu.Dropdown>
                                 {isAdmin && (

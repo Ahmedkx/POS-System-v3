@@ -84,8 +84,8 @@ export default function ExpiryDates() {
             <Table.Td>
                 {convertUnixTimestampToMMYY(product?.expiryDate)}
             </Table.Td>
-            <Table.Td>
-                {isAdmin && (
+            {isAdmin && (
+                <Table.Td>
                     <Flex gap="md">
                         <ActionIcon
                             radius="xl"
@@ -108,8 +108,8 @@ export default function ExpiryDates() {
                             <IconX />
                         </ActionIcon>
                     </Flex>
-                )}
-            </Table.Td>
+                </Table.Td>
+            )}
         </Table.Tr>
     ));
 
@@ -127,7 +127,7 @@ export default function ExpiryDates() {
                         <Table.Th>الاسم</Table.Th>
                         <Table.Th>الكمية</Table.Th>
                         <Table.Th>التاريخ</Table.Th>
-                        <Table.Th>تعديل</Table.Th>
+                        {isAdmin && <Table.Th>تعديل</Table.Th>}
                     </Table.Tr>
                 </Table.Thead>
                 <Table.Tbody fz="xl" fw="bold">

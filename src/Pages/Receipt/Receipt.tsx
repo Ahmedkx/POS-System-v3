@@ -187,7 +187,7 @@ export default function Receipt() {
                     <Select
                         data={products.map((product) => {
                             return {
-                                label: product.name,
+                                label: `${product.name} ${product.size}`,
                                 value: `${product.id}`,
                             };
                         })}
@@ -288,21 +288,21 @@ export default function Receipt() {
                 <Button
                     mt="md"
                     // mx="auto"
-                    // size="100"
+                    size="100"
                     loading={loading}
                     disabled={receipt.length == 0}
                     onClick={saveRecipt}
                 >
                     حفظ
                 </Button>
-                <Button
+                {/* <Button
                     mt="md"
                     // mx="auto"
                     // size="100"
                     onClick={() => addProductScan("1514:0324")}
                 >
                     Scan
-                </Button>
+                </Button> */}
             </Flex>
         </>
     );

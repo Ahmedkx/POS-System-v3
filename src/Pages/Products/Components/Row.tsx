@@ -70,10 +70,10 @@ export default function Rows({ product }: any) {
                             size="xl"
                             radius="xl"
                             aria-label="Settings"
-                            onClick={() => setChangePriceModal(true)}
+                            onClick={() => setAddModal(true)}
                         >
-                            <Tooltip label="تعديل السعر" offset={10} withArrow>
-                                <IconCoinPound
+                            <Tooltip label="اضافة" offset={10} withArrow>
+                                <IconPlus
                                     style={{ width: "70%", height: "70%" }}
                                     stroke={1.5}
                                 />
@@ -85,10 +85,10 @@ export default function Rows({ product }: any) {
                             size="xl"
                             radius="xl"
                             aria-label="Settings"
-                            onClick={() => setAddModal(true)}
+                            onClick={() => setChangePriceModal(true)}
                         >
-                            <Tooltip label="اضافة" offset={10} withArrow>
-                                <IconPlus
+                            <Tooltip label="تعديل السعر" offset={10} withArrow>
+                                <IconCoinPound
                                     style={{ width: "70%", height: "70%" }}
                                     stroke={1.5}
                                 />

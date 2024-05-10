@@ -1,22 +1,20 @@
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./Store.js";
-import { HashRouter, Routes, Route } from "react-router-dom";
 
-import Layout from "./Layouts/Layout.tsx";
-import Login from "./Pages/Login/Login.tsx";
-import Dashboard from "./Pages/Dashboard/Dashboard.tsx";
-import Products from "./Pages/Products/Products.tsx";
-import AddProduct from "./Pages/Products/AddProduct.tsx";
-import Statistics from "./Pages/Statistics/Statistics.tsx";
-import EditProduct from "./Pages/Products/EditProduct.tsx";
-import Settings from "./Pages/Settings/Settings.tsx";
 import FetchData from "./Components/FetchData/FetchData.tsx";
-import Receipt from "./Pages/Receipt/Receipt.tsx";
+import Layout from "./Layouts/Layout.tsx";
+import Customers from "./Pages/Customers/Customers.tsx";
+import Dashboard from "./Pages/Dashboard/Dashboard.tsx";
 import ExpiryDates from "./Pages/ExpiryDates/ExpiryDates.tsx";
-
-import { useIdle } from "@mantine/hooks";
-import { useLoginStore } from "./Store.js";
-import { useEffect } from "react";
+import Login from "./Pages/Login/Login.tsx";
+import AddProduct from "./Pages/Products/AddProduct.tsx";
+import EditProduct from "./Pages/Products/EditProduct.tsx";
+import Products from "./Pages/Products/Products.tsx";
+import Receipt from "./Pages/Receipt/Receipt.tsx";
+import Settings from "./Pages/Settings/Settings.tsx";
+import Statistics from "./Pages/Statistics/Statistics.tsx";
+import Test from "./Pages/Test/Test.tsx";
 
 export default function App() {
     // const idle = useIdle(60000);
@@ -41,6 +39,8 @@ export default function App() {
                         <Route path="/statistics" element={<Statistics />} />
                         <Route path="/products/add" element={<AddProduct />} />
                         <Route path="/expirydates" element={<ExpiryDates />} />
+                        <Route path="/test" element={<Test />} />
+                        <Route path="/customers" element={<Customers />} />
                         <Route
                             path="/products/edit/:id"
                             element={<EditProduct />}

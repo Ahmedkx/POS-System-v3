@@ -25,7 +25,6 @@ import { deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../Firebase-config";
-import useCalculateSellPrice from "../../Hooks/useCalculateSellPrice";
 import useGenerateBarcode from "../../Hooks/useGenerateBarcode";
 import { useSettingsStore } from "../../Store";
 
@@ -45,8 +44,6 @@ export default function EditProduct() {
             company: "",
             size: "",
             barcode: 0,
-            price: 0,
-            sellPrice1: 0,
             quantity: 0,
             saveExpiryDates: false,
         },
@@ -56,8 +53,6 @@ export default function EditProduct() {
             company: isNotEmpty("يجب اخيار اسم الشركة"),
             size: isNotEmpty("يجب اخيار حجم العبوة"),
             barcode: isNotEmpty("يجب ادخال الباركود"),
-            price: isNotEmpty("يجب ادخال السعر"),
-            sellPrice1: isNotEmpty("يجب ادخال سعر البيع"),
             quantity: isNotEmpty("يجب ادخال الكمية"),
         },
     });
@@ -73,22 +68,12 @@ export default function EditProduct() {
         });
     }, []);
 
-    useEffect(() => {
-        form.setValues({
-            sellPrice1: useCalculateSellPrice(
-                form.getInputProps("price").value
-            ),
-        });
-    }, [form.getInputProps("price").value]);
-
     const handleSubmit = (values: any) => {
         updateDoc(doc(db, "Products", params.id), {
             name: values.name,
             company: values.company,
             size: values.size,
             barcode: +values.barcode,
-            price: +values.price,
-            sellPrice1: +values.sellPrice1,
             quantity: +values.quantity,
             saveExpiryDates: values.saveExpiryDates,
         });
@@ -140,27 +125,6 @@ export default function EditProduct() {
                         searchable
                         disabled={loading}
                         {...form.getInputProps("size")}
-                    />
-                    <NumberInput
-                        label="السعر"
-                        placeholder="ادخل السعر"
-                        withAsterisk
-                        hideControls
-                        allowNegative={false}
-                        leftSection={<Icon123 />}
-                        max={99999}
-                        disabled={loading}
-                        {...form.getInputProps("price")}
-                    />
-                    <NumberInput
-                        label="سعر البيع"
-                        placeholder="ادخل سعر البيع"
-                        withAsterisk
-                        hideControls
-                        allowNegative={false}
-                        leftSection={<Icon123 />}
-                        disabled={loading}
-                        {...form.getInputProps("sellPrice1")}
                     />
                     <NumberInput
                         label="الكمية"
