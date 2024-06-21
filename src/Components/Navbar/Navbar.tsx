@@ -14,13 +14,11 @@ import { Link, useLocation } from "react-router-dom";
 import classes from "./Navbar.module.css";
 // import ThemeButton from "../ThemeButton/ThemeButton";
 import { IconLogout, IconSettings } from "@tabler/icons-react";
-import { useNavigate } from "react-router-dom";
 import Logo from "../../Images/Logo";
 import { useLoginStore } from "../../Store";
 
 export default function Navbar() {
     const isAdmin = useLoginStore((state) => state.admin);
-    const navigate = useNavigate();
     const location = useLocation();
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(location.pathname);
@@ -106,7 +104,8 @@ export default function Navbar() {
                                                 }}
                                             />
                                         }
-                                        onClick={() => navigate("/settings")}
+                                        component={Link}
+                                        to="/settings"
                                     >
                                         الاعدادات
                                     </Menu.Item>
@@ -121,7 +120,8 @@ export default function Navbar() {
                                             }}
                                         />
                                     }
-                                    onClick={() => navigate("/login")}
+                                    component={Link}
+                                    to="/login"
                                 >
                                     تسجيل خروج
                                 </Menu.Item>

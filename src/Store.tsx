@@ -7,9 +7,11 @@ export const useProductsStore = create((set) => ({
     },
 }));
 
+let defaultVal = import.meta.env.VITE_IS_ADMIN == "true" ? true : false;
+
 export const useLoginStore = create((set) => ({
     user: true,
-    admin: false,
+    admin: defaultVal,
     toggleUser: () => {
         set({ user: false, admin: true });
     },

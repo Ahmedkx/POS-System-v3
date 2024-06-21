@@ -1,6 +1,9 @@
 import { Button, Modal, NumberInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconAbc, IconDeviceFloppy } from "@tabler/icons-react";
+import { doc, setDoc } from "firebase/firestore";
+import { useEffect } from "react";
+import { db } from "../../Firebase-config";
 
 export default function ChangePricesModal({ opened, close }) {
     const initialValues = {
@@ -9,9 +12,12 @@ export default function ChangePricesModal({ opened, close }) {
         ساسو: "",
         فيومى: "",
         ديوك: "",
-        مسكوفى: "",
+        "جيل تانى": "",
         مولر: "",
+        مسكوفى: "",
+        فرنساوى: "",
         سمان: "",
+        رومى: "",
     };
 
     const namesArray = Object.keys(initialValues);
@@ -20,16 +26,36 @@ export default function ChangePricesModal({ opened, close }) {
         initialValues: initialValues,
     });
 
+    const updateFirestoreDocument = async (values) => {
+        try {
+            const docRef = doc(db, "test", "prices");
+            await setDoc(docRef, values);
+        } catch (error) {
+            console.error("Error updating document: ", error);
+        }
+    };
+
+    useEffect(() => {
+        if (!opened) {
+            form.reset();
+        }
+    }, [opened]);
+
     return (
         <Modal opened={opened} onClose={close} title="تغيير الأسعار" centered>
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form
+                onSubmit={form.onSubmit((values) => {
+                    updateFirestoreDocument(values);
+                    form.reset();
+                    close();
+                })}
+            >
                 {namesArray.map((name, i) => (
                     <NumberInput
-                        {...form.getInputProps("أبيض")}
+                        {...form.getInputProps(name)}
                         key={i}
-                        withAsterisk
                         label={`سعر ${name}`}
-                        placeholder="ادخل سعر الأبيض"
+                        placeholder={`ادخل سعر ${name}`}
                         leftSection={<IconAbc />}
                         hideControls
                     />

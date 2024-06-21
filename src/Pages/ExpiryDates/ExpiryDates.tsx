@@ -1,14 +1,14 @@
-import { ActionIcon, ScrollArea, Table, Flex } from "@mantine/core";
+import { ActionIcon, Flex, ScrollArea, Table } from "@mantine/core";
 import { IconMinus, IconPlus, IconX } from "@tabler/icons-react";
 import {
     collection,
+    deleteDoc,
     doc,
     increment,
     onSnapshot,
     orderBy,
     query,
     updateDoc,
-    deleteDoc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../Firebase-config";
@@ -63,8 +63,6 @@ export default function ExpiryDates() {
         const yy = date.getFullYear().toString(); // Get last two digits of the year
         return `${yy}/${mm}`;
     }
-
-    console.log(products);
 
     async function editQuantity(id, amount) {
         const docRef = doc(db, "Quantities", id);

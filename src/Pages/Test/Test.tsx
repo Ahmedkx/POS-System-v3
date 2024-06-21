@@ -2,33 +2,51 @@ import {
     Box,
     Button,
     Container,
+    Divider,
     Flex,
     NumberInput,
     SimpleGrid,
     Stack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { useState } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import * as htmlToImage from "html-to-image";
+import { useEffect, useState } from "react";
+import { db } from "../../Firebase-config";
 import ChangePricesModal from "./ChangePricesModal";
 
 export default function Test() {
     const [opened, { open, close }] = useDisclosure(false);
-    const [inputs, setInputs] = useState([
-        { name: "ابيض", price: 35, quantity: "", total: 0 },
-        { name: "ساسو", price: 21, quantity: "", total: 0 },
-        { name: "فيومى", price: 16, quantity: "", total: 0 },
-        // { name: "ديوك", price: 24, quantity: "", total: 0 },
-        { name: "بلدى", price: 12, quantity: "", total: 0 },
-        // { name: "مسكوفى", price: 53, quantity: "", total: 0 },
-        // { name: "مولر", price: 46, quantity: "", total: 0 },
-        // { name: "سمان", price: 10, quantity: "", total: 0 },
-    ]);
+    const [inputs, setInputs] = useState([]);
 
-    // useEffect(() => {
-    //     const unsub = onSnapshot(doc(db, "Test", "test"), (doc) => {
-    //         setInputs(doc.data().inputs);
-    //     });
-    // }, []);
+    useEffect(() => {
+        const unsub = onSnapshot(doc(db, "test", "prices"), (docSnapshot) => {
+            const data = docSnapshot.data();
+
+            const newData = Object.entries(data).map(([name, price]) => ({
+                name,
+                price: price || "",
+            }));
+
+            if (data) {
+                const newDataa = newData
+                    .filter((input) => input.price)
+                    .map((input) => ({
+                        name: input.name,
+                        price: input.price,
+                        quantity: "",
+                        total: 0,
+                    }));
+
+                console.log(newDataa);
+                setInputs(newDataa);
+            } else {
+                setInputs([]);
+            }
+        });
+
+        return () => unsub();
+    }, []);
 
     function formatDate() {
         const date = new Date();
@@ -44,7 +62,7 @@ export default function Test() {
 
         return (
             formattedDate +
-            "&nbsp; - &nbsp;" +
+            " - " +
             hour +
             ":" +
             (minute < 10 ? "0" + minute : minute)
@@ -92,34 +110,70 @@ export default function Test() {
 
     const aggregatedQuantities = aggregateQuantities();
 
+    // const handlePrint = () => {
+    //     //<div style="height: 52%;">&nbsp;</div>
+    //     const printWindow = window.open("", "_blank");
+    //     printWindow.document.write(`
+    //         <html>
+    //         <head>
+    //             <title>Print</title>
+    //         </head>
+    //         <body>
+    //             <div style="text-align: center;style="font-size: 35px;">
+    //                 ${Object.entries(aggregatedQuantities)
+    //                     .map(([name, quantity]) =>
+    //                         quantity >= 1
+    //                             ? `<span style="font-size: 30px; font-weight: bold;">${name}:${quantity} </span>`
+    //                             : null
+    //                     )
+    //                     .join("")}
+    //                     <div style="font-weight: bold;">
+    //                     ${formatDate()}
+    //                     </div>
+    //             </div>
+    //         </body>
+    //         </html>
+    //     `);
+    //     printWindow.document.close();
+    //     printWindow.print();
+    //     printWindow.close();
+    //     resetQuantities();
+    // };
+
     const handlePrint = () => {
-        //<div style="height: 52%;">&nbsp;</div>
-        const printWindow = window.open("", "_blank");
-        printWindow.document.write(`
-            <html>
-            <head>
-                <title>Print</title>
-            </head>
-            <body>
-                <div style="text-align: center;style="font-size: 35px;">
-                    ${Object.entries(aggregatedQuantities)
-                        .map(([name, quantity]) =>
-                            quantity >= 1
-                                ? `<span style="font-size: 30px; font-weight: bold;">${name}:${quantity} </span>`
-                                : null
-                        )
-                        .join("")}
-                        <div style="font-weight: bold;">
-                        ${formatDate()}
-                        </div>
-                </div>
-            </body>
-            </html>
-        `);
-        printWindow.document.close();
-        printWindow.print();
-        printWindow.close();
-        resetQuantities();
+        const element = document.getElementById("elementToPrint");
+        htmlToImage
+            .toSvg(element, { width: 144, height: 95 })
+            .then(function (dataUrl) {
+                const newTab: Window = window.open("", "_blank");
+                newTab.document.write(`
+                    <html>
+                        <head>
+                            <title>طباعة</title>
+                            <style>
+                                body {
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                        <img src="${dataUrl}" />
+                        </body>
+                    </html>
+                `);
+                newTab.document.close();
+                newTab.focus();
+                const img = new Image();
+                img.src = dataUrl;
+                img.onload = function () {
+                    newTab.print();
+                    newTab.close();
+                };
+            })
+            .catch(function (error) {
+                console.error("Error generating image: ", error);
+            });
     };
 
     return (
@@ -134,6 +188,7 @@ export default function Test() {
                     Reset
                 </Button>
             </Flex>
+            <Divider my={"md"} />
             <SimpleGrid
                 cols={3}
                 // key={index}
@@ -155,9 +210,9 @@ export default function Test() {
                     />
                 ))}
             </SimpleGrid>
+            <Divider my={"md"} />
             <Stack align="center">
                 <NumberInput
-                    mt="sm"
                     hideControls
                     label={"مدفوع"}
                     value={customReduction}
@@ -171,8 +226,92 @@ export default function Test() {
                     onChange={(value) => setCustomAddition(value)}
                     min={0}
                 />
-                <Box mt="md" ta="center">
-                    الاجمالى: {totalPrice}
+                <Box ta="center">الاجمالى: {totalPrice}</Box>
+                <Box id="elementToPrint" w="144px" h="94px">
+                    <Flex
+                        h="50%"
+                        style={{
+                            fontSize: "12px",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                        }}
+                    >
+                        1 سم على كل لتر مياه من ثانى يوم لمدة 3 ايام
+                    </Flex>
+                    <Flex
+                        h="50%"
+                        style={{
+                            fontSize: "12px",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                        }}
+                    >
+                        10 سم على كل لتر مياه من اول يوم لحد ما تخلص
+                    </Flex>
+                    {/* <Flex direction="column" h="50%">
+                        <Flex gap="3px" wrap="wrap" justify="center">
+                            {Object.entries(aggregatedQuantities)
+                                .filter(([name, quantity]) => quantity >= 1)
+                                .map(([name, quantity]) => (
+                                    <span
+                                        key={name}
+                                        style={{
+                                            fontSize: "10px",
+                                            fontWeight: "bold",
+                                            margin: 0,
+                                        }}
+                                    >
+                                        {name}:{quantity}
+                                    </span>
+                                ))}
+                        </Flex>
+                        <div
+                            style={{
+                                fontSize: "10px",
+                                fontWeight: "bold",
+                                textAlign: "center",
+                            }}
+                        >
+                            {formatDate()}
+                        </div>
+                    </Flex>
+                    <Flex gap="3px" wrap="wrap" justify="center" h="50%">
+                        {inputs.map(
+                            (item) =>
+                                item.quantity >= 1 && (
+                                    <>
+                                        <span
+                                            style={{
+                                                fontSize: "12px",
+                                                fontWeight: "bold",
+                                                margin: 0,
+                                            }}
+                                        >
+                                            {item.name}:
+                                            {item.quantity * item.price} ج
+                                        </span>
+                                        <span
+                                            style={{
+                                                fontSize: "12px",
+                                                fontWeight: "bold",
+                                                margin: 0,
+                                            }}
+                                        >
+                                            {`العلاج:${customAddition} ج`}
+                                        </span>
+                                        <span
+                                            style={{
+                                                fontSize: "12px",
+                                                fontWeight: "bold",
+                                                margin: 0,
+                                            }}
+                                        >
+                                            {`الباقى:${totalPrice} ج`}
+                                        </span>
+                                    </>
+                                )
+                        )}
+                    </Flex> */}
                 </Box>
                 <Button onClick={handlePrint}>طباعة</Button>
             </Stack>
